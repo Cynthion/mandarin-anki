@@ -1,0 +1,8 @@
+# OS
+.DS_Store
+
+# Anki exports / temp
+*.apkg
+
+# Optional local scripts output
+deck/exports/

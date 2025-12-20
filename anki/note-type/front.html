@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="hanzi">{{hanzi}}</div>
+  <div class="pinyin">{{pinyin}}</div>
+
+  <div class="media">
+    {{#audio}}
+      <div class="audio">{{audio}}</div>
+    {{/audio}}
+
+    {{^audio}}
+      <div class="audio ">
+        {{tts zh_CN:hanzi}}
+      </div>
+    {{/audio}}
+  </div>
+
+  {{#image}}
+    <div class="image">{{image}}</div>
+  {{/image}}
+</div>
