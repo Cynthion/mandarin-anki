@@ -1,2 +1,152 @@
 id	hanzi	pinyin	meaning	example	audio	image	tags
-000001	你	nǐ	you	你好!		<img src="ni.png">	pron
+000001	人	rén	person	Zhè shì yí gè rén.			people noun
+000002	中国人	Zhōngguó rén	Chinese person	Tā shì Zhōngguó rén.			people noun
+000003	爸爸	bàba	father	Wǒ bàba zài jiā.			family noun
+000004	妈妈	māma	mother	Wǒ māma hěn máng.			family noun
+000005	祖父	zǔfù	grandfather	Wǒ zǔfù hěn jiànkāng.			family noun
+000006	儿子	érzi	son	Tā yǒu yí gè érzi.			family noun
+000007	女儿	nǚ’ér	daughter	Wǒ nǚ’ér hěn kě’ài.			family noun
+000008	孩子	háizi	child	Háizi zài xuéxiào.			family noun
+000009	朋友	péngyou	friend	Tā shì wǒ péngyou.			people noun
+000010	男朋友	nánpéngyou	boyfriend	Tā shì wǒ nánpéngyou.			people noun
+000011	女朋友	nǚpéngyou	girlfriend	Tā shì wǒ nǚpéngyou.			people noun
+000012	爱人	àirén	spouse	Wǒ àirén zài gōngzuò.			people noun
+000013	阿姨	āyí	aunt	Wǒ āyí lái le.			family noun
+000014	哥哥	gēge	older brother	Gēge zài jiā.			family noun
+000015	弟弟	dìdi	younger brother	Dìdi hěn gāoxìng.			family noun
+000016	姐姐	jiějie	older sister	Jiějie hěn máng.			family noun
+000017	妹妹	mèimei	younger sister	Mèimei hěn kě’ài.			family noun
+
+000018	龙	lóng	dragon	Zhè shì lóng.			animal noun
+000019	老鼠	lǎoshǔ	mouse	Lǎoshǔ hěn xiǎo.			animal noun
+000020	猫	māo	cat	Māo zài shuìjiào.			animal noun
+000021	狗	gǒu	dog	Gǒu zài jiā.			animal noun
+000022	猪	zhū	pig	Zhè shì zhū.			animal noun
+000023	牛	niú	cow	Niú hěn dà.			animal noun
+000024	老虎	lǎohǔ	tiger	Lǎohǔ hěn qiáng.			animal noun
+000025	马	mǎ	horse	Mǎ zài pǎo.			animal noun
+000026	羊	yáng	sheep	Yáng hěn kě’ài.			animal noun
+000027	猴子	hóuzi	monkey	Hóuzi hěn cōngming.			animal noun
+000028	鸡	jī	chicken	Jī zài nàr.			animal noun
+000029	熊	xióng	bear	Xióng hěn dà.			animal noun
+000030	蜜蜂	mìfēng	bee	Mìfēng zài fēi.			animal noun
+000031	鸟	niǎo	bird	Niǎo zài tiānshàng.			animal noun
+000032	鸭子	yāzi	duck	Yāzi zài shuǐ lǐ.			animal noun
+000033	熊猫	xióngmāo	panda	Xióngmāo hěn kě’ài.			animal noun
+000034	青蛙	qīngwā	frog	Qīngwā zài shuǐ lǐ.			animal noun
+000035	兔子	tùzi	rabbit	Tùzi hěn kuài.			animal noun
+
+000036	中国	Zhōngguó	China	Wǒ zài Zhōngguó.			geography noun
+000037	美国	Měiguó	USA	Wǒ qù Měiguó.			geography noun
+000038	德国	Déguó	Germany	Déguó hěn dà.			geography noun
+000039	日本	Rìběn	Japan	Rìběn hěn piàoliang.			geography noun
+000040	亚洲	Yàzhōu	Asia	Zhōngguó zài Yàzhōu.			geography noun
+000041	欧洲	Ōuzhōu	Europe	Wǒ zài Ōuzhōu.			geography noun
+000042	非洲	Fēizhōu	Africa	Fēizhōu hěn dà.			geography noun
+000043	美洲	Měizhōu	America	Měizhōu hěn yuǎn.			geography noun
+000044	州	zhōu	continent	Zhè shì yí gè zhōu.			geography noun
+000045	苏黎世	Sūlìshì	Zurich	Wǒ zài Sūlìshì.			geography noun
+000046	巴塞尔	Bāsài’ěr	Basel	Bāsài’ěr hěn měi.			geography noun
+
+000047	家	jiā	home	Wǒ huí jiā.			place noun
+000048	旅馆	lǚguǎn	hotel	Wǒ zhù lǚguǎn.			place noun
+000049	饭店	fàndiàn	restaurant	Wǒ qù fàndiàn.			place noun
+000050	饭馆	fànguǎn	restaurant	Wǒ qù fànguǎn.			place noun
+000051	茶馆	cháguǎn	teahouse	Wǒ qù cháguǎn.			place noun
+000052	咖啡馆	kāfēiguǎn	café	Wǒ qù kāfēiguǎn.			place noun
+000053	店	diàn	shop	Wǒ qù diàn.			place noun
+000054	馆	guǎn	establishment	Zhè shì guǎn.			place noun
+000055	公司	gōngsī	company	Wǒ zài gōngsī.			work noun
+000056	大学	dàxué	university	Wǒ shàng dàxué.			place noun
+000057	医院	yīyuàn	hospital	Tā zài yīyuàn.			place noun
+000058	厨房	chúfáng	kitchen	Māma zài chúfáng.			place noun
+
+000059	啤酒	píjiǔ	beer	Wǒ hē píjiǔ.			food noun
+000060	茶	chá	tea	Wǒ hē chá.			food noun
+000061	咖啡	kāfēi	coffee	Wǒ hē kāfēi.			food noun
+000062	水	shuǐ	water	Wǒ hē shuǐ.			food noun
+000063	奶	nǎi	milk	Háizi hē nǎi.			food noun
+000064	奶酪	nǎilào	cheese	Wǒ chī nǎilào.			food noun
+000065	饭	fàn	rice	Wǒ chī fàn.			food noun
+000066	苹果	píngguǒ	apple	Wǒ chī píngguǒ.			food noun
+000067	香蕉	xiāngjiāo	banana	Xiāngjiāo hěn tián.			food noun
+000068	草莓	cǎoméi	strawberry	Cǎoméi hěn tián.			food noun
+000069	莓	méi	berry	Méi hěn suān.			food noun
+000070	西瓜	xīguā	watermelon	Xīguā hěn dà.			food noun
+000071	巧克力	qiǎokèlì	chocolate	Wǒ xǐhuan qiǎokèlì.			food noun
+000072	葡萄酒	pútáojiǔ	wine	Wǒ hē pútáojiǔ.			food noun
+000073	香槟酒	xiāngbīnjiǔ	champagne	Wǒ hē xiāngbīnjiǔ.			food noun
+000074	火锅	huǒguō	hotpot	Wǒ chī huǒguō.			food noun
+000075	寿司	shòusī	sushi	Wǒ chī shòusī.			food noun
+000076	蔬菜	shūcài	vegetables	Wǒ chī shūcài.			food noun
+000077	牛肉	niúròu	beef	Wǒ chī niúròu.			food noun
+000078	面条	miàntiáo	noodles	Wǒ chī miàntiáo.			food noun
+000079	樱桃	yīngtáo	cherry	Yīngtáo hěn tián.			food noun
+000080	葡萄	pútáo	grapes	Pútáo hěn tián.			food noun
+000081	桃子	táozi	peach	Táozi hěn tián.			food noun
+000082	梨	lí	pear	Lí hěn tián.			food noun
+000083	糖果	tángguǒ	candy	Háizi chī tángguǒ.			food noun
+000084	可口可乐	kěkǒukělè	Coca-Cola	Wǒ hē kěkǒukělè.			food noun
+000085	披萨	bǐsà	pizza	Wǒ chī bǐsà.			food noun
+000086	中国菜	Zhōngguó cài	Chinese food	Wǒ chī Zhōngguó cài.			food noun
+000087	日本菜	Rìběn cài	Japanese food	Wǒ chī Rìběn cài.			food noun
+000088	麦当劳	Màidāngláo	McDonald’s	Wǒ qù Màidāngláo.			place food noun
+
+000089	书	shū	book	Wǒ yǒu shū.			object noun
+000090	杯子	bēizi	cup	Wǒ yǒu bēizi.			object noun
+000091	瓶子	píngzi	bottle	Zhè shì píngzi.			object noun
+000092	包	bāo	bag	Wǒ de bāo zài zhèr.			object noun
+000093	书包	shūbāo	schoolbag	Wǒ de shūbāo.			object noun
+000094	笔	bǐ	pen	Zhè shì bǐ.			object noun
+000095	名片	míngpiàn	business card	Zhè shì wǒ de míngpiàn.			object noun
+000096	照片	zhàopiàn	photo	Wǒ kàn zhàopiàn.			object noun
+000097	电话	diànhuà	telephone	Wǒ dǎ diànhuà.			object noun
+000098	手机	shǒujī	mobile phone	Wǒ yǒu shǒujī.			object noun
+000099	页	yè	page	Zhè shì yí yè.			object noun
+000100	碗	wǎn	bowl	Wǒ yǒu wǎn.			object noun
+000101	里	lǐ	inside	Zài bāo lǐ.			object noun
+000102	东西	dōngxi	thing	Wǒ yǒu dōngxi.			object noun
+
+000103	老师	lǎoshī	teacher	Lǎoshī lái le.			work noun
+000104	医生	yīshēng	doctor	Yīshēng hěn máng.			work noun
+000105	工程师	gōngchéngshī	engineer	Tā shì gōngchéngshī.			work noun
+000106	服务员	fúwùyuán	waiter	Fúwùyuán lái le.			work noun
+000107	老板	lǎobǎn	boss	Lǎobǎn lái le.			work noun
+000108	工作	gōngzuò	work	Wǒ yǒu gōngzuò.			work noun
+000109	工程	gōngchéng	project	Gōngchéng hěn dà.			work noun
+000110	师傅	shīfu	master	Shīfu hěn lìhai.			work noun
+000111	护士	hùshi	nurse	Hùshi lái le.			work noun
+000112	律师	lǜshī	lawyer	Lǜshī hěn máng.			work noun
+000113	咨询师	zīxúnshī	consultant	Zīxúnshī zài zhèr.			work noun
+000114	作家	zuòjiā	writer	Zuòjiā zài xiě shū.			work noun
+000115	画家	huàjiā	painter	Huàjiā zài huà huà.			work noun
+000116	音乐家	yīnyuèjiā	musician	Yīnyuèjiā zài chànggē.			work noun
+000117	科学家	kēxuéjiā	scientist	Kēxuéjiā hěn cōngming.			work noun
+000118	职员	zhíyuán	employee	Zhíyuán zài gōngsī.			work noun
+000119	售货员	shòuhuòyuán	shop assistant	Shòuhuòyuán lái le.			work noun
+000120	飞行员	fēixíngyuán	pilot	Fēixíngyuán hěn máng.			work noun
+000121	空姐	kōngjiě	flight attendant	Kōngjiě zài fēijī shàng.			work noun
+000122	经理	jīnglǐ	manager	Jīnglǐ zài huìyì.			work noun
+000123	秘书	mìshū	secretary	Mìshū zài gōngsī.			work noun
+000124	警察	jǐngchá	police officer	Jǐngchá lái le.			work noun
+000125	小偷	xiǎotōu	thief	Xiǎotōu pǎo le.			work noun
+000126	黑客	hēikè	hacker	Hēikè zài diànnǎo shàng.			work noun
+
+000127	年	nián	year	Jīnnián hěn máng.			time noun
+000128	月	yuè	month	Zhè gè yuè.			time noun
+000129	日	rì	day	Jīntiān shì rì.			time noun
+000130	星期	xīngqī	week	Zhè gè xīngqī.			time noun
+000131	星期一	xīngqī yī	Monday	Jīntiān shì xīngqī yī.			time noun
+000132	星期日	xīngqī rì	Sunday	Jīntiān shì xīngqī rì.			time noun
+000133	十月	shí yuè	October	Xiànzài shí yuè.			time noun
+000134	岁	suì	age	Tā sān suì.			time noun
+000135	点	diǎn	o’clock	Xiànzài shí diǎn.			time noun
+000136	分	fēn	minute	Xiànzài shí diǎn wǔ fēn.			time noun
+000137	刻	kè	quarter	Xiànzài yí kè.			time noun
+000138	半	bàn	half	Xiànzài liǎng diǎn bàn.			time noun
+
+000139	钱	qián	money	Wǒ yǒu qián.			money noun
+000140	毛	máo	ten cents	Yì máo qián.			money noun
+000141	分	fēn	cent	Yì fēn qián.			money noun
+000142	斤	jīn	half kilo	Yì jīn píngguǒ.			measure noun
+000143	两	liǎng	two	Liǎng gè rén.			number noun
