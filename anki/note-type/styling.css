@@ -56,3 +56,41 @@
   max-height: 80px;
   border-radius: 8px;
 }
+
+.posdots {
+  --dot: 10px;
+  --gap: 6px;
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+  gap: var(--gap);
+  line-height: 0;
+}
+
+.posdots .dot {
+  width: var(--dot);
+  height: var(--dot);
+  border-radius: 999px;
+  background: currentColor;
+  display: none;
+}
+
+.card.noun .posdots .dot-noun { display: inline-block; }
+.card.verb .posdots .dot-verb { display: inline-block; }
+.card.adj  .posdots .dot-adj  { display: inline-block; }
+.card.adv  .posdots .dot-adv  { display: inline-block; }
+.card.pron .posdots .dot-pron { display: inline-block; }
+.card.prep .posdots .dot-prep { display: inline-block; }
+.card.conj .posdots .dot-conj { display: inline-block; }
+.card.intj .posdots .dot-intj { display: inline-block; }
+.card.det  .posdots .dot-det  { display: inline-block; }
+
+.card.noun  .posdots { color: #0057B8; } /* Blau – Nomen */
+.card.verb  .posdots { color: #D60000; } /* Rot – Verben */
+.card.adj   .posdots { color: #6A1B9A; } /* Lila – Adjektive */
+.card.adv   .posdots { color: #2E7D32; } /* Grün – Adverbien */
+.card.pron  .posdots { color: #F57C00; } /* Orange – Pronomen */
+.card.prep  .posdots { color: #00838F; } /* Türkis – Präpositionen */
+.card.conj  .posdots { color: #512DA8; } /* Dunkellila – Konjunktionen */
+.card.intj  .posdots { color: #B71C1C; } /* Dunkelrot – Interjektionen */
+.card.det   .posdots { color: #424242; } /* Grau – Artikel / Determinierer */
