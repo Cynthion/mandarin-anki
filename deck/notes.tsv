@@ -150,3 +150,67 @@ id	hanzi	pinyin	meaning	example	audio	image	tags
 000141	分	fēn	cent	Yì fēn qián.			money noun
 000142	斤	jīn	half kilo	Yì jīn píngguǒ.			measure noun
 000143	两	liǎng	two	Liǎng gè rén.			number noun
+
+id	hanzi	pinyin	meaning	example	audio	image	tags
+000144	是	shì	to be	Tā shì lǎoshī.			core verb
+000145	有	yǒu	to have	Wǒ yǒu shū.			core verb
+000146	没有	méi yǒu	to not have	Wǒ méi yǒu qián.			core verb
+000147	来	lái	to come	Tā lái le.			motion verb
+000148	去	qù	to go	Wǒ qù xuéxiào.			motion verb
+000149	在	zài	to be (located)	Wǒ zài jiā.			core verb
+000150	做	zuò	to do / make	Wǒ zuò fàn.			core verb
+000151	坐	zuò	to sit	Wǒ zuò zài zhèr.			core verb
+000152	看	kàn	to see / watch	Wǒ kàn shū.			perception verb
+000153	说	shuō	to speak	Wǒ shuō Hànyǔ.			communication verb
+000154	吃	chī	to eat	Wǒ chī fàn.			daily verb
+000155	喝	hē	to drink	Wǒ hē shuǐ.			daily verb
+
+000156	会	huì	can (know how to)	Wǒ huì shuō Zhōngwén.			modal verb
+000157	能	néng	can (be able to)	Wǒ néng lái.			modal verb
+000158	可以	kěyǐ	may / be allowed	Wǒ kěyǐ qù.			modal verb
+000159	要	yào	to want / need	Wǒ yào shuǐ.			modal verb
+000160	应该	yīnggāi	should	Wǒ yīnggāi qù.			modal verb
+
+000161	想	xiǎng	to want / think	Wǒ xiǎng qù.			mental verb
+000162	喜欢	xǐhuan	to like	Wǒ xǐhuan chá.			emotion verb
+000163	爱	ài	to love	Wǒ ài jiārén.			emotion verb
+
+000164	工作	gōngzuò	to work	Wǒ zài gōngzuò.			daily verb
+000165	学习	xuéxí	to study	Wǒ xuéxí Hànyǔ.			learning verb
+000166	上	shàng	to attend / go up	Wǒ shàng dàxué.			motion verb
+000167	回	huí	to return	Wǒ huí jiā.			motion verb
+000168	住	zhù	to live	Wǒ zhù zài zhèr.			daily verb
+000169	睡觉	shuìjiào	to sleep	Wǒ shuìjiào le.			daily verb
+000170	买	mǎi	to buy	Wǒ mǎi shū.			commerce verb
+000171	卖	mài	to sell	Tā mài shū.			commerce verb
+000172	做饭	zuò fàn	to cook	Wǒ zuò fàn.			daily verb
+
+000173	问	wèn	to ask	Wǒ wèn lǎoshī.			communication verb
+000174	请	qǐng	to ask politely	Qǐng zuò.			communication verb
+000175	回答	huídá	to answer	Tā huídá le.			communication verb
+000176	叫	jiào	to be called	Wǒ jiào Lǐ.			communication verb
+000177	姓	xìng	to be surnamed	Wǒ xìng Wáng.			communication verb
+000178	说话	shuōhuà	to talk	Wǒmen shuōhuà.			communication verb
+
+000179	知道	zhīdào	to know	Wǒ zhīdào.			mental verb
+000180	认识	rènshi	to know (person)	Wǒ rènshi tā.			mental verb
+000181	听	tīng	to listen	Wǒ tīng yīnyuè.			perception verb
+000182	听见	tīngjiàn	to hear	Wǒ tīngjiàn le.			perception verb
+
+000183	来自	láizì	to come from	Wǒ láizì Zhōngguó.			origin verb
+000184	属	shǔ	to belong to	Wǒ shǔ Zhōngguó.			origin verb
+
+000185	出	chū	to go out	Wǒ chū qù.			motion verb
+000186	进	jìn	to enter	Wǒ jìn qù.			motion verb
+000187	走	zǒu	to walk / leave	Wǒ zǒu le.			motion verb
+000188	跑	pǎo	to run	Tā pǎo hěn kuài.			motion verb
+
+000189	帮	bāng	to help	Wǒ bāng nǐ.			social verb
+000190	等	děng	to wait	Wǒ děng nǐ.			social verb
+000191	给	gěi	to give	Wǒ gěi nǐ.			social verb
+000192	点	diǎn	to order	Wǒ diǎn chá.			food verb
+000193	付钱	fùqián	to pay	Wǒ fùqián le.			commerce verb
+
+000194	退休	tuìxiū	to retire	Tā tuìxiū le.			life verb
+
+000195	过	guò	to have experienced	Wǒ qù guò Zhōngguó.			aspect verb
