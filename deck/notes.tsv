@@ -212,153 +212,148 @@ id	hanzi	pinyin	meaning	example	audio	image	tags
 
 000194	退休	tuìxiū	to retire	Tā tuìxiū le.			life verb
 
-000195	过	guò	to have experienced	Wǒ qù guò Zhōngguó.			aspect verb
+000195	高兴	gāoxìng	happy	Wǒ hěn gāoxìng.			feeling adj
+000196	伤心	shāngxīn	sad	Tā hěn shāngxīn.			feeling adj
+000197	酷	kù	cool	Zhè hěn kù.			evaluation adj
+000198	贵	guì	expensive	Zhè gè hěn guì.			evaluation adj
+000199	便宜	piányi	cheap	Zhè gè hěn piányi.			evaluation adj
+000200	累	lèi	tired	Wǒ hěn lèi.			state adj
+000201	忙	máng	busy	Wǒ hěn máng.			state adj
 
-000196	高兴	gāoxìng	happy	Wǒ hěn gāoxìng.			feeling adj
-000197	伤心	shāngxīn	sad	Tā hěn shāngxīn.			feeling adj
-000198	酷	kù	cool	Zhè hěn kù.			evaluation adj
-000199	贵	guì	expensive	Zhè gè hěn guì.			evaluation adj
-000200	便宜	piányi	cheap	Zhè gè hěn piányi.			evaluation adj
-000201	累	lèi	tired	Wǒ hěn lèi.			state adj
-000202	忙	máng	busy	Wǒ hěn máng.			state adj
+000202	好	hǎo	good	Zhè hěn hǎo.			quality adj
+000203	不好	bù hǎo	bad	Zhè bù hǎo.			quality adj
+000204	冷	lěng	cold	Tiānqì hěn lěng.			temperature adj
+000205	热	rè	hot	Tiānqì hěn rè.			temperature adj
+000206	好吃	hǎochī	tasty	Fàn hěn hǎochī.			food adj
+000207	好喝	hǎohē	tasty (drink)	Chá hěn hǎohē.			food adj
 
-000203	好	hǎo	good	Zhè hěn hǎo.			quality adj
-000204	不好	bù hǎo	bad	Zhè bù hǎo.			quality adj
-000205	冷	lěng	cold	Tiānqì hěn lěng.			temperature adj
-000206	热	rè	hot	Tiānqì hěn rè.			temperature adj
-000207	好吃	hǎochī	tasty	Fàn hěn hǎochī.			food adj
-000208	好喝	hǎohē	tasty (drink)	Chá hěn hǎohē.			food adj
+000208	漂亮	piàoliang	beautiful	Tā hěn piàoliang.			appearance adj
+000209	帅	shuài	handsome	Tā hěn shuài.			appearance adj
+000210	可爱	kě’ài	cute	Háizi hěn kě’ài.			appearance adj
 
-000209	漂亮	piàoliang	beautiful	Tā hěn piàoliang.			appearance adj
-000210	帅	shuài	handsome	Tā hěn shuài.			appearance adj
-000211	可爱	kě’ài	cute	Háizi hěn kě’ài.			appearance adj
+000211	大	dà	big	Wǒ de jiā hěn dà.			size adj
+000212	小	xiǎo	small	Zhè gè hěn xiǎo.			size adj
+000213	新	xīn	new	Zhè shì xīn shū.			size adj
+000214	旧	jiù	old (object)	Zhè shì jiù shū.			size adj
 
-000212	大	dà	big	Wǒ de jiā hěn dà.			size adj
-000213	小	xiǎo	small	Zhè gè hěn xiǎo.			size adj
-000214	新	xīn	new	Zhè shì xīn shū.			size adj
-000215	旧	jiù	old (object)	Zhè shì jiù shū.			size adj
+000215	聪明	cōngming	clever	Háizi hěn cōngming.			trait adj
+000216	男	nán	male	Tā shì nán.			trait adj
+000217	女	nǚ	female	Tā shì nǚ.			trait adj
 
-000216	聪明	cōngming	clever	Háizi hěn cōngming.			trait adj
-000217	男	nán	male	Tā shì nán.			trait adj
-000218	女	nǚ	female	Tā shì nǚ.			trait adj
+000218	多	duō	many / much	Dōngxi hěn duō.			quantity adj
+000219	少	shǎo	few / little	Dōngxi hěn shǎo.			quantity adj
 
-000219	多	duō	many / much	Dōngxi hěn duō.			quantity adj
-000220	少	shǎo	few / little	Dōngxi hěn shǎo.			quantity adj
+000220	可	kě	possible / okay	Kě ma?			utility adj
 
-000221	可	kě	possible / okay	Kě ma?			utility adj
+000221	很	hěn	very	Wǒ hěn hǎo.			degree adv
+000222	非常	fēicháng	extremely	Tā fēicháng máng.			degree adv
+000223	太	tài	too	Tài guì le.			degree adv
+000224	真	zhēn	really	Zhēn hǎo.			degree adv
+000225	有点	yǒudiǎn	a little (negative)	Yǒudiǎn lèi.			degree adv
+000226	一点儿	yìdiǎnr	a little	Wǒ chī yìdiǎnr.			degree adv
+000227	点儿	diǎnr	a bit	Zǒu diǎnr kuài.			degree adv
+000228	多	duō	much / many (adverbial)	Duō chī yìdiǎnr.			degree adv
 
-000222	很	hěn	very	Wǒ hěn hǎo.			degree adv
-000223	非常	fēicháng	extremely	Tā fēicháng máng.			degree adv
-000224	太	tài	too	Tài guì le.			degree adv
-000225	真	zhēn	really	Zhēn hǎo.			degree adv
-000226	有点	yǒudiǎn	a little (negative)	Yǒudiǎn lèi.			degree adv
-000227	一点儿	yìdiǎnr	a little	Wǒ chī yìdiǎnr.			degree adv
-000228	点儿	diǎnr	a bit	Zǒu diǎnr kuài.			degree adv
-000229	多	duō	much / many (adverbial)	Duō hē shuǐ.			degree adv
+000229	现在	xiànzài	now	Xiànzài wǒ hěn máng.			time adv
+000230	经常	jīngcháng	often	Wǒ jīngcháng lái.			time adv
+000231	常常	chángcháng	often	Tā chángcháng qù.			time adv
+000232	以前	yǐqián	before	Yǐqián wǒ zài Zhōngguó.			time adv
+000233	以后	yǐhòu	after	Yǐhòu jiàn.			time adv
+000234	刚	gāng	just (now)	Wǒ gāng lái.			time adv
+000235	马上	mǎshàng	immediately	Wǒ mǎshàng qù.			time adv
 
-000230	现在	xiànzài	now	Xiànzài wǒ hěn máng.			time adv
-000231	经常	jīngcháng	often	Wǒ jīngcháng lái.			time adv
-000232	常常	chángcháng	often	Tā chángcháng qù.			time adv
-000233	以前	yǐqián	before	Yǐqián wǒ zài Zhōngguó.			time adv
-000234	以后	yǐhòu	after	Yǐhòu jiàn.			time adv
-000235	刚	gāng	just (now)	Wǒ gāng lái.			time adv
-000236	马上	mǎshàng	immediately	Wǒ mǎshàng qù.			time adv
+000236	不	bù	not	Wǒ bù qù.			negation adv
+000237	没	méi	not (past/have)	Wǒ méi qù.			negation adv
 
-000237	不	bù	not	Wǒ bù qù.			negation adv
-000238	没	méi	not (past/have)	Wǒ méi qù.			negation adv
+000238	都	dōu	all	Wǒmen dōu lái le.			scope adv
+000239	也	yě	also	Wǒ yě qù.			scope adv
+000240	只	zhǐ	only	Wǒ zhǐ yào shuǐ.			scope adv
 
-000239	都	dōu	all	Wǒmen dōu lái le.			scope adv
-000240	也	yě	also	Wǒ yě qù.			scope adv
-000241	只	zhǐ	only	Wǒ zhǐ yào shuǐ.			scope adv
+000241	慢慢	mànman	slowly	Mànman zǒu.			manner adv
+000242	快	kuài	quickly	Kuài zǒu.			manner adv
+000243	一直	yìzhí	continuously	Tā yìzhí gōngzuò.			manner adv
 
-000242	慢慢	mànman	slowly	Mànman zǒu.			manner adv
-000243	快	kuài	quickly	Kuài zǒu.			manner adv
-000244	一直	yìzhí	continuously	Tā yìzhí gōngzuò.			manner adv
+000244	再	zài	again	Wǒ zài qù.			sequence adv
+000245	就	jiù	then / right away	Wǒ jiù lái.			sequence adv
+000246	还	hái	still	Wǒ hái zài zhèr.			sequence adv
+000247	还是	háishì	or (questions)	Nǐ qù háishì bù qù?			question adv
 
-000245	再	zài	again	Wǒ zài qù.			sequence adv
-000246	就	jiù	then / right away	Wǒ jiù lái.			sequence adv
-000247	还	hái	still	Wǒ hái zài zhèr.			sequence adv
-000248	还是	háishì	or (questions)	Nǐ qù háishì bù qù?			question adv
+000248	可能	kěnéng	maybe	Tā kěnéng lái.			attitude adv
+000249	一定	yídìng	certainly	Wǒ yídìng qù.			attitude adv
 
-000249	可能	kěnéng	maybe	Tā kěnéng lái.			attitude adv
-000250	一定	yídìng	certainly	Wǒ yídìng qù.			attitude adv
+000250	怎么	zěnme	how	Nǐ zěnme qù?			question adv
+000251	多少	duōshǎo	how much / many	Duōshǎo qián?			question adv
+000252	哪里	nǎlǐ	where	Nǐ zài nǎlǐ?			question adv
+000253	哪儿	nǎr	where (spoken)	Nǐ qù nǎr?			question adv
 
-000251	怎么	zěnme	how	Nǐ zěnme qù?			question adv
-000252	多少	duōshǎo	how much / many	Duōshǎo qián?			question adv
-000253	哪里	nǎlǐ	where	Nǐ zài nǎlǐ?			question adv
-000254	哪儿	nǎr	where (spoken)	Nǐ qù nǎr?			question adv
+000254	比如	bǐrú	for example	Bǐrú, chá hé kāfēi.			discourse adv
+000255	可是	kěshì	but	Kěshì wǒ hěn máng.			discourse adv
 
-000255	比如	bǐrú	for example	Bǐrú, chá hé kāfēi.			discourse adv
-000256	可是	kěshì	but	Kěshì wǒ hěn máng.			discourse adv
-000257	吧	ba	suggestion	Wǒmen zǒu ba.			particle adv
-000258	呢	ne	contrast / follow-up	Nǐ ne?			particle adv
+000256	什么	shénme	what	Nǐ yào shénme?			question
+000257	谁	shéi	who / whom	Shéi lái le?			question
+000258	哪个	nǎ ge	which	Nǎ ge lǎoshī?			question
+000259	几	jǐ	how many (small numbers)	Jǐ gè rén?			question
 
-000259	什么	shénme	what	Nǐ yào shénme?			question
-000260	谁	shéi	who / whom	Shéi lái le?			question
-000261	哪个	nǎ ge	which	Nǎ ge lǎoshī?			question
-000262	几	jǐ	how many (small numbers)	Jǐ gè rén?			question
-000263	吗	ma	yes/no question particle	Nǐ hǎo ma?			question
+000260	我	wǒ	I / me	Wǒ hěn máng.			pron
+000261	你	nǐ	you (sg.)	Nǐ hǎo.			pron
+000262	他	tā	he / him	Tā shì lǎoshī.			pron
+000263	她	tā	she / her	Tā hěn gāoxìng.			pron
+000264	它	tā	it	Tā hěn kě’ài.			pron
 
-000264	我	wǒ	I / me	Wǒ hěn máng.			pron
-000265	你	nǐ	you (sg.)	Nǐ hǎo.			pron
-000266	他	tā	he / him	Tā shì lǎoshī.			pron
-000267	她	tā	she / her	Tā hěn gāoxìng.			pron
-000268	它	tā	it	Tā hěn kě’ài.			pron
+000265	我们	wǒmen	we / us	Wǒmen qù ba.			pron
+000266	你们	nǐmen	you (pl.)	Nǐmen hǎo.			pron
+000267	他们	tāmen	they (m./mixed)	Tāmen lái le.			pron
+000268	她们	tāmen	they (f.)	Tāmen hěn máng.			pron
+000269	它们	tāmen	they (things)	Tāmen hěn duō.			pron
 
-000269	我们	wǒmen	we / us	Wǒmen qù ba.			pron
-000270	你们	nǐmen	you (pl.)	Nǐmen hǎo.			pron
-000271	他们	tāmen	they (m./mixed)	Tāmen lái le.			pron
-000272	她们	tāmen	they (f.)	Tāmen hěn máng.			pron
-000273	它们	tāmen	they (things)	Tāmen hěn duō.			pron
+000270	我的	wǒ de	my	Wǒ de shū.			pron
+000271	你的	nǐ de	your	Nǐ de shǒujī.			pron
+000272	他的	tā de	his	Tā de gōngsī.			pron
+000273	她的	tā de	her	Tā de māma.			pron
+000274	它的	tā de	its	Tā de míngzi.			pron
+000275	我们的	wǒmen de	our	Wǒmen de jiā.			pron
+000276	你们的	nǐmen de	your (pl.)	Nǐmen de lǎoshī.			pron
+000277	他们的	tāmen de	their	Tāmen de shū.			pron
 
-000274	我的	wǒ de	my	Wǒ de shū.			pron
-000275	你的	nǐ de	your	Nǐ de shǒujī.			pron
-000276	他的	tā de	his	Tā de gōngsī.			pron
-000277	她的	tā de	her	Tā de māma.			pron
-000278	它的	tā de	its	Tā de míngzi.			pron
-000279	我们的	wǒmen de	our	Wǒmen de jiā.			pron
-000280	你们的	nǐmen de	your (pl.)	Nǐmen de lǎoshī.			pron
-000281	他们的	tāmen de	their	Tāmen de shū.			pron
+000278	这	zhè	this	Zhè hěn hǎo.			pron
+000279	那	nà	that	Nà shì shū.			pron
+000280	这个	zhè ge	this one	Zhè ge hěn hǎo.			pron
+000281	那个	nà ge	that one	Nà ge bù guì.			pron
+000282	这些	zhèxiē	these	Zhèxiē hěn hǎo.			pron
+000283	那些	nàxiē	those	Nàxiē hěn guì.			pron
 
-000282	这	zhè	this	Zhè hěn hǎo.			pron
-000283	那	nà	that	Nà shì shū.			pron
-000284	这个	zhè ge	this one	Zhè ge hěn hǎo.			pron
-000285	那个	nà ge	that one	Nà ge bù guì.			pron
-000286	这些	zhèxiē	these	Zhèxiē hěn hǎo.			pron
-000287	那些	nàxiē	those	Nàxiē hěn guì.			pron
+000284	自己	zìjǐ	self / oneself	Wǒ zìjǐ qù.			pron
+000285	大家	dàjiā	everyone	Dàjiā hěn máng.			pron
+000286	每个	měi ge	every (one)	Měi ge rén.			pron
 
-000288	自己	zìjǐ	self / oneself	Wǒ zìjǐ qù.			pron
-000289	大家	dàjiā	everyone	Dàjiā hěn máng.			pron
-000290	每个	měi ge	every (one)	Měi ge rén.			pron
+000287	了	le	completed action	Tā lái le.			part
+000288	过	guò	experienced marker	Wǒ qù guò Zhōngguó.			part
+000289	着	zhe	ongoing state	Mén kāi zhe.			part
 
-000291	了	le	completed action	Tā lái le.			part
-000292	过	guò	experienced	Wǒ qù guò Zhōngguó.			part
-000293	着	zhe	ongoing state	Mén kāi zhe.			part
+000290	吗	ma	yes/no question particle	Nǐ hǎo ma?			part
+000291	呢	ne	contrast / follow-up	Nǐ ne?			part
+000292	吧	ba	suggestion	Wǒmen zǒu ba.			part
 
-000294	吗	ma	yes/no question	Nǐ hǎo ma?			part
-000295	呢	ne	contrast / follow-up	Nǐ ne?			part
-000296	吧	ba	suggestion	Wǒmen zǒu ba.			part
+000293	的	de	possessive / modifier	Wǒ de shū.			part
+000294	得	de	result complement	Tā zuò de hǎo.			part
+000295	地	de	adverbial marker	Tā mànman de zǒu.			part
 
-000297	的	de	possessive / modifier	Wǒ de shū.			part
-000298	得	de	result complement	Tā zuò de hǎo.			part
-000299	地	de	adverbial marker	Tā mànman de zǒu.			part
+000296	个	gè	general classifier	Yí gè rén.			clf
+000297	本	běn	classifier for books	Yì běn shū.			clf
+000298	只	zhī	classifier for animals	Yì zhī gǒu.			clf
+000299	杯	bēi	classifier for cups	Yì bēi chá.			clf
+000300	张	zhāng	classifier for flat objects	Yì zhāng zhàopiàn.			clf
+000301	件	jiàn	classifier for clothes / matters	Yí jiàn yīfu.			clf
+000302	口	kǒu	classifier for people (family)	Yì kǒu rén.			clf
+000303	辆	liàng	classifier for vehicles	Yí liàng chē.			clf
+000304	条	tiáo	classifier for long things	Yì tiáo lù.			clf
+000305	份	fèn	portion / set	Yí fèn fàn.			clf
 
-000300	个	gè	general classifier	Yí gè rén.			clf
-000301	本	běn	classifier for books	Yì běn shū.			clf
-000302	只	zhī	classifier for animals	Yì zhī gǒu.			clf
-000303	杯	bēi	classifier for cups	Yì bēi chá.			clf
-000304	张	zhāng	classifier for flat objects	Yì zhāng zhàopiàn.			clf
-000305	件	jiàn	classifier for clothes / matters	Yí jiàn yīfu.			clf
-000306	口	kǒu	classifier for people (family)	Yì kǒu rén.			clf
-000307	辆	liàng	classifier for vehicles	Yí liàng chē.			clf
-000308	条	tiáo	classifier for long things	Yì tiáo lù.			clf
-000309	份	fèn	portion / set	Yí fèn fàn.			clf
-
-000310	在	zài	at / in	Wǒ zài jiā.			prep
-000311	跟	gēn	with	Wǒ gēn nǐ qù.			prep
-000312	对	duì	to / towards	Wǒ duì nǐ shuō.			prep
-000313	给	gěi	for / to	Wǒ gěi nǐ.			prep
-000314	从	cóng	from	Wǒ cóng Zhōngguó lái.			prep
-000315	到	dào	to / arrive	Wǒ dào jiā le.			prep
-000316	为	wèi	for / on behalf of	Wǒ wèi nǐ zuò.			prep
-000317	用	yòng	with / use	Wǒ yòng shǒujī.			prep
+000306	在	zài	at / in	Wǒ zài jiā.			prep
+000307	跟	gēn	with	Wǒ gēn nǐ qù.			prep
+000308	对	duì	to / towards	Wǒ duì nǐ shuō.			prep
+000309	给	gěi	for / to	Wǒ gěi nǐ mǎi.			prep
+000310	从	cóng	from	Wǒ cóng Zhōngguó lái.			prep
+000311	到	dào	to / until	Wǒ dào xuéxiào qù.			prep
+000312	为	wèi	for / on behalf of	Wǒ wèi nǐ zuò.			prep
+000313	用	yòng	with / use	Wǒ yòng shǒujī kàn.			prep
