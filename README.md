@@ -211,6 +211,45 @@ Media must be copied into Anki’s profile media directory:
 
 > Do not use external URLs.
 
+### Sync media from repo → Anki (recommended)
+
+Anki can only play/show media files that exist inside your profile’s `collection.media/`.
+
+This repo stores media under:
+
+- `media/audio/`
+- `media/images/`
+
+Use the provided sync script to copy (or symlink) repo media into Anki’s local `collection.media` folder.
+
+#### 1) Find your Anki `collection.media` path
+
+- **macOS:**
+  - `~/Library/Application Support/Anki2/<Profile>/collection.media`
+- **Windows:**
+  - `%APPDATA%\Anki2\<Profile>\collection.media`
+  - Example: `C:\Users\<You>\AppData\Roaming\Anki2\User 1\collection.media`
+
+> `<Profile>` is usually `User 1` unless you renamed it.
+
+#### 2) Run the sync script (copy mode, safest)
+
+From the repo root:
+
+**macOS / Linux (Terminal):**
+```bash
+python3 scripts/sync_anki_media.py \
+  --anki-media "$HOME/Library/Application Support/Anki2/User 1/collection.media"
+```
+
+**Windows (PowerShell):**
+```powershell
+python scripts\sync_anki_media.py `
+  --anki-media "$env:APPDATA\Anki2\User 1\collection.media"
+```
+
+This copies new files from media/audio/ and media/images/ without overwriting existing media.
+
 ---
 
 ## 8) Optional: Generate Audio with AwesomeTTS
@@ -222,6 +261,18 @@ Recommended:
 - Configure `AwesomeTTS` to name files using the `id` field, resulting in:
   - `collection.media/<id>.mp3` (`Tools → AwesomeTTS → MP3 → Filename Template → {{id}}.mp3`)
   - `notes.tsv`: `audio` field like `[sound:<id>.mp3]`
+
+---
+
+## 9) AnkiWeb Sync (Across Devices)
+
+- Create a free AnkiWeb account
+- Sync from Anki Desktop
+- Log in on mobile devices and sync
+- AnkiWeb syncs:
+  - Review progress
+  - Decks and notes
+  - Media files
 
 ---
 
