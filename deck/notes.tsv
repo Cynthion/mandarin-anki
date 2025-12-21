@@ -151,7 +151,6 @@ id	hanzi	pinyin	meaning	example	audio	image	tags
 000142	斤	jīn	half kilo	Yì jīn píngguǒ.			measure noun
 000143	两	liǎng	two	Liǎng gè rén.			number noun
 
-id	hanzi	pinyin	meaning	example	audio	image	tags
 000144	是	shì	to be	Tā shì lǎoshī.			core verb
 000145	有	yǒu	to have	Wǒ yǒu shū.			core verb
 000146	没有	méi yǒu	to not have	Wǒ méi yǒu qián.			core verb
@@ -214,3 +213,36 @@ id	hanzi	pinyin	meaning	example	audio	image	tags
 000194	退休	tuìxiū	to retire	Tā tuìxiū le.			life verb
 
 000195	过	guò	to have experienced	Wǒ qù guò Zhōngguó.			aspect verb
+
+000196	高兴	gāoxìng	happy	Wǒ hěn gāoxìng.			feeling adj
+000197	伤心	shāngxīn	sad	Tā hěn shāngxīn.			feeling adj
+000198	酷	kù	cool	Zhè hěn kù.			evaluation adj
+000199	贵	guì	expensive	Zhè gè hěn guì.			evaluation adj
+000200	便宜	piányi	cheap	Zhè gè hěn piányi.			evaluation adj
+000201	累	lèi	tired	Wǒ hěn lèi.			state adj
+000202	忙	máng	busy	Wǒ hěn máng.			state adj
+
+000203	好	hǎo	good	Zhè hěn hǎo.			quality adj
+000204	不好	bù hǎo	bad	Zhè bù hǎo.			quality adj
+000205	冷	lěng	cold	Tiānqì hěn lěng.			temperature adj
+000206	热	rè	hot	Tiānqì hěn rè.			temperature adj
+000207	好吃	hǎochī	tasty	Fàn hěn hǎochī.			food adj
+000208	好喝	hǎohē	tasty (drink)	Chá hěn hǎohē.			food adj
+
+000209	漂亮	piàoliang	beautiful	Tā hěn piàoliang.			appearance adj
+000210	帅	shuài	handsome	Tā hěn shuài.			appearance adj
+000211	可爱	kě’ài	cute	Háizi hěn kě’ài.			appearance adj
+
+000212	大	dà	big	Wǒ de jiā hěn dà.			size adj
+000213	小	xiǎo	small	Zhè gè hěn xiǎo.			size adj
+000214	新	xīn	new	Zhè shì xīn shū.			size adj
+000215	旧	jiù	old (object)	Zhè shì jiù shū.			size adj
+
+000216	聪明	cōngming	clever	Háizi hěn cōngming.			trait adj
+000217	男	nán	male	Tā shì nán.			trait adj
+000218	女	nǚ	female	Tā shì nǚ.			trait adj
+
+000219	多	duō	many / much	Dōngxi hěn duō.			quantity adj
+000220	少	shǎo	few / little	Dōngxi hěn shǎo.			quantity adj
+
+000221	可	kě	possible / okay	Kě ma?			utility adj
