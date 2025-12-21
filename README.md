@@ -38,6 +38,7 @@ This repository contains the **source of truth** for a custom Mandarin Anki deck
 ### Auto-play audio
 
 Enable:
+
 - `Tools → Preferences → Playback → Automatically play audio`
 
 ---
@@ -126,6 +127,7 @@ The templates include a fallback when no audio file exists:
 - Else: use Anki’s built-in `{{tts ...}}`
 
 ### Platform notes
+
 - **macOS:** usually works out-of-the-box (install Chinese voices if needed)
 - **Windows:** you must install a Chinese TTS voice (see Troubleshooting)
 - **iOS:** AnkiMobile does **not** support Anki’s `{{tts ...}}` tag.
@@ -139,6 +141,7 @@ The templates include a fallback when no audio file exists:
 2. Select `deck/notes.tsv`
 
 In the import dialog:
+
 - Type: **Notes**
 - Separator: **Tab**
 - “Allow HTML in fields”: ✅
@@ -152,18 +155,19 @@ In the import dialog:
 
 Map TSV columns like this:
 
-| TSV Column | Map to |
-|-----------|--------|
-| id        | id     |
-| hanzi     | hanzi  |
-| pinyin    | pinyin |
-| meaning   | meaning|
-| example   | example|
-| audio     | audio  |
-| image     | image  |
-| tags      | **Tags** |
+| TSV Column | Map to   |
+|------------|----------|
+| id         | id       |
+| hanzi      | hanzi    |
+| pinyin     | pinyin   |
+| meaning    | meaning  |
+| example    | example  |
+| audio      | audio    |
+| image      | image    |
+| tags       | **Tags** |
 
 ✅ Important:
+
 - The `tags` column must map to **Tags**, not to a field.
 
 Click **Import**.
@@ -173,6 +177,7 @@ Click **Import**.
 ## 6) Re-importing Changes Safely
 
 Safe changes:
+
 - Fix typos
 - Update meanings/examples
 - Add tags
@@ -180,6 +185,7 @@ Safe changes:
 - Update templates/CSS
 
 Rules:
+
 - The `id` field must never change
 - Always re-import with **Update existing notes**
 - Do not create duplicates by importing without matching IDs
@@ -205,7 +211,7 @@ Media must be copied into Anki’s profile media directory:
 ### TSV references
 
 - Audio:
-  - `[sound:MY-ID.mp3]`
+  - `[sound:ATTS <ID>.mp3]`
 - Image:
   - `<img src="ni.png">`
 
@@ -237,12 +243,14 @@ Use the provided sync script to copy (or symlink) repo media into Anki’s local
 From the repo root:
 
 **macOS / Linux (Terminal):**
+
 ```bash
 python3 scripts/sync_anki_media.py \
   --anki-media "$HOME/Library/Application Support/Anki2/User 1/collection.media"
 ```
 
 **Windows (PowerShell):**
+
 ```powershell
 python scripts\sync_anki_media.py `
   --anki-media "$env:APPDATA\Anki2\User 1\collection.media"
@@ -260,7 +268,7 @@ Recommended:
 
 - Configure `AwesomeTTS` to name files using the `id` field, resulting in:
   - `collection.media/<id>.mp3` (`Tools → AwesomeTTS → MP3 → Filename Template → {{id}}.mp3`)
-  - `notes.tsv`: `audio` field like `[sound:<id>.mp3]`
+  - `notes.tsv`: `audio` field like `[sound:ATTS <id>.mp3]`
 
 ---
 

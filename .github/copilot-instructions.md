@@ -1,6 +1,7 @@
 # Copilot Instructions (Repository Rules)
 
 This repository contains a custom Mandarin Anki deck maintained via:
+
 - a TSV source file (`deck/notes.tsv`)
 - optional media assets (`media/audio/`, `media/images/`)
 - versioned note type templates (`anki/note-type/`)
@@ -21,9 +22,10 @@ Copilot must follow these rules when generating or editing content.
 
 `deck/notes.tsv` columns are exactly:
 
-id	hanzi	pinyin	meaning	example	audio	image	tags
+id  hanzi pinyin  meaning example audio image tags
 
 Rules:
+
 - Tab-separated values only (TSV). No commas/semicolons as separators.
 - Keep a single header row.
 - Every data row must have exactly **8 tab separators** (9 fields total).
@@ -38,9 +40,11 @@ Rules:
 IDs must be unique and stable forever.
 
 ### Canonical ID format
+
 `<POS>-<YYYYMMDD>-<NNNN>`
 
 Examples:
+
 - `NOUN-20251221-0001`
 - `VERB-20251221-0003`
 - `ADJ-20251221-0012`
@@ -52,6 +56,7 @@ Examples:
 - `Q-20251221-0002`
 
 Rules:
+
 - `<POS>` must be one of: NOUN, VERB, ADJ, ADV, PRON, PART, CLF, PREP, Q
 - `YYYYMMDD` is the creation date of the entry
 - `NNNN` is a zero-padded counter within that POS+date group
@@ -66,14 +71,17 @@ Tags live in the TSV `tags` column as space-separated tokens (no commas).
 During import, this column is mapped to Anki “Tags” (not a field).
 
 ### Must-have POS tags
+
 Every entry must include its POS tag as the final tag token:
 
 - noun, verb, adj, adv, pron, part, clf, prep, question
 
 ### Category tags
+
 Add one category tag before the POS tag when applicable.
 
 Examples:
+
 - `work noun`
 - `modal verb`
 - `degree adv`
@@ -83,6 +91,7 @@ Examples:
 - `part` (particles)
 
 Rules:
+
 - Keep tags lowercase
 - Avoid duplicates
 - Question particles (吗/呢/吧) are `part`
@@ -115,6 +124,7 @@ Rules:
 - Should match the part of speech and show typical usage.
 
 Special cases:
+
 - Coverbs/prepositions (给/到/用/etc.) must show coverb use clearly.
 - If a word can be multiple POS (e.g., 在 verb vs prep), only create separate entries if explicitly requested.
 
@@ -133,14 +143,16 @@ Special cases:
 Media fields are optional.
 
 ### Audio field
+
 - Use Anki sound tags:
   - `[sound:filename.mp3]`
 - Prefer ID-based filenames when configured:
-  - `[sound:<id>.mp3]`
+  - `[sound:ATTS <id>.mp3]`
 - Do not invent filenames unless explicitly instructed.
 - Do not include external URLs.
 
 ### Image field
+
 - Use HTML:
   - `<img src="filename.png">`
 - Files should exist under repo media folder if referenced.
@@ -150,11 +162,13 @@ Media fields are optional.
 ## 10) Editing discipline
 
 When asked to “add entries”:
+
 - Append new rows (or place near related entries for readability) but never change existing IDs.
 - Ensure no duplicate IDs.
 - Ensure every row has all 9 fields.
 
 When asked to “fix the TSV”:
+
 - Validate: column count, ID format, tags, pinyin diacritics, beginner-appropriate examples.
 
 ---
