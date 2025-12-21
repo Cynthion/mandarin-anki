@@ -342,3 +342,23 @@ id	hanzi	pinyin	meaning	example	audio	image	tags
 000297	的	de	possessive / modifier	Wǒ de shū.			part
 000298	得	de	result complement	Tā zuò de hǎo.			part
 000299	地	de	adverbial marker	Tā mànman de zǒu.			part
+
+000300	个	gè	general classifier	Yí gè rén.			clf
+000301	本	běn	classifier for books	Yì běn shū.			clf
+000302	只	zhī	classifier for animals	Yì zhī gǒu.			clf
+000303	杯	bēi	classifier for cups	Yì bēi chá.			clf
+000304	张	zhāng	classifier for flat objects	Yì zhāng zhàopiàn.			clf
+000305	件	jiàn	classifier for clothes / matters	Yí jiàn yīfu.			clf
+000306	口	kǒu	classifier for people (family)	Yì kǒu rén.			clf
+000307	辆	liàng	classifier for vehicles	Yí liàng chē.			clf
+000308	条	tiáo	classifier for long things	Yì tiáo lù.			clf
+000309	份	fèn	portion / set	Yí fèn fàn.			clf
+
+000310	在	zài	at / in	Wǒ zài jiā.			prep
+000311	跟	gēn	with	Wǒ gēn nǐ qù.			prep
+000312	对	duì	to / towards	Wǒ duì nǐ shuō.			prep
+000313	给	gěi	for / to	Wǒ gěi nǐ.			prep
+000314	从	cóng	from	Wǒ cóng Zhōngguó lái.			prep
+000315	到	dào	to / arrive	Wǒ dào jiā le.			prep
+000316	为	wèi	for / on behalf of	Wǒ wèi nǐ zuò.			prep
+000317	用	yòng	with / use	Wǒ yòng shǒujī.			prep

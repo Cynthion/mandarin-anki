@@ -108,3 +108,5 @@
 .card.adv   .posdots { color: #2E7D32; }
 .card.pron  .posdots { color: #F57C00; }
 .card.part  .posdots { color: #00838F; }
+.card.clf   .posdots { color: #6D4C41; }
+.card.prep  .posdots { color: #455A64; }
