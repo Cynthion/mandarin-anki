@@ -1,359 +1,360 @@
 id	hanzi	pinyin	meaning	example	audio	image	tags
-000001	人	rén	person	Zhè shì yí gè rén.			people noun
-000002	中国人	Zhōngguó rén	Chinese person	Tā shì Zhōngguó rén.			people noun
-000003	爸爸	bàba	father	Wǒ bàba zài jiā.			family noun
-000004	妈妈	māma	mother	Wǒ māma hěn máng.			family noun
-000005	祖父	zǔfù	grandfather	Wǒ zǔfù hěn jiànkāng.			family noun
-000006	儿子	érzi	son	Tā yǒu yí gè érzi.			family noun
-000007	女儿	nǚ’ér	daughter	Wǒ nǚ’ér hěn kě’ài.			family noun
-000008	孩子	háizi	child	Háizi zài xuéxiào.			family noun
-000009	朋友	péngyou	friend	Tā shì wǒ péngyou.			people noun
-000010	男朋友	nánpéngyou	boyfriend	Tā shì wǒ nánpéngyou.			people noun
-000011	女朋友	nǚpéngyou	girlfriend	Tā shì wǒ nǚpéngyou.			people noun
-000012	爱人	àirén	spouse	Wǒ àirén zài gōngzuò.			people noun
-000013	阿姨	āyí	aunt	Wǒ āyí lái le.			family noun
-000014	哥哥	gēge	older brother	Gēge zài jiā.			family noun
-000015	弟弟	dìdi	younger brother	Dìdi hěn gāoxìng.			family noun
-000016	姐姐	jiějie	older sister	Jiějie hěn máng.			family noun
-000017	妹妹	mèimei	younger sister	Mèimei hěn kě’ài.			family noun
+NOUN-20251221-0001	人	rén	person	Zhè shì yí gè rén.			people noun
+NOUN-20251221-0002	中国人	Zhōngguó rén	Chinese person	Tā shì Zhōngguó rén.			people noun
+NOUN-20251221-0003	爸爸	bàba	father	Wǒ bàba zài jiā.			family noun
+NOUN-20251221-0004	妈妈	māma	mother	Wǒ māma hěn máng.			family noun
+NOUN-20251221-0005	祖父	zǔfù	grandfather	Wǒ zǔfù hěn jiànkāng.			family noun
+NOUN-20251221-0006	儿子	érzi	son	Tā yǒu yí gè érzi.			family noun
+NOUN-20251221-0007	女儿	nǚ’ér	daughter	Wǒ nǚ’ér hěn kě’ài.			family noun
+NOUN-20251221-0008	孩子	háizi	child	Háizi zài xuéxiào.			family noun
+NOUN-20251221-0009	朋友	péngyou	friend	Tā shì wǒ péngyou.			people noun
+NOUN-20251221-0010	男朋友	nánpéngyou	boyfriend	Tā shì wǒ nánpéngyou.			people noun
+NOUN-20251221-0011	女朋友	nǚpéngyou	girlfriend	Tā shì wǒ nǚpéngyou.			people noun
+NOUN-20251221-0012	爱人	àirén	spouse	Wǒ àirén zài gōngzuò.			people noun
+NOUN-20251221-0013	阿姨	āyí	aunt	Wǒ āyí lái le.			family noun
+NOUN-20251221-0014	哥哥	gēge	older brother	Gēge zài jiā.			family noun
+NOUN-20251221-0015	弟弟	dìdi	younger brother	Dìdi hěn gāoxìng.			family noun
+NOUN-20251221-0016	姐姐	jiějie	older sister	Jiějie hěn máng.			family noun
+NOUN-20251221-0017	妹妹	mèimei	younger sister	Mèimei hěn kě’ài.			family noun
 
-000018	龙	lóng	dragon	Zhè shì lóng.			animal noun
-000019	老鼠	lǎoshǔ	mouse	Lǎoshǔ hěn xiǎo.			animal noun
-000020	猫	māo	cat	Māo zài shuìjiào.			animal noun
-000021	狗	gǒu	dog	Gǒu zài jiā.			animal noun
-000022	猪	zhū	pig	Zhè shì zhū.			animal noun
-000023	牛	niú	cow	Niú hěn dà.			animal noun
-000024	老虎	lǎohǔ	tiger	Lǎohǔ hěn qiáng.			animal noun
-000025	马	mǎ	horse	Mǎ zài pǎo.			animal noun
-000026	羊	yáng	sheep	Yáng hěn kě’ài.			animal noun
-000027	猴子	hóuzi	monkey	Hóuzi hěn cōngming.			animal noun
-000028	鸡	jī	chicken	Jī zài nàr.			animal noun
-000029	熊	xióng	bear	Xióng hěn dà.			animal noun
-000030	蜜蜂	mìfēng	bee	Mìfēng zài fēi.			animal noun
-000031	鸟	niǎo	bird	Niǎo zài tiānshàng.			animal noun
-000032	鸭子	yāzi	duck	Yāzi zài shuǐ lǐ.			animal noun
-000033	熊猫	xióngmāo	panda	Xióngmāo hěn kě’ài.			animal noun
-000034	青蛙	qīngwā	frog	Qīngwā zài shuǐ lǐ.			animal noun
-000035	兔子	tùzi	rabbit	Tùzi hěn kuài.			animal noun
+NOUN-20251221-0018	龙	lóng	dragon	Zhè shì lóng.			animal noun
+NOUN-20251221-0019	老鼠	lǎoshǔ	mouse	Lǎoshǔ hěn xiǎo.			animal noun
+NOUN-20251221-0020	猫	māo	cat	Māo zài shuìjiào.			animal noun
+NOUN-20251221-0021	狗	gǒu	dog	Gǒu zài jiā.			animal noun
+NOUN-20251221-0022	猪	zhū	pig	Zhè shì zhū.			animal noun
+NOUN-20251221-0023	牛	niú	cow	Niú hěn dà.			animal noun
+NOUN-20251221-0024	老虎	lǎohǔ	tiger	Lǎohǔ hěn qiáng.			animal noun
+NOUN-20251221-0025	马	mǎ	horse	Mǎ zài pǎo.			animal noun
+NOUN-20251221-0026	羊	yáng	sheep	Yáng hěn kě’ài.			animal noun
+NOUN-20251221-0027	猴子	hóuzi	monkey	Hóuzi hěn cōngming.			animal noun
+NOUN-20251221-0028	鸡	jī	chicken	Jī zài nàr.			animal noun
+NOUN-20251221-0029	熊	xióng	bear	Xióng hěn dà.			animal noun
+NOUN-20251221-0030	蜜蜂	mìfēng	bee	Mìfēng zài fēi.			animal noun
+NOUN-20251221-0031	鸟	niǎo	bird	Niǎo zài tiānshàng.			animal noun
+NOUN-20251221-0032	鸭子	yāzi	duck	Yāzi zài shuǐ lǐ.			animal noun
+NOUN-20251221-0033	熊猫	xióngmāo	panda	Xióngmāo hěn kě’ài.			animal noun
+NOUN-20251221-0034	青蛙	qīngwā	frog	Qīngwā zài shuǐ lǐ.			animal noun
+NOUN-20251221-0035	兔子	tùzi	rabbit	Tùzi hěn kuài.			animal noun
 
-000036	中国	Zhōngguó	China	Wǒ zài Zhōngguó.			geography noun
-000037	美国	Měiguó	USA	Wǒ qù Měiguó.			geography noun
-000038	德国	Déguó	Germany	Déguó hěn dà.			geography noun
-000039	日本	Rìběn	Japan	Rìběn hěn piàoliang.			geography noun
-000040	亚洲	Yàzhōu	Asia	Zhōngguó zài Yàzhōu.			geography noun
-000041	欧洲	Ōuzhōu	Europe	Wǒ zài Ōuzhōu.			geography noun
-000042	非洲	Fēizhōu	Africa	Fēizhōu hěn dà.			geography noun
-000043	美洲	Měizhōu	America	Měizhōu hěn yuǎn.			geography noun
-000044	州	zhōu	continent	Zhè shì yí gè zhōu.			geography noun
-000045	苏黎世	Sūlìshì	Zurich	Wǒ zài Sūlìshì.			geography noun
-000046	巴塞尔	Bāsài’ěr	Basel	Bāsài’ěr hěn měi.			geography noun
+NOUN-20251221-0036	中国	Zhōngguó	China	Wǒ zài Zhōngguó.			geography noun
+NOUN-20251221-0037	美国	Měiguó	USA	Wǒ qù Měiguó.			geography noun
+NOUN-20251221-0038	德国	Déguó	Germany	Déguó hěn dà.			geography noun
+NOUN-20251221-0039	日本	Rìběn	Japan	Rìběn hěn piàoliang.			geography noun
+NOUN-20251221-0040	亚洲	Yàzhōu	Asia	Zhōngguó zài Yàzhōu.			geography noun
+NOUN-20251221-0041	欧洲	Ōuzhōu	Europe	Wǒ zài Ōuzhōu.			geography noun
+NOUN-20251221-0042	非洲	Fēizhōu	Africa	Fēizhōu hěn dà.			geography noun
+NOUN-20251221-0043	美洲	Měizhōu	America	Měizhōu hěn yuǎn.			geography noun
+NOUN-20251221-0044	州	zhōu	continent	Zhè shì yí gè zhōu.			geography noun
+NOUN-20251221-0045	苏黎世	Sūlìshì	Zurich	Wǒ zài Sūlìshì.			geography noun
+NOUN-20251221-0046	巴塞尔	Bāsài’ěr	Basel	Bāsài’ěr hěn měi.			geography noun
 
-000047	家	jiā	home	Wǒ huí jiā.			place noun
-000048	旅馆	lǚguǎn	hotel	Wǒ zhù lǚguǎn.			place noun
-000049	饭店	fàndiàn	restaurant	Wǒ qù fàndiàn.			place noun
-000050	饭馆	fànguǎn	restaurant	Wǒ qù fànguǎn.			place noun
-000051	茶馆	cháguǎn	teahouse	Wǒ qù cháguǎn.			place noun
-000052	咖啡馆	kāfēiguǎn	café	Wǒ qù kāfēiguǎn.			place noun
-000053	店	diàn	shop	Wǒ qù diàn.			place noun
-000054	馆	guǎn	establishment	Zhè shì guǎn.			place noun
-000055	公司	gōngsī	company	Wǒ zài gōngsī.			work noun
-000056	大学	dàxué	university	Wǒ shàng dàxué.			place noun
-000057	医院	yīyuàn	hospital	Tā zài yīyuàn.			place noun
-000058	厨房	chúfáng	kitchen	Māma zài chúfáng.			place noun
+NOUN-20251221-0047	家	jiā	home	Wǒ huí jiā.			place noun
+NOUN-20251221-0048	旅馆	lǚguǎn	hotel	Wǒ zhù lǚguǎn.			place noun
+NOUN-20251221-0049	饭店	fàndiàn	restaurant	Wǒ qù fàndiàn.			place noun
+NOUN-20251221-0050	饭馆	fànguǎn	restaurant	Wǒ qù fànguǎn.			place noun
+NOUN-20251221-0051	茶馆	cháguǎn	teahouse	Wǒ qù cháguǎn.			place noun
+NOUN-20251221-0052	咖啡馆	kāfēiguǎn	café	Wǒ qù kāfēiguǎn.			place noun
+NOUN-20251221-0053	店	diàn	shop	Wǒ qù diàn.			place noun
+NOUN-20251221-0054	馆	guǎn	establishment	Zhè shì guǎn.			place noun
+NOUN-20251221-0055	公司	gōngsī	company	Wǒ zài gōngsī.			work noun
+NOUN-20251221-0056	大学	dàxué	university	Wǒ shàng dàxué.			place noun
+NOUN-20251221-0057	医院	yīyuàn	hospital	Tā zài yīyuàn.			place noun
+NOUN-20251221-0058	厨房	chúfáng	kitchen	Māma zài chúfáng.			place noun
 
-000059	啤酒	píjiǔ	beer	Wǒ hē píjiǔ.			food noun
-000060	茶	chá	tea	Wǒ hē chá.			food noun
-000061	咖啡	kāfēi	coffee	Wǒ hē kāfēi.			food noun
-000062	水	shuǐ	water	Wǒ hē shuǐ.			food noun
-000063	奶	nǎi	milk	Háizi hē nǎi.			food noun
-000064	奶酪	nǎilào	cheese	Wǒ chī nǎilào.			food noun
-000065	饭	fàn	rice	Wǒ chī fàn.			food noun
-000066	苹果	píngguǒ	apple	Wǒ chī píngguǒ.			food noun
-000067	香蕉	xiāngjiāo	banana	Xiāngjiāo hěn tián.			food noun
-000068	草莓	cǎoméi	strawberry	Cǎoméi hěn tián.			food noun
-000069	莓	méi	berry	Méi hěn suān.			food noun
-000070	西瓜	xīguā	watermelon	Xīguā hěn dà.			food noun
-000071	巧克力	qiǎokèlì	chocolate	Wǒ xǐhuan qiǎokèlì.			food noun
-000072	葡萄酒	pútáojiǔ	wine	Wǒ hē pútáojiǔ.			food noun
-000073	香槟酒	xiāngbīnjiǔ	champagne	Wǒ hē xiāngbīnjiǔ.			food noun
-000074	火锅	huǒguō	hotpot	Wǒ chī huǒguō.			food noun
-000075	寿司	shòusī	sushi	Wǒ chī shòusī.			food noun
-000076	蔬菜	shūcài	vegetables	Wǒ chī shūcài.			food noun
-000077	牛肉	niúròu	beef	Wǒ chī niúròu.			food noun
-000078	面条	miàntiáo	noodles	Wǒ chī miàntiáo.			food noun
-000079	樱桃	yīngtáo	cherry	Yīngtáo hěn tián.			food noun
-000080	葡萄	pútáo	grapes	Pútáo hěn tián.			food noun
-000081	桃子	táozi	peach	Táozi hěn tián.			food noun
-000082	梨	lí	pear	Lí hěn tián.			food noun
-000083	糖果	tángguǒ	candy	Háizi chī tángguǒ.			food noun
-000084	可口可乐	kěkǒukělè	Coca-Cola	Wǒ hē kěkǒukělè.			food noun
-000085	披萨	bǐsà	pizza	Wǒ chī bǐsà.			food noun
-000086	中国菜	Zhōngguó cài	Chinese food	Wǒ chī Zhōngguó cài.			food noun
-000087	日本菜	Rìběn cài	Japanese food	Wǒ chī Rìběn cài.			food noun
-000088	麦当劳	Màidāngláo	McDonald’s	Wǒ qù Màidāngláo.			place food noun
+NOUN-20251221-0059	啤酒	píjiǔ	beer	Wǒ hē píjiǔ.			food noun
+NOUN-20251221-0060	茶	chá	tea	Wǒ hē chá.			food noun
+NOUN-20251221-0061	咖啡	kāfēi	coffee	Wǒ hē kāfēi.			food noun
+NOUN-20251221-0062	水	shuǐ	water	Wǒ hē shuǐ.			food noun
+NOUN-20251221-0063	奶	nǎi	milk	Háizi hē nǎi.			food noun
+NOUN-20251221-0064	奶酪	nǎilào	cheese	Wǒ chī nǎilào.			food noun
+NOUN-20251221-0065	饭	fàn	rice	Wǒ chī fàn.			food noun
+NOUN-20251221-0066	苹果	píngguǒ	apple	Wǒ chī píngguǒ.			food noun
+NOUN-20251221-0067	香蕉	xiāngjiāo	banana	Xiāngjiāo hěn tián.			food noun
+NOUN-20251221-0068	草莓	cǎoméi	strawberry	Cǎoméi hěn tián.			food noun
+NOUN-20251221-0069	莓	méi	berry	Méi hěn suān.			food noun
+NOUN-20251221-0070	西瓜	xīguā	watermelon	Xīguā hěn dà.			food noun
+NOUN-20251221-0071	巧克力	qiǎokèlì	chocolate	Wǒ xǐhuan qiǎokèlì.			food noun
+NOUN-20251221-0072	葡萄酒	pútáojiǔ	wine	Wǒ hē pútáojiǔ.			food noun
+NOUN-20251221-0073	香槟酒	xiāngbīnjiǔ	champagne	Wǒ hē xiāngbīnjiǔ.			food noun
+NOUN-20251221-0074	火锅	huǒguō	hotpot	Wǒ chī huǒguō.			food noun
+NOUN-20251221-0075	寿司	shòusī	sushi	Wǒ chī shòusī.			food noun
+NOUN-20251221-0076	蔬菜	shūcài	vegetables	Wǒ chī shūcài.			food noun
+NOUN-20251221-0077	牛肉	niúròu	beef	Wǒ chī niúròu.			food noun
+NOUN-20251221-0078	面条	miàntiáo	noodles	Wǒ chī miàntiáo.			food noun
+NOUN-20251221-0079	樱桃	yīngtáo	cherry	Yīngtáo hěn tián.			food noun
+NOUN-20251221-0080	葡萄	pútáo	grapes	Pútáo hěn tián.			food noun
+NOUN-20251221-0081	桃子	táozi	peach	Táozi hěn tián.			food noun
+NOUN-20251221-0082	梨	lí	pear	Lí hěn tián.			food noun
+NOUN-20251221-0083	糖果	tángguǒ	candy	Háizi chī tángguǒ.			food noun
+NOUN-20251221-0084	可口可乐	kěkǒukělè	Coca-Cola	Wǒ hē kěkǒukělè.			food noun
+NOUN-20251221-0085	披萨	bǐsà	pizza	Wǒ chī bǐsà.			food noun
+NOUN-20251221-0086	中国菜	Zhōngguó cài	Chinese food	Wǒ chī Zhōngguó cài.			food noun
+NOUN-20251221-0087	日本菜	Rìběn cài	Japanese food	Wǒ chī Rìběn cài.			food noun
+NOUN-20251221-0088	麦当劳	Màidāngláo	McDonald’s	Wǒ qù Màidāngláo.			place food noun
 
-000089	书	shū	book	Wǒ yǒu shū.			object noun
-000090	杯子	bēizi	cup	Wǒ yǒu bēizi.			object noun
-000091	瓶子	píngzi	bottle	Zhè shì píngzi.			object noun
-000092	包	bāo	bag	Wǒ de bāo zài zhèr.			object noun
-000093	书包	shūbāo	schoolbag	Wǒ de shūbāo.			object noun
-000094	笔	bǐ	pen	Zhè shì bǐ.			object noun
-000095	名片	míngpiàn	business card	Zhè shì wǒ de míngpiàn.			object noun
-000096	照片	zhàopiàn	photo	Wǒ kàn zhàopiàn.			object noun
-000097	电话	diànhuà	telephone	Wǒ dǎ diànhuà.			object noun
-000098	手机	shǒujī	mobile phone	Wǒ yǒu shǒujī.			object noun
-000099	页	yè	page	Zhè shì yí yè.			object noun
-000100	碗	wǎn	bowl	Wǒ yǒu wǎn.			object noun
-000101	里	lǐ	inside	Zài bāo lǐ.			object noun
-000102	东西	dōngxi	thing	Wǒ yǒu dōngxi.			object noun
+NOUN-20251221-0089	书	shū	book	Wǒ yǒu shū.			object noun
+NOUN-20251221-0090	杯子	bēizi	cup	Wǒ yǒu bēizi.			object noun
+NOUN-20251221-0091	瓶子	píngzi	bottle	Zhè shì píngzi.			object noun
+NOUN-20251221-0092	包	bāo	bag	Wǒ de bāo zài zhèr.			object noun
+NOUN-20251221-0093	书包	shūbāo	schoolbag	Wǒ de shūbāo.			object noun
+NOUN-20251221-0094	笔	bǐ	pen	Zhè shì bǐ.			object noun
+NOUN-20251221-0095	名片	míngpiàn	business card	Zhè shì wǒ de míngpiàn.			object noun
+NOUN-20251221-0096	照片	zhàopiàn	photo	Wǒ kàn zhàopiàn.			object noun
+NOUN-20251221-0097	电话	diànhuà	telephone	Wǒ dǎ diànhuà.			object noun
+NOUN-20251221-0098	手机	shǒujī	mobile phone	Wǒ yǒu shǒujī.			object noun
+NOUN-20251221-0099	页	yè	page	Zhè shì yí yè.			object noun
+NOUN-20251221-0100	碗	wǎn	bowl	Wǒ yǒu wǎn.			object noun
+NOUN-20251221-0101	里	lǐ	inside	Zài bāo lǐ.			object noun
+NOUN-20251221-0102	东西	dōngxi	thing	Wǒ yǒu dōngxi.			object noun
 
-000103	老师	lǎoshī	teacher	Lǎoshī lái le.			work noun
-000104	医生	yīshēng	doctor	Yīshēng hěn máng.			work noun
-000105	工程师	gōngchéngshī	engineer	Tā shì gōngchéngshī.			work noun
-000106	服务员	fúwùyuán	waiter	Fúwùyuán lái le.			work noun
-000107	老板	lǎobǎn	boss	Lǎobǎn lái le.			work noun
-000108	工作	gōngzuò	work	Wǒ yǒu gōngzuò.			work noun
-000109	工程	gōngchéng	project	Gōngchéng hěn dà.			work noun
-000110	师傅	shīfu	master	Shīfu hěn lìhai.			work noun
-000111	护士	hùshi	nurse	Hùshi lái le.			work noun
-000112	律师	lǜshī	lawyer	Lǜshī hěn máng.			work noun
-000113	咨询师	zīxúnshī	consultant	Zīxúnshī zài zhèr.			work noun
-000114	作家	zuòjiā	writer	Zuòjiā zài xiě shū.			work noun
-000115	画家	huàjiā	painter	Huàjiā zài huà huà.			work noun
-000116	音乐家	yīnyuèjiā	musician	Yīnyuèjiā zài chànggē.			work noun
-000117	科学家	kēxuéjiā	scientist	Kēxuéjiā hěn cōngming.			work noun
-000118	职员	zhíyuán	employee	Zhíyuán zài gōngsī.			work noun
-000119	售货员	shòuhuòyuán	shop assistant	Shòuhuòyuán lái le.			work noun
-000120	飞行员	fēixíngyuán	pilot	Fēixíngyuán hěn máng.			work noun
-000121	空姐	kōngjiě	flight attendant	Kōngjiě zài fēijī shàng.			work noun
-000122	经理	jīnglǐ	manager	Jīnglǐ zài huìyì.			work noun
-000123	秘书	mìshū	secretary	Mìshū zài gōngsī.			work noun
-000124	警察	jǐngchá	police officer	Jǐngchá lái le.			work noun
-000125	小偷	xiǎotōu	thief	Xiǎotōu pǎo le.			work noun
-000126	黑客	hēikè	hacker	Hēikè zài diànnǎo shàng.			work noun
+NOUN-20251221-0103	老师	lǎoshī	teacher	Lǎoshī lái le.			work noun
+NOUN-20251221-0104	医生	yīshēng	doctor	Yīshēng hěn máng.			work noun
+NOUN-20251221-0105	兽医	shòuyī	veterinarian	Tā shì shòuyī.			work noun
+NOUN-20251221-0106	工程师	gōngchéngshī	engineer	Tā shì gōngchéngshī.			work noun
+NOUN-20251221-0107	服务员	fúwùyuán	waiter	Fúwùyuán lái le.			work noun
+NOUN-20251221-0108	老板	lǎobǎn	boss	Lǎobǎn lái le.			work noun
+NOUN-20251221-0109	工作	gōngzuò	work	Wǒ yǒu gōngzuò.			work noun
+NOUN-20251221-0110	工程	gōngchéng	project	Gōngchéng hěn dà.			work noun
+NOUN-20251221-0111	师傅	shīfu	master	Shīfu hěn lìhai.			work noun
+NOUN-20251221-0112	护士	hùshi	nurse	Hùshi lái le.			work noun
+NOUN-20251221-0113	律师	lǜshī	lawyer	Lǜshī hěn máng.			work noun
+NOUN-20251221-0114	咨询师	zīxúnshī	consultant	Zīxúnshī zài zhèr.			work noun
+NOUN-20251221-0115	作家	zuòjiā	writer	Zuòjiā zài xiě shū.			work noun
+NOUN-20251221-0116	画家	huàjiā	painter	Huàjiā zài huà huà.			work noun
+NOUN-20251221-0117	音乐家	yīnyuèjiā	musician	Yīnyuèjiā zài chànggē.			work noun
+NOUN-20251221-0118	科学家	kēxuéjiā	scientist	Kēxuéjiā hěn cōngming.			work noun
+NOUN-20251221-0119	职员	zhíyuán	employee	Zhíyuán zài gōngsī.			work noun
+NOUN-20251221-0120	售货员	shòuhuòyuán	shop assistant	Shòuhuòyuán lái le.			work noun
+NOUN-20251221-0121	飞行员	fēixíngyuán	pilot	Fēixíngyuán hěn máng.			work noun
+NOUN-20251221-0122	空姐	kōngjiě	flight attendant	Kōngjiě zài fēijī shàng.			work noun
+NOUN-20251221-0123	经理	jīnglǐ	manager	Jīnglǐ zài huìyì.			work noun
+NOUN-20251221-0124	秘书	mìshū	secretary	Mìshū zài gōngsī.			work noun
+NOUN-20251221-0125	警察	jǐngchá	police officer	Jǐngchá lái le.			work noun
+NOUN-20251221-0126	小偷	xiǎotōu	thief	Xiǎotōu pǎo le.			work noun
+NOUN-20251221-0127	黑客	hēikè	hacker	Hēikè zài diànnǎo shàng.			work noun
 
-000127	年	nián	year	Jīnnián hěn máng.			time noun
-000128	月	yuè	month	Zhè gè yuè.			time noun
-000129	日	rì	day	Jīntiān shì rì.			time noun
-000130	星期	xīngqī	week	Zhè gè xīngqī.			time noun
-000131	星期一	xīngqī yī	Monday	Jīntiān shì xīngqī yī.			time noun
-000132	星期日	xīngqī rì	Sunday	Jīntiān shì xīngqī rì.			time noun
-000133	十月	shí yuè	October	Xiànzài shí yuè.			time noun
-000134	岁	suì	age	Tā sān suì.			time noun
-000135	点	diǎn	o’clock	Xiànzài shí diǎn.			time noun
-000136	分	fēn	minute	Xiànzài shí diǎn wǔ fēn.			time noun
-000137	刻	kè	quarter	Xiànzài yí kè.			time noun
-000138	半	bàn	half	Xiànzài liǎng diǎn bàn.			time noun
+NOUN-20251221-0128	年	nián	year	Jīnnián hěn máng.			time noun
+NOUN-20251221-0129	月	yuè	month	Zhè gè yuè.			time noun
+NOUN-20251221-0130	日	rì	day	Jīntiān shì rì.			time noun
+NOUN-20251221-0131	星期	xīngqī	week	Zhè gè xīngqī.			time noun
+NOUN-20251221-0132	星期一	xīngqī yī	Monday	Jīntiān shì xīngqī yī.			time noun
+NOUN-20251221-0133	星期日	xīngqī rì	Sunday	Jīntiān shì xīngqī rì.			time noun
+NOUN-20251221-0134	十月	shí yuè	October	Xiànzài shí yuè.			time noun
+NOUN-20251221-0135	岁	suì	age	Tā sān suì.			time noun
+NOUN-20251221-0136	点	diǎn	o’clock	Xiànzài shí diǎn.			time noun
+NOUN-20251221-0137	分	fēn	minute	Xiànzài shí diǎn wǔ fēn.			time noun
+NOUN-20251221-0138	刻	kè	quarter	Xiànzài yí kè.			time noun
+NOUN-20251221-0139	半	bàn	half	Xiànzài liǎng diǎn bàn.			time noun
 
-000139	钱	qián	money	Wǒ yǒu qián.			money noun
-000140	毛	máo	ten cents	Yì máo qián.			money noun
-000141	分	fēn	cent	Yì fēn qián.			money noun
-000142	斤	jīn	half kilo	Yì jīn píngguǒ.			measure noun
-000143	两	liǎng	two	Liǎng gè rén.			number noun
+NOUN-20251221-0140	钱	qián	money	Wǒ yǒu qián.			money noun
+NOUN-20251221-0141	毛	máo	ten cents	Yì máo qián.			money noun
+NOUN-20251221-0142	分	fēn	cent	Yì fēn qián.			money noun
+NOUN-20251221-0143	斤	jīn	half kilo	Yì jīn píngguǒ.			measure noun
+NOUN-20251221-0144	两	liǎng	two	Liǎng gè rén.			number noun
 
-000144	是	shì	to be	Tā shì lǎoshī.			core verb
-000145	有	yǒu	to have	Wǒ yǒu shū.			core verb
-000146	没有	méi yǒu	to not have	Wǒ méi yǒu qián.			core verb
-000147	来	lái	to come	Tā lái le.			motion verb
-000148	去	qù	to go	Wǒ qù xuéxiào.			motion verb
-000149	在	zài	to be (located)	Wǒ zài jiā.			core verb
-000150	做	zuò	to do / make	Wǒ zuò fàn.			core verb
-000151	坐	zuò	to sit	Wǒ zuò zài zhèr.			core verb
-000152	看	kàn	to see / watch	Wǒ kàn shū.			perception verb
-000153	说	shuō	to speak	Wǒ shuō Hànyǔ.			communication verb
-000154	吃	chī	to eat	Wǒ chī fàn.			daily verb
-000155	喝	hē	to drink	Wǒ hē shuǐ.			daily verb
+VERB-20251221-0001	是	shì	to be	Tā shì lǎoshī.			core verb
+VERB-20251221-0002	有	yǒu	to have	Wǒ yǒu shū.			core verb
+VERB-20251221-0003	没有	méi yǒu	to not have	Wǒ méi yǒu qián.			core verb
+VERB-20251221-0004	来	lái	to come	Tā lái le.			motion verb
+VERB-20251221-0005	去	qù	to go	Wǒ qù xuéxiào.			motion verb
+VERB-20251221-0006	在	zài	to be (located)	Wǒ zài jiā.			core verb
+VERB-20251221-0007	做	zuò	to do / make	Wǒ zuò fàn.			core verb
+VERB-20251221-0008	坐	zuò	to sit	Wǒ zuò zài zhèr.			core verb
+VERB-20251221-0009	看	kàn	to see / watch	Wǒ kàn shū.			perception verb
+VERB-20251221-0010	说	shuō	to speak	Wǒ shuō Hànyǔ.			communication verb
+VERB-20251221-0011	吃	chī	to eat	Wǒ chī fàn.			daily verb
+VERB-20251221-0012	喝	hē	to drink	Wǒ hē shuǐ.			daily verb
 
-000156	会	huì	can (know how to)	Wǒ huì shuō Zhōngwén.			modal verb
-000157	能	néng	can (be able to)	Wǒ néng lái.			modal verb
-000158	可以	kěyǐ	may / be allowed	Wǒ kěyǐ qù.			modal verb
-000159	要	yào	to want / need	Wǒ yào shuǐ.			modal verb
-000160	应该	yīnggāi	should	Wǒ yīnggāi qù.			modal verb
+VERB-20251221-0013	会	huì	can (know how to)	Wǒ huì shuō Zhōngwén.			modal verb
+VERB-20251221-0014	能	néng	can (be able to)	Wǒ néng lái.			modal verb
+VERB-20251221-0015	可以	kěyǐ	may / be allowed	Wǒ kěyǐ qù.			modal verb
+VERB-20251221-0016	要	yào	to want / need	Wǒ yào shuǐ.			modal verb
+VERB-20251221-0017	应该	yīnggāi	should	Wǒ yīnggāi qù.			modal verb
 
-000161	想	xiǎng	to want / think	Wǒ xiǎng qù.			mental verb
-000162	喜欢	xǐhuan	to like	Wǒ xǐhuan chá.			emotion verb
-000163	爱	ài	to love	Wǒ ài jiārén.			emotion verb
+VERB-20251221-0018	想	xiǎng	to want / think	Wǒ xiǎng qù.			mental verb
+VERB-20251221-0019	喜欢	xǐhuan	to like	Wǒ xǐhuan chá.			emotion verb
+VERB-20251221-0020	爱	ài	to love	Wǒ ài jiārén.			emotion verb
 
-000164	工作	gōngzuò	to work	Wǒ zài gōngzuò.			daily verb
-000165	学习	xuéxí	to study	Wǒ xuéxí Hànyǔ.			learning verb
-000166	上	shàng	to attend / go up	Wǒ shàng dàxué.			motion verb
-000167	回	huí	to return	Wǒ huí jiā.			motion verb
-000168	住	zhù	to live	Wǒ zhù zài zhèr.			daily verb
-000169	睡觉	shuìjiào	to sleep	Wǒ shuìjiào le.			daily verb
-000170	买	mǎi	to buy	Wǒ mǎi shū.			commerce verb
-000171	卖	mài	to sell	Tā mài shū.			commerce verb
-000172	做饭	zuò fàn	to cook	Wǒ zuò fàn.			daily verb
+VERB-20251221-0021	工作	gōngzuò	to work	Wǒ zài gōngzuò.			daily verb
+VERB-20251221-0022	学习	xuéxí	to study	Wǒ xuéxí Hànyǔ.			learning verb
+VERB-20251221-0023	上	shàng	to attend / go up	Wǒ shàng dàxué.			motion verb
+VERB-20251221-0024	回	huí	to return	Wǒ huí jiā.			motion verb
+VERB-20251221-0025	住	zhù	to live	Wǒ zhù zài zhèr.			daily verb
+VERB-20251221-0026	睡觉	shuìjiào	to sleep	Wǒ shuìjiào le.			daily verb
+VERB-20251221-0027	买	mǎi	to buy	Wǒ mǎi shū.			commerce verb
+VERB-20251221-0028	卖	mài	to sell	Tā mài shū.			commerce verb
+VERB-20251221-0029	做饭	zuò fàn	to cook	Wǒ zuò fàn.			daily verb
 
-000173	问	wèn	to ask	Wǒ wèn lǎoshī.			communication verb
-000174	请	qǐng	to ask politely	Qǐng zuò.			communication verb
-000175	回答	huídá	to answer	Tā huídá le.			communication verb
-000176	叫	jiào	to be called	Wǒ jiào Lǐ.			communication verb
-000177	姓	xìng	to be surnamed	Wǒ xìng Wáng.			communication verb
-000178	说话	shuōhuà	to talk	Wǒmen shuōhuà.			communication verb
+VERB-20251221-0030	问	wèn	to ask	Wǒ wèn lǎoshī.			communication verb
+VERB-20251221-0031	请	qǐng	to ask politely	Qǐng zuò.			communication verb
+VERB-20251221-0032	回答	huídá	to answer	Tā huídá le.			communication verb
+VERB-20251221-0033	叫	jiào	to be called	Wǒ jiào Lǐ.			communication verb
+VERB-20251221-0034	姓	xìng	to be surnamed	Wǒ xìng Wáng.			communication verb
+VERB-20251221-0035	说话	shuōhuà	to talk	Wǒmen shuōhuà.			communication verb
 
-000179	知道	zhīdào	to know	Wǒ zhīdào.			mental verb
-000180	认识	rènshi	to know (person)	Wǒ rènshi tā.			mental verb
-000181	听	tīng	to listen	Wǒ tīng yīnyuè.			perception verb
-000182	听见	tīngjiàn	to hear	Wǒ tīngjiàn le.			perception verb
+VERB-20251221-0036	知道	zhīdào	to know	Wǒ zhīdào.			mental verb
+VERB-20251221-0037	认识	rènshi	to know (person)	Wǒ rènshi tā.			mental verb
+VERB-20251221-0038	听	tīng	to listen	Wǒ tīng yīnyuè.			perception verb
+VERB-20251221-0039	听见	tīngjiàn	to hear	Wǒ tīngjiàn le.			perception verb
 
-000183	来自	láizì	to come from	Wǒ láizì Zhōngguó.			origin verb
-000184	属	shǔ	to belong to	Wǒ shǔ Zhōngguó.			origin verb
+VERB-20251221-0040	来自	láizì	to come from	Wǒ láizì Zhōngguó.			origin verb
+VERB-20251221-0041	属	shǔ	to belong to	Wǒ shǔ Zhōngguó.			origin verb
 
-000185	出	chū	to go out	Wǒ chū qù.			motion verb
-000186	进	jìn	to enter	Wǒ jìn qù.			motion verb
-000187	走	zǒu	to walk / leave	Wǒ zǒu le.			motion verb
-000188	跑	pǎo	to run	Tā pǎo hěn kuài.			motion verb
+VERB-20251221-0042	出	chū	to go out	Wǒ chū qù.			motion verb
+VERB-20251221-0043	进	jìn	to enter	Wǒ jìn qù.			motion verb
+VERB-20251221-0044	走	zǒu	to walk / leave	Wǒ zǒu le.			motion verb
+VERB-20251221-0045	跑	pǎo	to run	Tā pǎo hěn kuài.			motion verb
 
-000189	帮	bāng	to help	Wǒ bāng nǐ.			social verb
-000190	等	děng	to wait	Wǒ děng nǐ.			social verb
-000191	给	gěi	to give	Wǒ gěi nǐ.			social verb
-000192	点	diǎn	to order	Wǒ diǎn chá.			food verb
-000193	付钱	fùqián	to pay	Wǒ fùqián le.			commerce verb
+VERB-20251221-0046	帮	bāng	to help	Wǒ bāng nǐ.			social verb
+VERB-20251221-0047	等	děng	to wait	Wǒ děng nǐ.			social verb
+VERB-20251221-0048	给	gěi	to give	Wǒ gěi nǐ.			social verb
+VERB-20251221-0049	点	diǎn	to order	Wǒ diǎn chá.			food verb
+VERB-20251221-0050	付钱	fùqián	to pay	Wǒ fùqián le.			commerce verb
 
-000194	退休	tuìxiū	to retire	Tā tuìxiū le.			life verb
+VERB-20251221-0051	退休	tuìxiū	to retire	Tā tuìxiū le.			life verb
 
-000195	高兴	gāoxìng	happy	Wǒ hěn gāoxìng.			feeling adj
-000196	伤心	shāngxīn	sad	Tā hěn shāngxīn.			feeling adj
-000197	酷	kù	cool	Zhè hěn kù.			evaluation adj
-000198	贵	guì	expensive	Zhè gè hěn guì.			evaluation adj
-000199	便宜	piányi	cheap	Zhè gè hěn piányi.			evaluation adj
-000200	累	lèi	tired	Wǒ hěn lèi.			state adj
-000201	忙	máng	busy	Wǒ hěn máng.			state adj
+ADJ-20251221-0001	高兴	gāoxìng	happy	Wǒ hěn gāoxìng.			feeling adj
+ADJ-20251221-0002	伤心	shāngxīn	sad	Tā hěn shāngxīn.			feeling adj
+ADJ-20251221-0003	酷	kù	cool	Zhè hěn kù.			evaluation adj
+ADJ-20251221-0004	贵	guì	expensive	Zhè gè hěn guì.			evaluation adj
+ADJ-20251221-0005	便宜	piányi	cheap	Zhè gè hěn piányi.			evaluation adj
+ADJ-20251221-0006	累	lèi	tired	Wǒ hěn lèi.			state adj
+ADJ-20251221-0007	忙	máng	busy	Wǒ hěn máng.			state adj
 
-000202	好	hǎo	good	Zhè hěn hǎo.			quality adj
-000203	不好	bù hǎo	bad	Zhè bù hǎo.			quality adj
-000204	冷	lěng	cold	Tiānqì hěn lěng.			temperature adj
-000205	热	rè	hot	Tiānqì hěn rè.			temperature adj
-000206	好吃	hǎochī	tasty	Fàn hěn hǎochī.			food adj
-000207	好喝	hǎohē	tasty (drink)	Chá hěn hǎohē.			food adj
+ADJ-20251221-0008	好	hǎo	good	Zhè hěn hǎo.			quality adj
+ADJ-20251221-0009	不好	bù hǎo	bad	Zhè bù hǎo.			quality adj
+ADJ-20251221-0010	冷	lěng	cold	Tiānqì hěn lěng.			temperature adj
+ADJ-20251221-0011	热	rè	hot	Tiānqì hěn rè.			temperature adj
+ADJ-20251221-0012	好吃	hǎochī	tasty	Fàn hěn hǎochī.			food adj
+ADJ-20251221-0013	好喝	hǎohē	tasty (drink)	Chá hěn hǎohē.			food adj
 
-000208	漂亮	piàoliang	beautiful	Tā hěn piàoliang.			appearance adj
-000209	帅	shuài	handsome	Tā hěn shuài.			appearance adj
-000210	可爱	kě’ài	cute	Háizi hěn kě’ài.			appearance adj
+ADJ-20251221-0014	漂亮	piàoliang	beautiful	Tā hěn piàoliang.			appearance adj
+ADJ-20251221-0015	帅	shuài	handsome	Tā hěn shuài.			appearance adj
+ADJ-20251221-0016	可爱	kě’ài	cute	Háizi hěn kě’ài.			appearance adj
 
-000211	大	dà	big	Wǒ de jiā hěn dà.			size adj
-000212	小	xiǎo	small	Zhè gè hěn xiǎo.			size adj
-000213	新	xīn	new	Zhè shì xīn shū.			size adj
-000214	旧	jiù	old (object)	Zhè shì jiù shū.			size adj
+ADJ-20251221-0017	大	dà	big	Wǒ de jiā hěn dà.			size adj
+ADJ-20251221-0018	小	xiǎo	small	Zhè gè hěn xiǎo.			size adj
+ADJ-20251221-0019	新	xīn	new	Zhè shì xīn shū.			size adj
+ADJ-20251221-0020	旧	jiù	old (object)	Zhè shì jiù shū.			size adj
 
-000215	聪明	cōngming	clever	Háizi hěn cōngming.			trait adj
-000216	男	nán	male	Tā shì nán.			trait adj
-000217	女	nǚ	female	Tā shì nǚ.			trait adj
+ADJ-20251221-0021	聪明	cōngming	clever	Háizi hěn cōngming.			trait adj
+ADJ-20251221-0022	男	nán	male	Tā shì nán.			trait adj
+ADJ-20251221-0023	女	nǚ	female	Tā shì nǚ.			trait adj
 
-000218	多	duō	many / much	Dōngxi hěn duō.			quantity adj
-000219	少	shǎo	few / little	Dōngxi hěn shǎo.			quantity adj
+ADJ-20251221-0024	多	duō	many / much	Dōngxi hěn duō.			quantity adj
+ADJ-20251221-0025	少	shǎo	few / little	Dōngxi hěn shǎo.			quantity adj
 
-000220	可	kě	possible / okay	Kě ma?			utility adj
+ADJ-20251221-0026	可	kě	possible / okay	Kě ma?			utility adj
 
-000221	很	hěn	very	Wǒ hěn hǎo.			degree adv
-000222	非常	fēicháng	extremely	Tā fēicháng máng.			degree adv
-000223	太	tài	too	Tài guì le.			degree adv
-000224	真	zhēn	really	Zhēn hǎo.			degree adv
-000225	有点	yǒudiǎn	a little (negative)	Yǒudiǎn lèi.			degree adv
-000226	一点儿	yìdiǎnr	a little	Wǒ chī yìdiǎnr.			degree adv
-000227	点儿	diǎnr	a bit	Zǒu diǎnr kuài.			degree adv
-000228	多	duō	much / many (adverbial)	Duō chī yìdiǎnr.			degree adv
+ADV-20251221-0001	很	hěn	very	Wǒ hěn hǎo.			degree adv
+ADV-20251221-0002	非常	fēicháng	extremely	Tā fēicháng máng.			degree adv
+ADV-20251221-0003	太	tài	too	Tài guì le.			degree adv
+ADV-20251221-0004	真	zhēn	really	Zhēn hǎo.			degree adv
+ADV-20251221-0005	有点	yǒudiǎn	a little (negative)	Yǒudiǎn lèi.			degree adv
+ADV-20251221-0006	一点儿	yìdiǎnr	a little	Wǒ chī yìdiǎnr.			degree adv
+ADV-20251221-0007	点儿	diǎnr	a bit	Zǒu diǎnr kuài.			degree adv
+ADV-20251221-0008	多	duō	much / many (adverbial)	Duō chī yìdiǎnr.			degree adv
 
-000229	现在	xiànzài	now	Xiànzài wǒ hěn máng.			time adv
-000230	经常	jīngcháng	often	Wǒ jīngcháng lái.			time adv
-000231	常常	chángcháng	often	Tā chángcháng qù.			time adv
-000232	以前	yǐqián	before	Yǐqián wǒ zài Zhōngguó.			time adv
-000233	以后	yǐhòu	after	Yǐhòu jiàn.			time adv
-000234	刚	gāng	just (now)	Wǒ gāng lái.			time adv
-000235	马上	mǎshàng	immediately	Wǒ mǎshàng qù.			time adv
+ADV-20251221-0009	现在	xiànzài	now	Xiànzài wǒ hěn máng.			time adv
+ADV-20251221-0010	经常	jīngcháng	often	Wǒ jīngcháng lái.			time adv
+ADV-20251221-0011	常常	chángcháng	often	Tā chángcháng qù.			time adv
+ADV-20251221-0012	以前	yǐqián	before	Yǐqián wǒ zài Zhōngguó.			time adv
+ADV-20251221-0013	以后	yǐhòu	after	Yǐhòu jiàn.			time adv
+ADV-20251221-0014	刚	gāng	just (now)	Wǒ gāng lái.			time adv
+ADV-20251221-0015	马上	mǎshàng	immediately	Wǒ mǎshàng qù.			time adv
 
-000236	不	bù	not	Wǒ bù qù.			negation adv
-000237	没	méi	not (past/have)	Wǒ méi qù.			negation adv
+ADV-20251221-0016	不	bù	not	Wǒ bù qù.			negation adv
+ADV-20251221-0017	没	méi	not (past/have)	Wǒ méi qù.			negation adv
 
-000238	都	dōu	all	Wǒmen dōu lái le.			scope adv
-000239	也	yě	also	Wǒ yě qù.			scope adv
-000240	只	zhǐ	only	Wǒ zhǐ yào shuǐ.			scope adv
+ADV-20251221-0018	都	dōu	all	Wǒmen dōu lái le.			scope adv
+ADV-20251221-0019	也	yě	also	Wǒ yě qù.			scope adv
+ADV-20251221-0020	只	zhǐ	only	Wǒ zhǐ yào shuǐ.			scope adv
 
-000241	慢慢	mànman	slowly	Mànman zǒu.			manner adv
-000242	快	kuài	quickly	Kuài zǒu.			manner adv
-000243	一直	yìzhí	continuously	Tā yìzhí gōngzuò.			manner adv
+ADV-20251221-0021	慢慢	mànman	slowly	Mànman zǒu.			manner adv
+ADV-20251221-0022	快	kuài	quickly	Kuài zǒu.			manner adv
+ADV-20251221-0023	一直	yìzhí	continuously	Tā yìzhí gōngzuò.			manner adv
 
-000244	再	zài	again	Wǒ zài qù.			sequence adv
-000245	就	jiù	then / right away	Wǒ jiù lái.			sequence adv
-000246	还	hái	still	Wǒ hái zài zhèr.			sequence adv
-000247	还是	háishì	or (questions)	Nǐ qù háishì bù qù?			question adv
+ADV-20251221-0024	再	zài	again	Wǒ zài qù.			sequence adv
+ADV-20251221-0025	就	jiù	then / right away	Wǒ jiù lái.			sequence adv
+ADV-20251221-0026	还	hái	still	Wǒ hái zài zhèr.			question adv
+ADV-20251221-0027	还是	háishì	or (questions)	Nǐ qù háishì bù qù?			question adv
 
-000248	可能	kěnéng	maybe	Tā kěnéng lái.			attitude adv
-000249	一定	yídìng	certainly	Wǒ yídìng qù.			attitude adv
+ADV-20251221-0028	可能	kěnéng	maybe	Tā kěnéng lái.			attitude adv
+ADV-20251221-0029	一定	yídìng	certainly	Wǒ yídìng qù.			attitude adv
 
-000250	怎么	zěnme	how	Nǐ zěnme qù?			question adv
-000251	多少	duōshǎo	how much / many	Duōshǎo qián?			question adv
-000252	哪里	nǎlǐ	where	Nǐ zài nǎlǐ?			question adv
-000253	哪儿	nǎr	where (spoken)	Nǐ qù nǎr?			question adv
+ADV-20251221-0030	怎么	zěnme	how	Nǐ zěnme qù?			question adv
+ADV-20251221-0031	多少	duōshǎo	how much / many	Duōshǎo qián?			question adv
+ADV-20251221-0032	哪里	nǎlǐ	where	Nǐ zài nǎlǐ?			question adv
+ADV-20251221-0033	哪儿	nǎr	where (spoken)	Nǐ qù nǎr?			question adv
 
-000254	比如	bǐrú	for example	Bǐrú, chá hé kāfēi.			discourse adv
-000255	可是	kěshì	but	Kěshì wǒ hěn máng.			discourse adv
+ADV-20251221-0034	比如	bǐrú	for example	Bǐrú, chá hé kāfēi.			discourse adv
+ADV-20251221-0035	可是	kěshì	but	Kěshì wǒ hěn máng.			discourse adv
 
-000256	什么	shénme	what	Nǐ yào shénme?			question
-000257	谁	shéi	who / whom	Shéi lái le?			question
-000258	哪个	nǎ ge	which	Nǎ ge lǎoshī?			question
-000259	几	jǐ	how many (small numbers)	Jǐ gè rén?			question
+Q-20251221-0001	什么	shénme	what	Nǐ yào shénme?			question
+Q-20251221-0002	谁	shéi	who / whom	Shéi lái le?			question
+Q-20251221-0003	哪个	nǎ ge	which	Nǎ ge lǎoshī?			question
+Q-20251221-0004	几	jǐ	how many (small numbers)	Jǐ gè rén?			question
 
-000260	我	wǒ	I / me	Wǒ hěn máng.			pron
-000261	你	nǐ	you (sg.)	Nǐ hǎo.			pron
-000262	他	tā	he / him	Tā shì lǎoshī.			pron
-000263	她	tā	she / her	Tā hěn gāoxìng.			pron
-000264	它	tā	it	Tā hěn kě’ài.			pron
+PRON-20251221-0001	我	wǒ	I / me	Wǒ hěn máng.			pron
+PRON-20251221-0002	你	nǐ	you (sg.)	Nǐ hǎo.			pron
+PRON-20251221-0003	他	tā	he / him	Tā shì lǎoshī.			pron
+PRON-20251221-0004	她	tā	she / her	Tā hěn gāoxìng.			pron
+PRON-20251221-0005	它	tā	it	Tā hěn kě’ài.			pron
 
-000265	我们	wǒmen	we / us	Wǒmen qù ba.			pron
-000266	你们	nǐmen	you (pl.)	Nǐmen hǎo.			pron
-000267	他们	tāmen	they (m./mixed)	Tāmen lái le.			pron
-000268	她们	tāmen	they (f.)	Tāmen hěn máng.			pron
-000269	它们	tāmen	they (things)	Tāmen hěn duō.			pron
+PRON-20251221-0006	我们	wǒmen	we / us	Wǒmen qù ba.			pron
+PRON-20251221-0007	你们	nǐmen	you (pl.)	Nǐmen hǎo.			pron
+PRON-20251221-0008	他们	tāmen	they (m./mixed)	Tāmen lái le.			pron
+PRON-20251221-0009	她们	tāmen	they (f.)	Tāmen hěn máng.			pron
+PRON-20251221-0010	它们	tāmen	they (things)	Tāmen hěn duō.			pron
 
-000270	我的	wǒ de	my	Wǒ de shū.			pron
-000271	你的	nǐ de	your	Nǐ de shǒujī.			pron
-000272	他的	tā de	his	Tā de gōngsī.			pron
-000273	她的	tā de	her	Tā de māma.			pron
-000274	它的	tā de	its	Tā de míngzi.			pron
-000275	我们的	wǒmen de	our	Wǒmen de jiā.			pron
-000276	你们的	nǐmen de	your (pl.)	Nǐmen de lǎoshī.			pron
-000277	他们的	tāmen de	their	Tāmen de shū.			pron
+PRON-20251221-0011	我的	wǒ de	my	Wǒ de shū.			pron
+PRON-20251221-0012	你的	nǐ de	your	Nǐ de shǒujī.			pron
+PRON-20251221-0013	他的	tā de	his	Tā de gōngsī.			pron
+PRON-20251221-0014	她的	tā de	her	Tā de māma.			pron
+PRON-20251221-0015	它的	tā de	its	Tā de míngzi.			pron
+PRON-20251221-0016	我们的	wǒmen de	our	Wǒmen de jiā.			pron
+PRON-20251221-0017	你们的	nǐmen de	your (pl.)	Nǐmen de lǎoshī.			pron
+PRON-20251221-0018	他们的	tāmen de	their	Tāmen de shū.			pron
 
-000278	这	zhè	this	Zhè hěn hǎo.			pron
-000279	那	nà	that	Nà shì shū.			pron
-000280	这个	zhè ge	this one	Zhè ge hěn hǎo.			pron
-000281	那个	nà ge	that one	Nà ge bù guì.			pron
-000282	这些	zhèxiē	these	Zhèxiē hěn hǎo.			pron
-000283	那些	nàxiē	those	Nàxiē hěn guì.			pron
+PRON-20251221-0019	这	zhè	this	Zhè hěn hǎo.			pron
+PRON-20251221-0020	那	nà	that	Nà shì shū.			pron
+PRON-20251221-0021	这个	zhè ge	this one	Zhè ge hěn hǎo.			pron
+PRON-20251221-0022	那个	nà ge	that one	Nà ge bù guì.			pron
+PRON-20251221-0023	这些	zhèxiē	these	Zhèxiē hěn hǎo.			pron
+PRON-20251221-0024	那些	nàxiē	those	Nàxiē hěn guì.			pron
 
-000284	自己	zìjǐ	self / oneself	Wǒ zìjǐ qù.			pron
-000285	大家	dàjiā	everyone	Dàjiā hěn máng.			pron
-000286	每个	měi ge	every (one)	Měi ge rén.			pron
+PRON-20251221-0025	自己	zìjǐ	self / oneself	Wǒ zìjǐ qù.			pron
+PRON-20251221-0026	大家	dàjiā	everyone	Dàjiā hěn máng.			pron
+PRON-20251221-0027	每个	měi ge	every (one)	Měi ge rén.			pron
 
-000287	了	le	completed action	Tā lái le.			part
-000288	过	guò	experienced marker	Wǒ qù guò Zhōngguó.			part
-000289	着	zhe	ongoing state	Mén kāi zhe.			part
+PART-20251221-0001	了	le	completed action	Tā lái le.			part
+PART-20251221-0002	过	guò	experienced marker	Wǒ qù guò Zhōngguó.			part
+PART-20251221-0003	着	zhe	ongoing state	Mén kāi zhe.			part
 
-000290	吗	ma	yes/no question particle	Nǐ hǎo ma?			part
-000291	呢	ne	contrast / follow-up	Nǐ ne?			part
-000292	吧	ba	suggestion	Wǒmen zǒu ba.			part
+PART-20251221-0004	吗	ma	yes/no question particle	Nǐ hǎo ma?			part
+PART-20251221-0005	呢	ne	contrast / follow-up	Nǐ ne?			part
+PART-20251221-0006	吧	ba	suggestion	Wǒmen zǒu ba.			part
 
-000293	的	de	possessive / modifier	Wǒ de shū.			part
-000294	得	de	result complement	Tā zuò de hǎo.			part
-000295	地	de	adverbial marker	Tā mànman de zǒu.			part
+PART-20251221-0007	的	de	possessive / modifier	Wǒ de shū.			part
+PART-20251221-0008	得	de	result complement	Tā zuò de hǎo.			part
+PART-20251221-0009	地	de	adverbial marker	Tā mànman de zǒu.			part
 
-000296	个	gè	general classifier	Yí gè rén.			clf
-000297	本	běn	classifier for books	Yì běn shū.			clf
-000298	只	zhī	classifier for animals	Yì zhī gǒu.			clf
-000299	杯	bēi	classifier for cups	Yì bēi chá.			clf
-000300	张	zhāng	classifier for flat objects	Yì zhāng zhàopiàn.			clf
-000301	件	jiàn	classifier for clothes / matters	Yí jiàn yīfu.			clf
-000302	口	kǒu	classifier for people (family)	Yì kǒu rén.			clf
-000303	辆	liàng	classifier for vehicles	Yí liàng chē.			clf
-000304	条	tiáo	classifier for long things	Yì tiáo lù.			clf
-000305	份	fèn	portion / set	Yí fèn fàn.			clf
+CLF-20251221-0001	个	gè	general classifier	Yí gè rén.			clf
+CLF-20251221-0002	本	běn	classifier for books	Yì běn shū.			clf
+CLF-20251221-0003	只	zhī	classifier for animals	Yì zhī gǒu.			clf
+CLF-20251221-0004	杯	bēi	classifier for cups	Yì bēi chá.			clf
+CLF-20251221-0005	张	zhāng	classifier for flat objects	Yì zhāng zhàopiàn.			clf
+CLF-20251221-0006	件	jiàn	classifier for clothes / matters	Yí jiàn yīfu.			clf
+CLF-20251221-0007	口	kǒu	classifier for people (family)	Yì kǒu rén.			clf
+CLF-20251221-0008	辆	liàng	classifier for vehicles	Yí liàng chē.			clf
+CLF-20251221-0009	条	tiáo	classifier for long things	Yì tiáo lù.			clf
+CLF-20251221-0010	份	fèn	portion / set	Yí fèn fàn.			clf
 
-000306	在	zài	at / in	Wǒ zài jiā.			prep
-000307	跟	gēn	with	Wǒ gēn nǐ qù.			prep
-000308	对	duì	to / towards	Wǒ duì nǐ shuō.			prep
-000309	给	gěi	for / to	Wǒ gěi nǐ mǎi.			prep
-000310	从	cóng	from	Wǒ cóng Zhōngguó lái.			prep
-000311	到	dào	to / until	Wǒ dào xuéxiào qù.			prep
-000312	为	wèi	for / on behalf of	Wǒ wèi nǐ zuò.			prep
-000313	用	yòng	with / use	Wǒ yòng shǒujī kàn.			prep
+PREP-20251221-0001	在	zài	at / in	Wǒ zài jiā.			prep
+PREP-20251221-0002	跟	gēn	with	Wǒ gēn nǐ qù.			prep
+PREP-20251221-0003	对	duì	to / towards	Wǒ duì nǐ shuō.			prep
+PREP-20251221-0004	给	gěi	for / to	Wǒ gěi nǐ mǎi.			prep
+PREP-20251221-0005	从	cóng	from	Wǒ cóng Zhōngguó lái.			prep
+PREP-20251221-0006	到	dào	to / until	Wǒ dào xuéxiào qù.			prep
+PREP-20251221-0007	为	wèi	for / on behalf of	Wǒ wèi nǐ zuò.			prep
+PREP-20251221-0008	用	yòng	with / use	Wǒ yòng shǒujī kàn.			prep
