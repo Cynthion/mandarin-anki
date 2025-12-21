@@ -22,6 +22,14 @@
 .hanzi {
   font-size: 28px;
   font-weight: 500;
+  font-family:
+    "Source Han Sans SC",
+    "Noto Sans CJK SC",
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    "Droid Sans Fallback",
+    "sans-serif";
 }
 .hanzi.small { 
 	font-size: 12px;
