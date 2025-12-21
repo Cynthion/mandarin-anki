@@ -211,7 +211,7 @@ Media must be copied into Anki’s profile media directory:
 ### TSV references
 
 - Audio:
-  - `[sound:ATTS-<ID>.mp3]`
+  - `[sound:ATTS <ID>.mp3]`
 - Image:
   - `<img src="ni.png">`
 
@@ -268,7 +268,7 @@ Recommended:
 
 - Configure `AwesomeTTS` to name files using the `id` field, resulting in:
   - `collection.media/<id>.mp3` (`Tools → AwesomeTTS → MP3 → Filename Template → {{id}}.mp3`)
-  - `notes.tsv`: `audio` field like `[sound:ATTS-<id>.mp3]`
+  - `notes.tsv`: `audio` field like `[sound:ATTS <id>.mp3]`
 
 ---
 

@@ -147,7 +147,7 @@ Media fields are optional.
 - Use Anki sound tags:
   - `[sound:filename.mp3]`
 - Prefer ID-based filenames when configured:
-  - `[sound:ATTS-<id>.mp3]`
+  - `[sound:ATTS <id>.mp3]`
 - Do not invent filenames unless explicitly instructed.
 - Do not include external URLs.
 
