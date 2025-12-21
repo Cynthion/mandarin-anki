@@ -2,184 +2,250 @@
 
 This repository contains the **source of truth** for a custom Mandarin Anki deck.
 
+- Notes are stored in a Git-friendly TSV file: `deck/notes.tsv`
+- Card templates + CSS are versioned in Git under: `anki/note-type/`
+- Media (optional) can be stored under `media/` and copied into Anki’s `collection.media`
+
+## Design Goals
+
+- Stable, unique IDs (safe re-import without losing scheduling)
+- Git-friendly TSV source (easy to edit in VS Code)
+- Real Anki tags (via the TSV `tags` column → mapped to Anki “Tags”)
+- Optional audio & images
+- Card templates and CSS versioned in Git
+- Works on macOS, Windows, and iOS (with platform notes below)
+
+---
+
+## What the Cards Show
+
+### Front
+
+1. Hanzi
+2. Pinyin
+3. Audio:
+   - Plays an audio file if the `audio` field contains `[sound:...]`
+   - Otherwise uses **system TTS fallback** via `{{tts zh_CN:hanzi}}`
+4. Image (optional, only shown if `image` field contains an `<img ...>`)
+
+### Back
+
+1. Meaning
+2. Example (optional)
+3. Audio again (same logic)
+4. Image (optional)
+
+### Auto-play audio
+
+Enable:
+- `Tools → Preferences → Playback → Automatically play audio`
+
+---
+
 ## Workflow
 
 1. Edit `deck/notes.tsv` in VS Code
 2. Import into Anki using the custom note type
 3. Learn in Anki
-4. Update TSV or Anki fields
-5. Re-import with “Update existing notes”
+4. Update TSV (or optionally edit fields in Anki)
+5. Re-import with “Update existing notes” enabled
 
-## Design Goals
+> This repository remains the **source of truth**.  
+> If you edit notes in Anki, export/merge changes back into `deck/notes.tsv` to keep Git authoritative.
 
-- Stable IDs
-- Git-friendly TSV source
-- Optional audio & images
-- Real Anki tags
-- Card templates versioned in git
-
-## What the Cards show
-
-- **Front:** hanzi → pinyin → audio (file or TTS fallback) → image (optional)
-- **Back:** meaning → example (optional) → audio again → image (optional)
-
-To auto-play audio on both sides:
-
-- `Tools → Preferences → Playback → Automatically play audio`
+---
 
 ## Setup Guide (Anki)
 
-This guide explains how to create the Anki deck so it matches this repository.
-
-You only need to do this **once** per Anki profile.
-
----
+You only need to do this **once per Anki profile**.
 
 ### Prerequisites
 
-Create a new Anki Deck (e.g. `Default`).
+- Create (or choose) an Anki deck to import into (e.g. `Mandarin`).
 
 ---
 
-### 1. Create a Custom Note Type
+## 1) Create a Custom Note Type
 
-1. Open **Anki**
-2. Go to **Tools → Manage Note Types**
+1. Open Anki
+2. `Tools → Manage Note Types`
 3. Click **Add**
 4. Choose **Add: Basic**
-5. Name it (e.g. `Anki Mandarin Deck`)
+5. Name it: `Mandarin (TSV)` (or similar)
+
+> Note: We are not using “Basic (and reversed card)”.  
+> We keep a single note type and control front/back via templates.
 
 ---
 
-### 2. Configure Fields
+## 2) Configure Fields
 
-With the new note type selected:
+With your note type selected:
 
 1. Click **Fields**
 2. Remove all existing fields
-3. Add fields **in this exact order**:
-   1. id
-   2. hanzi
-   3. pinyin
-   4. meaning
-   5. example
-   6. audio
-   7. image
+3. Add fields in this exact order:
 
-⚠️ **Important**
+   1. `id`
+   2. `hanzi`
+   3. `pinyin`
+   4. `meaning`
+   5. `example`
+   6. `audio`
+   7. `image`
 
-- The `id` field must stay stable forever
-- Do not add a `tags` field — tags are handled separately by Anki
+✅ Important:
 
-Click **Save**.
-
----
-
-### 3. Configure Card Templates
-
-Select the note type → click **Cards**
-
-#### Front Template
-
-Copy the content of `anki/note-type/front.html` and paste it into the **Front Template** editor.
-
-#### Back Template
-
-Copy the content of `anki/note-type/back.html` and paste it into the **Back Template** editor.
-
-#### Styling
-
-Copy the content of `anki/note-type/style.css` and paste it into the **Styling** editor.
+- Fields are **data containers**, not “front/back”.
+- The “Front” and “Back” are defined in the **Cards** templates.
+- Do **not** add a `tags` field: tags are handled separately by Anki during import.
 
 Click **Save**.
 
 ---
 
-### 4. (Optional) Enable Text-to-Speech
+## 3) Configure Card Templates + Styling
 
-The templates use Anki’s built-in TTS as a fallback when no audio file is provided.
+1. Select your note type
+2. Click **Cards…**
+3. Paste templates from this repo:
 
-This requires:
+- Front Template: `anki/note-type/front.html`
+- Back Template: `anki/note-type/back.html`
+- Styling: `anki/note-type/style.css`
 
-- Anki 2.1.50+
-- A system TTS voice for Chinese (`zh_CN`)
-
-If TTS does not play:
-
-- Remove the `{{tts zh_CN:hanzi}}` lines from the templates
-- Or install the **AwesomeTTS** add-on instead
+Click **Save**.
 
 ---
 
-### 5. Import the TSV deck
+## 4) System TTS Fallback
 
-1. In Anki, click **Import File**
+The templates include a fallback when no audio file exists:
+
+- If `audio` is present: play `[sound:...]`
+- Else: use Anki’s built-in `{{tts ...}}`
+
+### Platform notes
+- **macOS:** usually works out-of-the-box (install Chinese voices if needed)
+- **Windows:** you must install a Chinese TTS voice (see Troubleshooting)
+- **iOS:** AnkiMobile does **not** support Anki’s `{{tts ...}}` tag.
+  - iOS will only play audio if you provide `[sound:...]` files.
+
+---
+
+## 5) Import the TSV Deck
+
+1. In Anki: `File → Import`
 2. Select `deck/notes.tsv`
 
-In the **Import dialog**:
+In the import dialog:
+- Type: **Notes**
+- Separator: **Tab**
+- “Allow HTML in fields”: ✅
+- Note Type: `Mandarin (TSV)`
+- Deck: your deck (e.g. `Mandarin`)
+- Existing notes: ✅ **Update existing notes**
+- Match scope: (default is fine)
+- “Fields separated by”: Tab
 
-- Field separator: `Tab`
-- Allow HTML in fields: ✅
-- Note Type: `Anki Mandarin Deck`
-- Deck: `Default`
-- Existing notes: `Update`
-- Field Mapping:
+### Field mapping
 
-| TSV Column | Anki Field |
-|------------|------------|
-| id         | id         |
-| hanzi      | hanzi      |
-| pinyin     | pinyin     |
-| meaning    | meaning    |
-| example    | example    |
-| audio      | audio      |
-| image      | image      |
-| tags       | **Tags**   |
+Map TSV columns like this:
 
-⚠️ Make sure:
+| TSV Column | Map to |
+|-----------|--------|
+| id        | id     |
+| hanzi     | hanzi  |
+| pinyin    | pinyin |
+| meaning   | meaning|
+| example   | example|
+| audio     | audio  |
+| image     | image  |
+| tags      | **Tags** |
 
-- The `tags` column is mapped to **Tags**, not to a field
-
-Leave the rest at defaults.
+✅ Important:
+- The `tags` column must map to **Tags**, not to a field.
 
 Click **Import**.
 
 ---
 
-### 6. Re-importing changes safely
+## 6) Re-importing Changes Safely
 
-You can safely:
-
+Safe changes:
 - Fix typos
-- Add examples
-- Add audio or images
-- Change templates or CSS
+- Update meanings/examples
+- Add tags
+- Add audio/image references
+- Update templates/CSS
 
-As long as:
-
-- The `id` field never changes
-- You re-import with **Update existing notes** enabled
+Rules:
+- The `id` field must never change
+- Always re-import with **Update existing notes**
+- Do not create duplicates by importing without matching IDs
 
 Your review history and scheduling will remain intact.
 
 ---
 
-### 7. Audio & image files
+## 7) Media (Audio & Images)
 
-If you use audio or images:
+### Repo layout (optional)
 
-- Place files in:
-  - `media/audio/`
-  - `media/images/`
-- Copy them into Anki’s `collection.media` directory
-- Reference them in TSV as:
-  - Audio: `[sound:filename.mp3]`
-  - Image: `<img src="filename.png">`
+- `media/audio/` — mp3 files
+- `media/images/` — image files
+
+### Anki media folder
+
+Media must be copied into Anki’s profile media directory:
+
+- **macOS:** `~/Library/Application Support/Anki2/<Profile>/collection.media`
+- **Windows:** `%APPDATA%\Anki2\<Profile>\collection.media`
+
+### TSV references
+
+- Audio:
+  - `[sound:MY-ID.mp3]`
+- Image:
+  - `<img src="ni.png">`
+
+> Do not use external URLs.
 
 ---
 
-### 8. Recommended workflow
+## 8) Optional: Generate Audio with AwesomeTTS
 
-`VS Code → notes.tsv → Anki Import → Review → Edit → Re-import`
+If you want iOS-compatible audio, generate mp3 files and write them into the `audio` field.
 
-This repository remains the **source of truth**.
+Recommended:
+
+- Configure `AwesomeTTS` to name files using the `id` field, resulting in:
+  - `collection.media/<id>.mp3` (`Tools → AwesomeTTS → MP3 → Filename Template → {{id}}.mp3`)
+  - `notes.tsv`: `audio` field like `[sound:<id>.mp3]`
+
+---
+
+## Troubleshooting
+
+### “no players found for TTSTag(...)” on Windows
+
+Windows has no TTS voice available for Chinese.
+
+Fix:
+
+1. Windows Settings → Time & Language
+2. Add Chinese (Simplified, China) language pack
+3. Install Speech/Voice components
+4. Restart Anki
+
+### iOS has no TTS fallback
+
+This is expected. Use generated mp3 files for iOS playback.
+
+---
+
+## Recommended Workflow Summary
+
+`VS Code → deck/notes.tsv → Anki Import → Review → Update TSV → Re-import`
+
+Templates/CSS live in Git and should be pasted into the note type as needed.

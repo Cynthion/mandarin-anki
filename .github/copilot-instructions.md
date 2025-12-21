@@ -1,37 +1,41 @@
 # Copilot Instructions (Repository Rules)
 
-This repository contains an Anki deck maintained via a TSV source file (`notes.tsv`) and media assets (images/audio).
+This repository contains a custom Mandarin Anki deck maintained via:
+- a TSV source file (`deck/notes.tsv`)
+- optional media assets (`media/audio/`, `media/images/`)
+- versioned note type templates (`anki/note-type/`)
+
 Copilot must follow these rules when generating or editing content.
 
 ---
 
 ## 1) Source of truth
 
-- `notes.tsv` is the source of truth for notes content.
-- Do not reorder or renumber IDs unless explicitly instructed.
-- Changes should be additive and stable: updates should not create duplicates.
+- `deck/notes.tsv` is the source of truth for note content.
+- Do not reorder, renumber, or reuse IDs unless explicitly instructed.
+- Changes should be stable and should not create duplicates.
 
 ---
 
 ## 2) TSV format (strict)
 
-`notes.tsv` columns are exactly:
+`deck/notes.tsv` columns are exactly:
 
 id	hanzi	pinyin	meaning	example	audio	image	tags
 
 Rules:
-- Tab-separated values only (TSV). No commas, no semicolons, no extra columns.
+- Tab-separated values only (TSV). No commas/semicolons as separators.
 - Keep a single header row.
-- Every row must have exactly 8 tab separators (9 fields total).
-- Keep `audio` and `image` fields empty unless explicitly provided.
+- Every data row must have exactly **8 tab separators** (9 fields total).
 - Do not introduce quotes around fields.
-- Do not include trailing spaces.
+- Avoid trailing spaces.
+- Blank lines are allowed for human readability, but not required.
 
 ---
 
 ## 3) ID policy (critical)
 
-IDs must be unique and stable.
+IDs must be unique and stable forever.
 
 ### Canonical ID format
 `<POS>-<YYYYMMDD>-<NNNN>`
@@ -48,120 +52,116 @@ Examples:
 - `Q-20251221-0002`
 
 Rules:
-- `<POS>` must match the part-of-speech group:
-  - NOUN, VERB, ADJ, ADV, PRON, PART, CLF, PREP, Q
-- `YYYYMMDD` is the creation date of the entry.
-- `NNNN` is a zero-padded counter within that POS+date group.
-- Never reuse IDs, never change existing IDs.
-- When adding multiple entries at once, allocate sequential `NNNN`.
+- `<POS>` must be one of: NOUN, VERB, ADJ, ADV, PRON, PART, CLF, PREP, Q
+- `YYYYMMDD` is the creation date of the entry
+- `NNNN` is a zero-padded counter within that POS+date group
+- Never change existing IDs; never reuse IDs
+- When adding multiple entries, allocate sequential `NNNN`
 
 ---
 
-## 4) Tags policy
+## 4) Tags policy (Anki tags)
 
-Tags live in the `tags` column as space-separated tokens (no commas).
+Tags live in the TSV `tags` column as space-separated tokens (no commas).
+During import, this column is mapped to Anki “Tags” (not a field).
 
 ### Must-have POS tags
 Every entry must include its POS tag as the final tag token:
-- `noun`, `verb`, `adj`, `adv`, `pron`, `part`, `clf`, `prep`, `question`
+
+- noun, verb, adj, adv, pron, part, clf, prep, question
 
 ### Category tags
-Include one category tag before the POS tag when applicable:
-- Nouns: `family`, `people`, `animal`, `place`, `geography`, `food`, `object`, `work`, `time`, `money`, `measure`, `number`, etc.
-- Verbs: `core`, `motion`, `daily`, `modal`, `mental`, `emotion`, `communication`, `perception`, `commerce`, `social`, `origin`, `learning`, `life`, etc.
-- Adjectives: `feeling`, `evaluation`, `state`, `quality`, `temperature`, `food`, `appearance`, `size`, `trait`, `quantity`, `utility`, etc.
-- Adverbs: `degree`, `time`, `negation`, `scope`, `manner`, `sequence`, `attitude`, `discourse`, `question`, etc.
+Add one category tag before the POS tag when applicable.
 
-Example tags:
+Examples:
 - `work noun`
 - `modal verb`
 - `degree adv`
-- `question`
-- `clf`
-- `prep`
-- `part`
+- `question` (question words)
+- `clf` (classifiers)
+- `prep` (prepositions/coverbs)
+- `part` (particles)
 
 Rules:
-- Keep tags lowercase.
-- Avoid duplicates (e.g., don’t add `question` twice).
-- For question particles (吗/呢/吧), tag as `part` (not `adv`).
-- Question words like 什么/谁/哪个/几 should be tagged `question` (category optional).
+- Keep tags lowercase
+- Avoid duplicates
+- Question particles (吗/呢/吧) are `part`
+- Question words (什么/谁/哪个/几) are `question` (category optional)
 
 ---
 
 ## 5) Pinyin rules
 
-- Use tone marks (diacritics) for all syllables: `Zhōngguó`, not `Zhongguo`.
-- Use proper spacing for multi-word pinyin:
-  - Compounds that are one word in Chinese usually remain together: `péngyou`, `huǒguō`
-  - Phrases can be spaced: `Zhōngguó rén`, `zhè ge`, `wǒmen de`
-- Use `nǚ’ér` with apostrophe where needed to separate syllables; otherwise standard spacing.
+- Use tone marks (diacritics): `Zhōngguó`, not `Zhongguo`.
+- Use spacing consistently:
+  - Compounds typically unspaced: `péngyou`, `huǒguō`
+  - Multi-word phrases spaced: `Zhōngguó rén`, `zhè ge`, `wǒmen de`
+- Use apostrophes where needed to avoid ambiguity (e.g., `nǚ’ér`).
 
 ---
 
 ## 6) Meaning rules
 
 - Meanings are in English.
-- Keep meanings short and “dictionary style”.
-- Prefer consistent wording across the deck (e.g., “mobile phone” not sometimes “cellphone”).
+- Keep meanings short, dictionary style.
+- Prefer consistent wording across the deck.
 
 ---
 
 ## 7) Example sentence rules
 
-- Examples must be short, simple, and appropriate to the word’s part of speech.
-- Examples should be in pinyin with tone marks.
-- Keep examples beginner-friendly (A1/A2 style).
-- Avoid overly complex grammar unless explicitly requested.
+- Examples must be short, simple, beginner-friendly.
+- Examples are in **pinyin with tone marks**.
+- Should match the part of speech and show typical usage.
 
 Special cases:
-- Prepositions/coverbs (e.g., 给/到/用) must have examples that clearly show coverb use:
-  - `Wǒ gěi nǐ mǎi.` (for you)
-  - `Wǒ dào xuéxiào qù.` (to ...)
-  - `Wǒ yòng shǒujī kàn.` (using ...)
-- If a word has multiple roles (e.g., 在 as verb vs prep), maintain separate entries only when both are desired, and make examples clearly distinguish them.
+- Coverbs/prepositions (给/到/用/etc.) must show coverb use clearly.
+- If a word can be multiple POS (e.g., 在 verb vs prep), only create separate entries if explicitly requested.
 
 ---
 
 ## 8) Hanzi rules
 
-- Use simplified Chinese characters.
-- Ensure the hanzi matches the intended meaning and pinyin.
-- For measure words/classifiers, use the correct hanzi (e.g., 个/本/只/张/杯...).
+- Use simplified Chinese.
+- Ensure hanzi matches meaning and pinyin.
+- For classifiers/measure words, use correct hanzi (个/本/只/张/杯...).
 
 ---
 
 ## 9) Media fields (audio/image)
 
-- `audio` and `image` fields are optional and may be blank.
-- If adding an image, use HTML:
+Media fields are optional.
+
+### Audio field
+- Use Anki sound tags:
+  - `[sound:filename.mp3]`
+- Prefer ID-based filenames when configured:
+  - `[sound:<id>.mp3]`
+- Do not invent filenames unless explicitly instructed.
+- Do not include external URLs.
+
+### Image field
+- Use HTML:
   - `<img src="filename.png">`
-- Image/audio files must exist under the repo’s media location (if defined); do not invent filenames.
-- Do not add external URLs.
+- Files should exist under repo media folder if referenced.
 
 ---
 
 ## 10) Editing discipline
 
 When asked to “add entries”:
-- Append new lines (or place them near related entries for human readability) but do not change existing IDs.
+- Append new rows (or place near related entries for readability) but never change existing IDs.
 - Ensure no duplicate IDs.
-- Ensure every row has all fields.
+- Ensure every row has all 9 fields.
 
 When asked to “fix the TSV”:
-- Validate: correct column count, correct IDs format, correct tags, correct pinyin tone marks, correct examples.
+- Validate: column count, ID format, tags, pinyin diacritics, beginner-appropriate examples.
 
 ---
 
 ## 11) Output expectations
 
-When generating TSV content:
-- Output in a TSV code block.
-- Include header only if requested; otherwise output just the new lines to paste.
-- Never output markdown tables for TSV content.
-
-When generating code/scripts:
-- Keep them small and repo-focused.
-- Do not propose destructive edits (bulk renumbering, mass deletion) unless explicitly requested.
-
----
+- TSV content must be emitted as a TSV code block.
+- Include header only if requested; otherwise output only the new rows to paste.
+- Do not output markdown tables for TSV content.
+- Code/scripts should be repo-focused and non-destructive unless explicitly requested.
