@@ -298,3 +298,47 @@ id	hanzi	pinyin	meaning	example	audio	image	tags
 000261	哪个	nǎ ge	which	Nǎ ge lǎoshī?			question
 000262	几	jǐ	how many (small numbers)	Jǐ gè rén?			question
 000263	吗	ma	yes/no question particle	Nǐ hǎo ma?			question
+
+000264	我	wǒ	I / me	Wǒ hěn máng.			pron
+000265	你	nǐ	you (sg.)	Nǐ hǎo.			pron
+000266	他	tā	he / him	Tā shì lǎoshī.			pron
+000267	她	tā	she / her	Tā hěn gāoxìng.			pron
+000268	它	tā	it	Tā hěn kě’ài.			pron
+
+000269	我们	wǒmen	we / us	Wǒmen qù ba.			pron
+000270	你们	nǐmen	you (pl.)	Nǐmen hǎo.			pron
+000271	他们	tāmen	they (m./mixed)	Tāmen lái le.			pron
+000272	她们	tāmen	they (f.)	Tāmen hěn máng.			pron
+000273	它们	tāmen	they (things)	Tāmen hěn duō.			pron
+
+000274	我的	wǒ de	my	Wǒ de shū.			pron
+000275	你的	nǐ de	your	Nǐ de shǒujī.			pron
+000276	他的	tā de	his	Tā de gōngsī.			pron
+000277	她的	tā de	her	Tā de māma.			pron
+000278	它的	tā de	its	Tā de míngzi.			pron
+000279	我们的	wǒmen de	our	Wǒmen de jiā.			pron
+000280	你们的	nǐmen de	your (pl.)	Nǐmen de lǎoshī.			pron
+000281	他们的	tāmen de	their	Tāmen de shū.			pron
+
+000282	这	zhè	this	Zhè hěn hǎo.			pron
+000283	那	nà	that	Nà shì shū.			pron
+000284	这个	zhè ge	this one	Zhè ge hěn hǎo.			pron
+000285	那个	nà ge	that one	Nà ge bù guì.			pron
+000286	这些	zhèxiē	these	Zhèxiē hěn hǎo.			pron
+000287	那些	nàxiē	those	Nàxiē hěn guì.			pron
+
+000288	自己	zìjǐ	self / oneself	Wǒ zìjǐ qù.			pron
+000289	大家	dàjiā	everyone	Dàjiā hěn máng.			pron
+000290	每个	měi ge	every (one)	Měi ge rén.			pron
+
+000291	了	le	completed action	Tā lái le.			part
+000292	过	guò	experienced	Wǒ qù guò Zhōngguó.			part
+000293	着	zhe	ongoing state	Mén kāi zhe.			part
+
+000294	吗	ma	yes/no question	Nǐ hǎo ma?			part
+000295	呢	ne	contrast / follow-up	Nǐ ne?			part
+000296	吧	ba	suggestion	Wǒmen zǒu ba.			part
+
+000297	的	de	possessive / modifier	Wǒ de shū.			part
+000298	得	de	result complement	Tā zuò de hǎo.			part
+000299	地	de	adverbial marker	Tā mànman de zǒu.			part
