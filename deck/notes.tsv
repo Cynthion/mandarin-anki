@@ -246,3 +246,55 @@ id	hanzi	pinyin	meaning	example	audio	image	tags
 000220	少	shǎo	few / little	Dōngxi hěn shǎo.			quantity adj
 
 000221	可	kě	possible / okay	Kě ma?			utility adj
+
+000222	很	hěn	very	Wǒ hěn hǎo.			degree adv
+000223	非常	fēicháng	extremely	Tā fēicháng máng.			degree adv
+000224	太	tài	too	Tài guì le.			degree adv
+000225	真	zhēn	really	Zhēn hǎo.			degree adv
+000226	有点	yǒudiǎn	a little (negative)	Yǒudiǎn lèi.			degree adv
+000227	一点儿	yìdiǎnr	a little	Wǒ chī yìdiǎnr.			degree adv
+000228	点儿	diǎnr	a bit	Zǒu diǎnr kuài.			degree adv
+000229	多	duō	much / many (adverbial)	Duō hē shuǐ.			degree adv
+
+000230	现在	xiànzài	now	Xiànzài wǒ hěn máng.			time adv
+000231	经常	jīngcháng	often	Wǒ jīngcháng lái.			time adv
+000232	常常	chángcháng	often	Tā chángcháng qù.			time adv
+000233	以前	yǐqián	before	Yǐqián wǒ zài Zhōngguó.			time adv
+000234	以后	yǐhòu	after	Yǐhòu jiàn.			time adv
+000235	刚	gāng	just (now)	Wǒ gāng lái.			time adv
+000236	马上	mǎshàng	immediately	Wǒ mǎshàng qù.			time adv
+
+000237	不	bù	not	Wǒ bù qù.			negation adv
+000238	没	méi	not (past/have)	Wǒ méi qù.			negation adv
+
+000239	都	dōu	all	Wǒmen dōu lái le.			scope adv
+000240	也	yě	also	Wǒ yě qù.			scope adv
+000241	只	zhǐ	only	Wǒ zhǐ yào shuǐ.			scope adv
+
+000242	慢慢	mànman	slowly	Mànman zǒu.			manner adv
+000243	快	kuài	quickly	Kuài zǒu.			manner adv
+000244	一直	yìzhí	continuously	Tā yìzhí gōngzuò.			manner adv
+
+000245	再	zài	again	Wǒ zài qù.			sequence adv
+000246	就	jiù	then / right away	Wǒ jiù lái.			sequence adv
+000247	还	hái	still	Wǒ hái zài zhèr.			sequence adv
+000248	还是	háishì	or (questions)	Nǐ qù háishì bù qù?			question adv
+
+000249	可能	kěnéng	maybe	Tā kěnéng lái.			attitude adv
+000250	一定	yídìng	certainly	Wǒ yídìng qù.			attitude adv
+
+000251	怎么	zěnme	how	Nǐ zěnme qù?			question adv
+000252	多少	duōshǎo	how much / many	Duōshǎo qián?			question adv
+000253	哪里	nǎlǐ	where	Nǐ zài nǎlǐ?			question adv
+000254	哪儿	nǎr	where (spoken)	Nǐ qù nǎr?			question adv
+
+000255	比如	bǐrú	for example	Bǐrú, chá hé kāfēi.			discourse adv
+000256	可是	kěshì	but	Kěshì wǒ hěn máng.			discourse adv
+000257	吧	ba	suggestion	Wǒmen zǒu ba.			particle adv
+000258	呢	ne	contrast / follow-up	Nǐ ne?			particle adv
+
+000259	什么	shénme	what	Nǐ yào shénme?			question
+000260	谁	shéi	who / whom	Shéi lái le?			question
+000261	哪个	nǎ ge	which	Nǎ ge lǎoshī?			question
+000262	几	jǐ	how many (small numbers)	Jǐ gè rén?			question
+000263	吗	ma	yes/no question particle	Nǐ hǎo ma?			question

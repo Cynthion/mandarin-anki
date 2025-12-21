@@ -100,17 +100,11 @@
 .card.adj  .posdots .dot-adj  { display: inline-block; }
 .card.adv  .posdots .dot-adv  { display: inline-block; }
 .card.pron .posdots .dot-pron { display: inline-block; }
-.card.prep .posdots .dot-prep { display: inline-block; }
-.card.conj .posdots .dot-conj { display: inline-block; }
-.card.intj .posdots .dot-intj { display: inline-block; }
-.card.det  .posdots .dot-det  { display: inline-block; }
+.card.part .posdots .dot-part { display: inline-block; }
 
 .card.noun  .posdots { color: #0057B8; }
 .card.verb  .posdots { color: #D60000; }
 .card.adj   .posdots { color: #6A1B9A; }
 .card.adv   .posdots { color: #2E7D32; }
 .card.pron  .posdots { color: #F57C00; }
-.card.prep  .posdots { color: #00838F; }
-.card.conj  .posdots { color: #512DA8; }
-.card.intj  .posdots { color: #B71C1C; }
-.card.det   .posdots { color: #424242; }
+.card.part  .posdots { color: #00838F; }
