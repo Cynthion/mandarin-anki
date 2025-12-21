@@ -1,10 +1,22 @@
 .card {
+  --bg: #ffffff;
+  --fg: #111111;
+  --muted: rgba(0, 0, 0, 0.6);
+
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   text-align: center;
   line-height: 1.35;
   padding: 12px;
-	background: white;
-	color: black;
+
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.nightMode .card {
+  --bg: #121212;
+  --fg: #e6e6e6;
+  --muted: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05);
 }
 
 .hanzi {
@@ -38,7 +50,7 @@
 
 .example .label {
   font-size: 12px;
-  opacity: 0.66;
+  color: var(--muted);
   margin-bottom: 6px;
 }
 
@@ -85,12 +97,12 @@
 .card.intj .posdots .dot-intj { display: inline-block; }
 .card.det  .posdots .dot-det  { display: inline-block; }
 
-.card.noun  .posdots { color: #0057B8; } /* Blau – Nomen */
-.card.verb  .posdots { color: #D60000; } /* Rot – Verben */
-.card.adj   .posdots { color: #6A1B9A; } /* Lila – Adjektive */
-.card.adv   .posdots { color: #2E7D32; } /* Grün – Adverbien */
-.card.pron  .posdots { color: #F57C00; } /* Orange – Pronomen */
-.card.prep  .posdots { color: #00838F; } /* Türkis – Präpositionen */
-.card.conj  .posdots { color: #512DA8; } /* Dunkellila – Konjunktionen */
-.card.intj  .posdots { color: #B71C1C; } /* Dunkelrot – Interjektionen */
-.card.det   .posdots { color: #424242; } /* Grau – Artikel / Determinierer */
+.card.noun  .posdots { color: #0057B8; }
+.card.verb  .posdots { color: #D60000; }
+.card.adj   .posdots { color: #6A1B9A; }
+.card.adv   .posdots { color: #2E7D32; }
+.card.pron  .posdots { color: #F57C00; }
+.card.prep  .posdots { color: #00838F; }
+.card.conj  .posdots { color: #512DA8; }
+.card.intj  .posdots { color: #B71C1C; }
+.card.det   .posdots { color: #424242; }
