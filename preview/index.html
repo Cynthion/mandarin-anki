@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Anki Template Preview</title>
+
+  <link rel="stylesheet" href="../anki/note-type/styling.css" />
+
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; }
+    header { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+    select, button { padding: 8px 10px; border-radius: 10px; border: 1px solid #ddd; background: #fff; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .panel { border: 1px solid #e5e5e5; border-radius: 16px; padding: 16px; }
+    .panel h2 { margin: 0 0 12px; font-size: 14px; color: rgba(0,0,0,.7); letter-spacing: .02em; }
+    .error { white-space: pre-wrap; color: #b00020; margin-top: 16px; }
+    .hint { color: rgba(0,0,0,.65); font-size: 13px; }
+    .night { display:flex; gap:8px; align-items:center; }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Anki Template Preview</strong>
+    <span class="hint">Edits to <code>anki/note-type/*</code> show on refresh.</span>
+
+    <label class="night">
+      <input id="nightMode" type="checkbox" />
+      Night mode
+    </label>
+
+    <label>
+      Note:
+      <select id="noteSelect"></select>
+    </label>
+
+    <button id="reloadBtn" type="button">Reload templates</button>
+  </header>
+
+  <div class="grid">
+    <section class="panel">
+      <h2>Front</h2>
+      <div id="frontHost"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Back</h2>
+      <div id="backHost"></div>
+    </section>
+  </div>
+
+  <div id="error" class="error"></div>
+
+  <script type="module" src="./preview.js"></script>
+</body>
+</html>

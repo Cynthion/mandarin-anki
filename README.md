@@ -5,6 +5,9 @@ This repository contains the **source of truth** for a custom Mandarin Anki deck
 - Notes are stored in a Git-friendly TSV file: `deck/notes.tsv`
 - Card templates + CSS are versioned in Git under: `anki/note-type/`
 - Media (optional) can be stored under `media/` and copied into Anki’s `collection.media`
+- Preview your card templates in `preview/`
+
+<img src="./assets/preview.png" width="600">
 
 ## Design Goals
 
@@ -288,6 +291,39 @@ Recommended:
   - Decks and notes
   - Media files
 
+---
+
+## 10) Template Styling & Live Preview
+
+This repository is not only the **source of truth for note data**, but also the **source of truth for card styling**.
+
+You can fully design, test, and iterate on your Anki card templates **outside of Anki**, using a live preview in VS Code or any browser.
+
+The preview system renders:
+
+- `anki/note-type/front.html`
+- `anki/note-type/back.html`
+- `anki/note-type/style.css`
+
+using **mock note data**, closely matching how Anki renders cards.
+
+This allows you to:
+- adjust layout, spacing, fonts, and colors
+- test POS coloring (`noun`, `verb`, `adj`, etc.)
+- verify conditional blocks (`{{#audio}}`, `{{#image}}`, etc.)
+- preview example sentences and media placement
+
+> Note: Anki-only features like `{{tts ...}}` and `[sound:...]` are intentionally ignored in preview.
+
+Run the preview in the repository root with:
+
+```bash
+npm install
+npm run preview
+```
+
+Then open `http://localhost:5173/preview/` in your browser.
+ 
 ---
 
 ## Troubleshooting

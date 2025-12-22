@@ -1,0 +1,11 @@
+{
+  "name": "mandarin-anki-deck",
+  "private": true,
+  "devDependencies": {
+    "serve": "14.2.5",
+    "prettier": "3.3.3"
+  },
+  "scripts": {
+    "preview": "serve -l 5173"
+  }
+}

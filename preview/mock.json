@@ -1,0 +1,42 @@
+[
+  {
+    "id": "NOUN-20251221-0001",
+    "hanzi": "人",
+    "pinyin": "rén",
+    "meaning": "person",
+    "example": "Tā shì yí gè hěn hǎo de rén.",
+    "audio": "[sound:ATTS NOUN-20251221-0001.mp3]",
+    "image": "",
+    "Tags": "people noun"
+  },
+  {
+    "id": "VERB-20251221-0012",
+    "hanzi": "喝",
+    "pinyin": "hē",
+    "meaning": "to drink",
+    "example": "Wǒ xiànzài xiǎng hē chá.",
+    "audio": "[sound:ATTS VERB-20251221-0012.mp3]",
+    "image": "",
+    "Tags": "daily verb"
+  },
+  {
+    "id": "ADJ-20251221-0014",
+    "hanzi": "漂亮",
+    "pinyin": "piàoliang",
+    "meaning": "beautiful",
+    "example": "Zhè zhāng zhàopiàn hěn piàoliang.",
+    "audio": "[sound:ATTS ADJ-20251221-0014.mp3]",
+    "image": "<img src=\"ni.png\">",
+    "Tags": "appearance adj"
+  },
+  {
+    "id": "ADV-20251221-0009",
+    "hanzi": "现在",
+    "pinyin": "xiànzài",
+    "meaning": "now",
+    "example": "Xiànzài wǒ yào qù xuéxiào.",
+    "audio": "",
+    "image": "",
+    "Tags": "time adv"
+  }
+]
