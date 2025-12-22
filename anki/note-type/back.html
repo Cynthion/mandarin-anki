@@ -2,9 +2,9 @@
   <div class="hanzi small">{{hanzi}}</div>
   <div class="pinyin small">{{pinyin}}</div>
 
-  <div class="meaning">
+  <div class="meaning center">
     {{meaning}}
-    <div class="posdots" aria-hidden="true">
+    <div class="posdots">
       <span class="dot dot-noun"></span>
       <span class="dot dot-verb"></span>
       <span class="dot dot-adj"></span>
@@ -16,22 +16,45 @@
     </div>
   </div>
 
-  {{#example}}
+  {{#audio}}
+    <div class="audio">{{audio}}</div>
+  {{/audio}}
+
+  {{^audio}}
+    <div class="audio">
+      {{tts zh_CN:hanzi}}
+    </div>
+  {{/audio}}
+
+  {{#example-hanzi}}
     <div class="example">
       <div class="label">EXAMPLE</div>
-      <div class="text">{{example}}</div>
-    </div>
-  {{/example}}
-
-  <div class="media">
-    {{#audio}}
-      <div class="audio">{{audio}}</div>
-    {{/audio}}
-
-    {{^audio}}
-      <div class="audio">
-        {{tts zh_CN:hanzi}}
+      <div class="example-hanzi">
+        {{example-hanzi}}
       </div>
-    {{/audio}}
-  </div>
+
+      {{#example-pinyin}}
+        <div class="example-pinyin">
+          {{example-pinyin}}
+        </div>
+      {{/example-pinyin}}
+
+      {{#example-meaning}}
+        <div class="example-meaning">
+          {{example-meaning}}
+        </div>
+      {{/example-meaning}}
+
+      {{#audio-example}}
+        <div class="audio">{{audio-example}}</div>
+      {{/audio-example}}
+
+      {{^audio-example}}
+        <div class="audio">
+          {{tts zh_CN:example-hanzi}}
+        </div>
+      {{/audio-example}}
+    </div>
+  {{/example-hanzi}}
+
 </div>

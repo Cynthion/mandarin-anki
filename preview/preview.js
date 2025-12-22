@@ -1,5 +1,6 @@
 const PATH_FRONT = "../anki/note-type/front.html";
 const PATH_BACK  = "../anki/note-type/back.html";
+const PATH_STYLE = "../anki/note-type/styling.css";
 
 const AUDIO_BASE = "../media/audio/";
 const IMAGE_BASE = "../media/images/";
@@ -96,6 +97,40 @@ function setNightMode(enabled) {
   document.body.classList.toggle("nightMode", enabled);
 }
 
+/**
+ * Normalizes a note so the preview can work with either:
+ * - hyphenated TSV-style keys: "example-hanzi"
+ * - camelCase keys: "exampleHanzi"
+ * Also ensures Tags exists for templates using {{Tags}}.
+ */
+function normalizeNoteForPreview(note) {
+  const n = { ...note };
+
+  // Tags: template expects {{Tags}} but schema uses "tags"
+  const tags = (n.Tags ?? n.tags ?? "").toString();
+  n.Tags = tags;
+  n.tags = tags;
+
+  // Make sure optional fields exist as strings (avoid "undefined" showing up)
+  const ensureString = (key) => {
+    if (n[key] == null) n[key] = "";
+    else n[key] = n[key].toString();
+  };
+
+  ensureString("id");
+  ensureString("hanzi");
+  ensureString("pinyin");
+  ensureString("meaning");
+  ensureString("example-hanzi");
+  ensureString("example-pinyin");
+  ensureString("example-meaning");
+  ensureString("audio");
+  ensureString("audio-example");
+  ensureString("image");
+
+  return n;
+}
+
 async function main() {
   const noteSelect = document.getElementById("noteSelect");
   const frontHost = document.getElementById("frontHost");
@@ -110,8 +145,9 @@ async function main() {
 
   // Fill dropdown
   noteSelect.innerHTML = "";
-  notes.forEach((n, idx) => {
-    const label = `${n.id ?? `note-${idx+1}`} — ${n.hanzi ?? ""} ${n.pinyin ?? ""}`.trim();
+  notes.forEach((raw, idx) => {
+    const n = normalizeNoteForPreview(raw);
+    const label = `${n.id || `note-${idx+1}`} — ${n.hanzi || ""} ${n.pinyin || ""}`.trim();
     const opt = document.createElement("option");
     opt.value = String(idx);
     opt.textContent = label;
@@ -121,13 +157,25 @@ async function main() {
   let frontTpl = await loadText(PATH_FRONT);
   let backTpl = await loadText(PATH_BACK);
 
+  function reloadStylesheet(linkId = "ankiStyle") {
+    const link = document.getElementById(linkId);
+    if (!link) return;
+
+    const baseHref = link.getAttribute("href") || PATH_STYLE;
+
+    // Remove any previous cache-buster query
+    const clean = baseHref.split("?")[0];
+
+    // Add a fresh cache-buster
+    link.href = `${clean}?v=${Date.now()}`;
+  }
+
   function renderSelected() {
     setError("");
     const idx = Number(noteSelect.value || "0");
-    const note = notes[idx] ?? notes[0];
+    const raw = notes[idx] ?? notes[0];
 
-    // Make sure Tags exists (your template uses {{Tags}})
-    const data = { ...note, Tags: (note.Tags ?? note.tags ?? "").toString() };
+    const data = normalizeNoteForPreview(raw);
 
     frontHost.innerHTML = renderTemplate(frontTpl, data);
     backHost.innerHTML = renderTemplate(backTpl, data);
@@ -140,6 +188,10 @@ async function main() {
       setError("");
       frontTpl = await loadText(PATH_FRONT);
       backTpl = await loadText(PATH_BACK);
+
+      // refresh CSS too
+      reloadStylesheet();
+
       renderSelected();
     } catch (e) {
       setError(e?.stack || String(e));

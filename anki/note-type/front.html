@@ -1,9 +1,9 @@
 <div class="card {{Tags}}">
   <div class="hanzi">{{hanzi}}</div>
   
-  <div class="pinyin">
+  <div class="pinyin center">
     {{pinyin}}
-    <div class="posdots" aria-hidden="true">
+    <div class="posdots">
       <span class="dot dot-noun"></span>
       <span class="dot dot-verb"></span>
       <span class="dot dot-adj"></span>
@@ -15,17 +15,15 @@
     </div>
   </div>
 
-  <div class="media">
-    {{#audio}}
-      <div class="audio">{{audio}}</div>
-    {{/audio}}
+  {{#audio}}
+    <div class="audio">{{audio}}</div>
+  {{/audio}}
 
-    {{^audio}}
-      <div class="audio">
-        {{tts zh_CN:hanzi}}
-      </div>
-    {{/audio}}
-  </div>
+  {{^audio}}
+    <div class="audio">
+      {{tts zh_CN:hanzi}}
+    </div>
+  {{/audio}}
 
   {{#image}}
     <div class="image">{{image}}</div>
