@@ -1,0 +1,57 @@
+Create ONE single PNG sprite sheet for Anki flashcards.
+
+HARD REQUIREMENTS (must match exactly):
+- Pixel size: 1424×1144px EXACT (no extra padding, no cropping)
+- Grid: 5 columns × 4 rows
+- Tile size: 256×256px
+- Gutter between tiles: 24px (horizontal AND vertical), pure #FFFFFF
+- Outer margin around the entire grid: 24px, pure #FFFFFF
+- Background everywhere is pure white #FFFFFF
+
+ABSOLUTELY FORBIDDEN (do NOT add these):
+- No outer border/frame around the whole sheet
+- No cell borders, no grid lines, no separators, no outlines
+- No shadows/gradients/lines in gutters or margins (must be flat #FFFFFF)
+- No text, no numbers, no labels, no watermark
+
+ART STYLE (keep consistent across future sheets):
+- clean minimal digital illustration, friendly, modern
+- soft shading, simple shapes, slightly rounded forms
+- consistent lighting direction (top-left)
+- centered subject, big and readable
+- keep a safe border inside each tile (don’t touch tile edges)
+
+BATCH LABEL: people_family
+
+TILES (in exact order, left-to-right, top-to-bottom):
+01. person (人)
+02. Chinese person (中国人)
+03. father (爸爸)
+04. mother (妈妈)
+05. grandfather (祖父)
+06. son (儿子)
+07. daughter (女儿)
+08. child (孩子)
+09. friend (朋友)
+10. boyfriend (男朋友)
+11. girlfriend (女朋友)
+12. spouse (爱人)
+13. aunt (阿姨)
+14. older brother (哥哥)
+15. younger brother (弟弟)
+16. older sister (姐姐)
+17. younger sister (妹妹)
+
+---
+
+Optional config (FYI / debugging only):
+{
+  "TILE": 256,
+  "GUTTER": 24,
+  "MARGIN": 24,
+  "cols": 5,
+  "rows": 4,
+  "count": 17,
+  "expected_width": 1424,
+  "expected_height": 1144
+}

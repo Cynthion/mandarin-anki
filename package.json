@@ -6,6 +6,8 @@
     "prettier": "3.3.3"
   },
   "scripts": {
-    "preview": "serve -l 5173"
+    "preview": "serve -l 5173",
+    "sprite:prompt": "node scripts/make_sprite_prompt.mjs image-data.tsv people_family > sprite-prompt.txt",
+    "sprite:slice": "python scripts/slice_sprite.py --sprite media/sprites/people_family.png --tsv image-data.tsv --out media/images --tile_out 256 --overwrite --debug_boxes media/sprites/people_family.debug.png"
   }
 }
