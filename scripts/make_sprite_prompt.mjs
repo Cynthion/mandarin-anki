@@ -40,7 +40,6 @@ function computeGrid(n, maxCols = 6) {
   let rows = Math.ceil(n / cols);
 
   // If last row is extremely empty, try shifting to fewer columns (more compact)
-  // Example: n=17, sqrt=>5, fine. n=10 -> 4 cols => 3 rows (ok)
   while (cols > 1 && (rows - 1) * cols >= n) {
     rows -= 1;
   }
@@ -64,7 +63,14 @@ function buildPrompt({
   expectedWidth,
   expectedHeight,
   subjects,
+  safePad,
+  maxFill,
+  gutterGuard, // extra “no-ink” band inside each tile near edges
+  subjectTargetPct,
 }) {
+  const contentBox = `${maxFill}×${maxFill}px`;
+  const contentPct = `${Math.round((maxFill / tile) * 100)}%`;
+
   return `
 Create EXACTLY ONE PNG sprite sheet image.
 
@@ -82,27 +88,53 @@ INVISIBLE GRID LAYOUT (DO NOT DRAW THE GRID):
 - Background everywhere (including gutters and margins) is flat pure white #FFFFFF.
 - IMPORTANT: The grid is only for placement; do NOT draw borders, lines, boxes, frames, or separators.
 
+EXTREME SPACING REQUIREMENT (THIS IS CRITICAL — DO NOT VIOLATE):
+- The gutters (${gutter}px) MUST remain completely empty white space (#FFFFFF).
+- NOTHING from a subject may enter the gutters: no outline, no shading, no anti-aliasing, no whiskers, no tails, no “soft edges”.
+- Inside EACH tile there must be a DOUBLE SAFETY ZONE:
+  1) SAFE PAD: Keep at least ${safePad}px of pure white padding INSIDE the tile on all 4 sides.
+  2) GUTTER GUARD: Additionally keep a further ${gutterGuard}px “no-ink” band INSIDE the tile edges.
+- This means the entire subject must fit inside a centered ${contentBox} content box (${contentPct} of the tile).
+- If uncertain, make subjects smaller. Whitespace is REQUIRED for correct slicing.
+
+VERY IMPORTANT ANTI-OVERLAP RULE:
+- The subject silhouette must not touch or approach the tile edge.
+- Target subject size is only ${subjectTargetPct}% of tile width/height (NOT 85%).
+- Prefer smaller + well-centered over bigger.
+
+GRID-LINE PREVENTION (READ CAREFULLY):
+- Do NOT draw ANY grid lines, even faint.
+- Do NOT draw a table, separators, dividers, guides, frames, borders, crop marks, bleed marks.
+- Do NOT outline tiles.
+- Do NOT add shading/noise in gutters or margins; they must be perfectly flat #FFFFFF.
+
 FORBIDDEN (DO NOT INCLUDE ANY OF THESE):
-- No table/grid lines, no tile borders, no separators, no outlines, no strokes
+- No table/grid lines, no tile borders, no separators, no outlines, no strokes in gutters/margins
 - No outer border/frame around the whole sheet
 - No gradients or shadows in gutters/margins (must be perfectly flat #FFFFFF)
 - No text, no numbers, no labels, no watermark, no logo
 
-ART STYLE (lock this style for all future sheets):
-- clean minimal digital illustration, friendly, modern
-- soft shading, simple shapes, slightly rounded forms
-- consistent lighting from top-left
-- consistent palette across the whole sheet
-- subtle shadow ONLY under the subject (inside the tile), never in gutters/margins
+ART STYLE (adult comic-based, keep as-is):
+- modern editorial comic illustration for adults (NOT childish, NOT kawaii)
+- clean inked linework: thin-to-medium uniform outlines on the subject only
+- subtle cel shading (2–3 tone blocks), minimal gradients
+- muted, mature palette; avoid neon / toy-like colors
+- consistent lighting direction (top-left), subtle
+
+TRANSPARENCY-SAFE RULES:
+- absolutely NO drop shadow below or around the subject
+- NO ground shadow, NO contact shadow, NO ambient shadow
+- NO glow, NO halo, NO vignette
+- background is pure white #FFFFFF
+- do NOT use pure white (#FFFFFF) inside the subject (use lightly tinted highlights instead)
 
 COMPOSITION (strict, for EVERY tile):
 - One main subject per tile.
 - Subject must be centered horizontally AND vertically.
 - Subject scale must be consistent across tiles.
-- Subject should fill about 85% of tile height and about 85% of tile width.
-- Keep at least 24px empty white padding inside each tile (nothing touches edges).
-- Use consistent portrait framing for people: head + shoulders, same baseline and head position.
-- If you add small icons (e.g., a heart), they must remain near the subject and inside the centered composition area (not near tile edges).
+- Subject MUST stay entirely inside the centered ${contentBox} content box.
+- The tile edges must remain pure white with no marks, no outline, no shading.
+- Keep silhouettes compact; avoid thin protrusions that might approach edges.
 
 BATCH LABEL (for humans only, not drawn): ${label}
 
@@ -119,6 +151,29 @@ async function main() {
   const TILE = 256;
   const GUTTER = 24;
   const MARGIN = 24;
+
+  /**
+   * IMPORTANT CHANGE:
+   * The model is “cheating” by letting outlines / anti-aliasing drift into the gutters.
+   * So we make the *default* subject smaller and add a second buffer band.
+   *
+   * SAFE_PAD: inner white padding inside each tile
+   * GUTTER_GUARD: extra band to ensure nothing goes near tile edges
+   *
+   * Together they force a clearly-visible whitespace gap even if the model draws a bit large.
+   */
+  const SAFE_PAD = Number(process.env.SPRITE_SAFE_PAD ?? "56"); // was 44; now stricter (52–72 works well)
+  const GUTTER_GUARD = Number(process.env.SPRITE_GUTTER_GUARD ?? "12"); // extra no-ink band inside edges
+
+  const safePad = Math.max(24, Math.min(96, SAFE_PAD));
+  const gutterGuard = Math.max(0, Math.min(32, GUTTER_GUARD));
+
+  // effective pad = safePad + gutterGuard
+  const effectivePad = safePad + gutterGuard;
+  const maxFill = Math.max(64, TILE - 2 * effectivePad);
+
+  // Tell the generator explicitly to aim smaller than before (was 85%)
+  const subjectTargetPct = Math.max(55, Math.min(78, Math.round((maxFill / TILE) * 100)));
 
   // Optional: allow overriding maxCols for layout via env var (nice for big batches)
   const MAX_COLS = Number(process.env.SPRITE_MAX_COLS ?? "6") || 6;
@@ -153,25 +208,30 @@ async function main() {
     expectedWidth: expected_width,
     expectedHeight: expected_height,
     subjects,
+    safePad,
+    maxFill,
+    gutterGuard,
+    subjectTargetPct,
   });
 
-  // Print prompt
   console.log(prompt);
 
-  // Print machine-readable layout config (useful for slicing/debugging/logs)
   const config = {
     TILE,
     GUTTER,
     MARGIN,
+    SAFE_PAD: safePad,
+    GUTTER_GUARD: gutterGuard,
+    EFFECTIVE_PAD: effectivePad,
+    MAX_FILL: maxFill,
+    SUBJECT_TARGET_PCT: subjectTargetPct,
     cols,
     rows: gridRows,
     count: rows.length,
     expected_width,
     expected_height,
   };
-
-  console.log("\n---\n");
-  console.log("SPRITE_LAYOUT_CONFIG_JSON:");
+  console.log("\n---\nSPRITE_LAYOUT_CONFIG_JSON:");
   console.log(JSON.stringify(config, null, 2));
 }
 
