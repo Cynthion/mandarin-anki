@@ -1,7 +1,0 @@
-id
-hanzi
-pinyin
-meaning
-example
-audio
-image
