@@ -69,7 +69,7 @@ You only need to do this **once per Anki profile**.
 
 ---
 
-## 1) Create a Custom Note Type
+## Create a Custom Note Type
 
 1. Open Anki
 2. `Tools → Manage Note Types`
@@ -82,7 +82,7 @@ You only need to do this **once per Anki profile**.
 
 ---
 
-## 2) Configure Fields
+## Configure Fields
 
 With your note type selected:
 
@@ -108,7 +108,7 @@ Click **Save**.
 
 ---
 
-## 3) Configure Card Templates + Styling
+## Configure Card Templates + Styling
 
 1. Select your note type
 2. Click **Cards…**
@@ -122,7 +122,7 @@ Click **Save**.
 
 ---
 
-## 4) System TTS Fallback
+## System TTS Fallback
 
 The templates include a fallback when no audio file exists:
 
@@ -138,7 +138,7 @@ The templates include a fallback when no audio file exists:
 
 ---
 
-## 5) Import the TSV Deck
+## Import the TSV Deck
 
 1. In Anki: `File → Import`
 2. Select `deck/notes.tsv`
@@ -180,7 +180,7 @@ Click **Import**.
 
 ---
 
-## 6) Re-importing Changes Safely
+## Re-importing Changes Safely
 
 Safe changes:
 
@@ -200,7 +200,7 @@ Your review history and scheduling will remain intact.
 
 ---
 
-## 7) Media (Audio & Images)
+## Media (Audio & Images)
 
 ### Repo layout (optional)
 
@@ -234,7 +234,7 @@ This repo stores media under:
 
 Use the provided sync script to copy (or symlink) repo media into Anki’s local `collection.media` folder.
 
-#### 1) Find your Anki `collection.media` path
+#### Find your Anki `collection.media` path
 
 - **macOS:**
   - `~/Library/Application Support/Anki2/<Profile>/collection.media`
@@ -244,7 +244,7 @@ Use the provided sync script to copy (or symlink) repo media into Anki’s local
 
 > `<Profile>` is usually `User 1` unless you renamed it.
 
-#### 2) Run the sync script (copy mode, safest)
+#### Run the sync script (copy mode, safest)
 
 From the repo root:
 
@@ -266,7 +266,22 @@ This copies new files from media/audio/ and media/images/ without overwriting ex
 
 ---
 
-## 8) Generating Images for Cards (Short Guide)
+## Optional: Generate Audio with AwesomeTTS
+
+If you want iOS-compatible audio, generate mp3 files and write them into the `audio` field.
+
+Recommended:
+
+- Configure `AwesomeTTS` to name files using the `id` field, resulting in:
+  - `collection.media/<id>.mp3` (`Tools → AwesomeTTS → MP3 → Filename Template → {{id}}.mp3`)
+  - `notes.tsv`: `audio` field like `[sound:ATTS <id>.mp3]`
+
+<img src="./assets/awesometts-settings.png" width="300">
+<img src="./assets/awesometts-add-audio.png" width="300">
+
+---
+
+## Optional: Generate Images with Generative AI
 
 This repo supports batch-generated, consistent card images using a sprite-sheet workflow.
 
@@ -329,34 +344,7 @@ Images are optional and only shown if present.
 
 ---
 
-## 8) Optional: Generate Audio with AwesomeTTS
-
-If you want iOS-compatible audio, generate mp3 files and write them into the `audio` field.
-
-Recommended:
-
-- Configure `AwesomeTTS` to name files using the `id` field, resulting in:
-  - `collection.media/<id>.mp3` (`Tools → AwesomeTTS → MP3 → Filename Template → {{id}}.mp3`)
-  - `notes.tsv`: `audio` field like `[sound:ATTS <id>.mp3]`
-
-<img src="./assets/awesometts-settings.png" width="300">
-<img src="./assets/awesometts-add-audio.png" width="300">
-
----
-
-## 9) AnkiWeb Sync (Across Devices)
-
-- Create a free AnkiWeb account
-- Sync from Anki Desktop
-- Log in on mobile devices and sync
-- AnkiWeb syncs:
-  - Review progress
-  - Decks and notes
-  - Media files
-
----
-
-## 10) Template Styling & Live Preview
+## Optional: Template Styling & Live Preview
 
 This repository is not only the **source of truth for note data**, but also the **source of truth for card styling**.
 
@@ -387,6 +375,18 @@ npm run preview
 
 Then open `http://localhost:5173/preview/` in your browser.
  
+---
+
+## AnkiWeb Sync (Across Devices)
+
+- Create a free AnkiWeb account
+- Sync from Anki Desktop
+- Log in on mobile devices and sync
+- AnkiWeb syncs:
+  - Review progress
+  - Decks and notes
+  - Media files
+
 ---
 
 ## Troubleshooting
