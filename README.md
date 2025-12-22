@@ -266,6 +266,69 @@ This copies new files from media/audio/ and media/images/ without overwriting ex
 
 ---
 
+## 8) Generating Images for Cards (Short Guide)
+
+This repo supports batch-generated, consistent card images using a sprite-sheet workflow.
+
+### Overview
+
+- List the notes you want images for in `image-data.tsv`
+- Generate one sprite sheet with ChatGPT
+- Automatically slice it into transparent 256×256 PNGs
+- Images end up in media/images/, named by note ID
+
+1) Prepare `image-data.tsv`
+
+Add one line per note (only the first column is required):
+
+```tsv
+NOUN-20251221-0001	人	rén	person
+NOUN-20251221-0002	中国人	Zhōngguó rén	Chinese person
+NOUN-20251221-0003	爸爸	bàba	father
+```
+
+Order matters: images are sliced in this order.
+
+2) Generate the Sprite Prompt
+
+`npm run sprite:prompt`
+
+- This creates sprite-prompt.txt.
+- Copy the file contents
+- Paste it into ChatGPT (without the JSON debug info)
+- Generate one single PNG sprite sheet
+- Save it as `media/sprites/<image>.png`
+
+3) Slice the Sprite into Images
+
+`npm run sprite:slice`
+
+This will:
+
+- Detect the grid automatically
+- Crop each tile
+- Remove the white background
+- Fix edge halos
+- Save images as transparent PNGs: `media/images/<NOTE_ID>.png`
+- A debug image with crop boxes is written to: `media/sprites/<NOTE_ID>.debug.png`
+
+4) Use Images in Cards
+
+Reference images in the `notes.tsv` like this:
+
+<img src="NOUN-20251221-0001.png">
+
+Images are optional and only shown if present.
+
+5) Notes
+
+- The art style stays consistent across batches
+- You can regenerate sprites anytime
+- Existing images are overwritten safely
+- Works across light/dark Anki themes
+
+---
+
 ## 8) Optional: Generate Audio with AwesomeTTS
 
 If you want iOS-compatible audio, generate mp3 files and write them into the `audio` field.
