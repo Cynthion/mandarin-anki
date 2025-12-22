@@ -46,6 +46,7 @@ ART STYLE (adult comic-based, keep as-is):
 - subtle cel shading (2–3 tone blocks), minimal gradients
 - muted, mature palette; avoid neon / toy-like colors
 - consistent lighting direction (top-left), subtle
+- no shadows below or around the subject
 
 TRANSPARENCY-SAFE RULES:
 - absolutely NO drop shadow below or around the subject
