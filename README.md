@@ -155,16 +155,19 @@ In the import dialog:
 
 Map TSV columns like this:
 
-| TSV Column | Map to   |
-|------------|----------|
-| id         | id       |
-| hanzi      | hanzi    |
-| pinyin     | pinyin   |
-| meaning    | meaning  |
-| example    | example  |
-| audio      | audio    |
-| image      | image    |
-| tags       | **Tags** |
+| TSV Column      | Map to          |
+|-----------------|-----------------|
+| id              | id              |
+| hanzi           | hanzi           |
+| pinyin          | pinyin          |
+| meaning         | meaning         |
+| example-hanzi   | example-hanzi   |
+| example-pinyin  | example-pinyin  |
+| example-meaning | example-meaning |
+| audio           | audio           |
+| audio-example   | audio-example   |
+| image           | image           |
+| tags            | **Tags**        |
 
 ✅ Important:
 

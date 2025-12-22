@@ -6,10 +6,13 @@
 2. hanzi
 3. pinyin
 4. meaning
-5. example
-6. audio (optional, [sound:xxx.mp3])
-7. image (optional, HTML `<img>`)
-8. tags (space-separated, mapped to Anki tags)
+5. example-hanzi
+6. example-pinyin
+7. example-meaning
+8. audio (optional, [sound:<id>.mp3])
+9. audio-example (optional, [sound:<id>-ex.mp3])
+10. image (optional, HTML `<img>`)
+11. tags (space-separated, mapped to Anki tags)
 
 ## Rules
 

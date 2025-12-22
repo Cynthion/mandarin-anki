@@ -12,32 +12,43 @@ Copilot must follow these rules when generating or editing content.
 
 ## 1) Source of truth
 
-- `deck/notes.tsv` is the source of truth for note content.
-- Do not reorder, renumber, or reuse IDs unless explicitly instructed.
-- Changes should be stable and should not create duplicates.
+- `deck/notes.tsv` is the single source of truth for note content.
+- Never reorder, renumber, or reuse IDs unless explicitly instructed.
+- Changes must be stable and must not create duplicates.
 
 ---
 
 ## 2) TSV format (strict)
 
-`deck/notes.tsv` columns are exactly:
+`deck/notes.tsv` columns are **exactly**:
 
-id  hanzi pinyin  meaning example audio image tags
+1. `id`               (unique stable identifier)
+2. `hanzi`            (simplified Chinese)
+3. `pinyin`           (with tone marks)
+4. `meaning`          (English)
+5. `example-hanzi`    (example sentence in hanzi)
+6. `example-pinyin`   (example sentence in pinyin)
+7. `example-meaning`  (example sentence meaning)
+8. `audio`            (from hanzi)
+9. `audio-example`    (from example-hanzi)
+10. `image`           (image field for Anki, optional)
+11. `tags`            (space-separated tags for Anki)
 
 Rules:
 
-- Tab-separated values only (TSV). No commas/semicolons as separators.
-- Keep a single header row.
-- Every data row must have exactly **8 tab separators** (9 fields total).
-- Do not introduce quotes around fields.
-- Avoid trailing spaces.
-- Blank lines are allowed for human readability, but not required.
+- Tab-separated values only (TSV). No commas or semicolons as separators.
+- Exactly **10 tab separators** per data row (11 fields total).
+- One header row at the top.
+- No quotes around fields.
+- No trailing spaces.
+- Empty fields are allowed but must still be present.
+- Blank lines are allowed for human readability.
 
 ---
 
 ## 3) ID policy (critical)
 
-IDs must be unique and stable forever.
+IDs must be **unique and stable forever**.
 
 ### Canonical ID format
 
