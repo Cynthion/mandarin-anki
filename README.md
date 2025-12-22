@@ -270,6 +270,9 @@ Recommended:
   - `collection.media/<id>.mp3` (`Tools → AwesomeTTS → MP3 → Filename Template → {{id}}.mp3`)
   - `notes.tsv`: `audio` field like `[sound:ATTS <id>.mp3]`
 
+<img src="./assets/awesometts-settings.png" width="300">
+<img src="./assets/awesometts-add-audio.png" width="300">
+
 ---
 
 ## 9) AnkiWeb Sync (Across Devices)
