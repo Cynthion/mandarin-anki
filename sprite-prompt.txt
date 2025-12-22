@@ -1,29 +1,44 @@
-Create ONE single PNG sprite sheet for Anki flashcards.
+Create EXACTLY ONE PNG sprite sheet image.
 
-HARD REQUIREMENTS (must match exactly):
-- Pixel size: 1424×1144px EXACT (no extra padding, no cropping)
-- Grid: 5 columns × 4 rows
-- Tile size: 256×256px
-- Gutter between tiles: 24px (horizontal AND vertical), pure #FFFFFF
-- Outer margin around the entire grid: 24px, pure #FFFFFF
-- Background everywhere is pure white #FFFFFF
+CANVAS SIZE (ABSOLUTE, MUST MATCH EXACTLY):
+- The final PNG must be exactly 1424×1144 pixels.
+- Do NOT add any extra padding, border, frame, shadow, or whitespace outside this canvas.
+- Do NOT crop smaller than this size. Do NOT export larger than this size.
 
-ABSOLUTELY FORBIDDEN (do NOT add these):
+INVISIBLE GRID LAYOUT (DO NOT DRAW THE GRID):
+- Grid is 5 columns × 4 rows.
+- Each tile is exactly 256×256px.
+- Horizontal gutter between tiles is exactly 24px, pure #FFFFFF.
+- Vertical gutter between tiles is exactly 24px, pure #FFFFFF.
+- Outer margin around the entire grid is exactly 24px on all 4 sides, pure #FFFFFF.
+- Background everywhere (including gutters and margins) is flat pure white #FFFFFF.
+- IMPORTANT: The grid is only for placement; do NOT draw borders, lines, boxes, frames, or separators.
+
+FORBIDDEN (DO NOT INCLUDE ANY OF THESE):
+- No table/grid lines, no tile borders, no separators, no outlines, no strokes
 - No outer border/frame around the whole sheet
-- No cell borders, no grid lines, no separators, no outlines
-- No shadows/gradients/lines in gutters or margins (must be flat #FFFFFF)
-- No text, no numbers, no labels, no watermark
+- No gradients or shadows in gutters/margins (must be perfectly flat #FFFFFF)
+- No text, no numbers, no labels, no watermark, no logo
 
-ART STYLE (keep consistent across future sheets):
+ART STYLE (lock this style for all future sheets):
 - clean minimal digital illustration, friendly, modern
 - soft shading, simple shapes, slightly rounded forms
-- consistent lighting direction (top-left)
-- centered subject, big and readable
-- keep a safe border inside each tile (don’t touch tile edges)
+- consistent lighting from top-left
+- consistent palette across the whole sheet
+- subtle shadow ONLY under the subject (inside the tile), never in gutters/margins
 
-BATCH LABEL: people_family
+COMPOSITION (strict, for EVERY tile):
+- One main subject per tile.
+- Subject must be centered horizontally AND vertically.
+- Subject scale must be consistent across tiles.
+- Subject should fill about 85% of tile height and about 85% of tile width.
+- Keep at least 24px empty white padding inside each tile (nothing touches edges).
+- Use consistent portrait framing for people: head + shoulders, same baseline and head position.
+- If you add small icons (e.g., a heart), they must remain near the subject and inside the centered composition area (not near tile edges).
 
-TILES (in exact order, left-to-right, top-to-bottom):
+BATCH LABEL (for humans only, not drawn): people_family
+
+TILES (exact order, left-to-right then top-to-bottom):
 01. person (人)
 02. Chinese person (中国人)
 03. father (爸爸)
@@ -44,7 +59,7 @@ TILES (in exact order, left-to-right, top-to-bottom):
 
 ---
 
-Optional config (FYI / debugging only):
+SPRITE_LAYOUT_CONFIG_JSON:
 {
   "TILE": 256,
   "GUTTER": 24,
