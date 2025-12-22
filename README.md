@@ -246,23 +246,27 @@ Use the provided sync script to copy (or symlink) repo media into Anki’s local
 
 #### Run the sync script (copy mode, safest)
 
+Copy new files from `media/audio/` and `media/images/` without overwriting existing media.
+
 From the repo root:
 
+**npm Scripts:**
+
+```bash
+npm run anki:sync-media:mac
+npm run anki:sync-media:windows
+```
 **macOS / Linux (Terminal):**
 
 ```bash
-python3 scripts/sync_anki_media.py \
-  --anki-media "$HOME/Library/Application Support/Anki2/User 1/collection.media"
+python3 scripts/sync_media_to_anki.py --anki-media "$HOME/Library/Application Support/Anki2/User 1/collection.media"
 ```
 
 **Windows (PowerShell):**
 
 ```powershell
-python scripts\sync_anki_media.py `
-  --anki-media "$env:APPDATA\Anki2\User 1\collection.media"
+python scripts\sync_media_to_anki.py --anki-media "$env:APPDATA\Anki2\User 1\collection.media"
 ```
-
-This copies new files from media/audio/ and media/images/ without overwriting existing media.
 
 ---
 
@@ -294,6 +298,7 @@ This repo supports batch-generated, consistent card images using a sprite-sheet 
 
 1) Prepare `image-data.tsv`
 
+This should be done by categories, e.g. `people_family`, `animals`, etc.
 Add one line per note (only the first column is required):
 
 ```tsv
@@ -306,15 +311,19 @@ Order matters: images are sliced in this order.
 
 2) Generate the Sprite Prompt
 
+Update the category name in the `sprite:prompt` script if needed, e.g. `people_family`, then run:
+
 `npm run sprite:prompt`
 
-- This creates sprite-prompt.txt.
+- This creates `sprite-prompt.txt`
 - Copy the file contents
 - Paste it into ChatGPT (without the JSON debug info)
 - Generate one single PNG sprite sheet
-- Save it as `media/sprites/<image>.png`
+- Save it with the category as name, e.g.`media/sprites/people_family.png`
 
 3) Slice the Sprite into Images
+
+Update the image name in the `sprite:slice` script if needed, e.g. `media/sprites/people_family.png`, then run:
 
 `npm run sprite:slice`
 
@@ -327,15 +336,19 @@ This will:
 - Save images as transparent PNGs: `media/images/<NOTE_ID>.png`
 - A debug image with crop boxes is written to: `media/sprites/<NOTE_ID>.debug.png`
 
-4) Use Images in Cards
+4) Apply Images to Notes
 
-Reference images in the `notes.tsv` like this:
+Automatically add `<img ...>` tags to the `image` field in `deck/notes.tsv` by running:
 
-<img src="NOUN-20251221-0001.png">
+`npm run sprite:apply-images`
 
-Images are optional and only shown if present.
+5) Sync Media to Anki
 
-5) Notes
+Run the media sync script from above to copy new images into Anki’s `collection.media/`.
+
+`npm run anki:sync-media`
+
+6) Notes
 
 - The art style stays consistent across batches
 - You can regenerate sprites anytime
