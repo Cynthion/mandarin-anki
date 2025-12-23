@@ -311,8 +311,6 @@ Order matters: images are sliced in this order.
 
 2) Generate the Sprite Prompt
 
-Update the category name in the `sprite:prompt` script if needed, e.g. `people_family`, then run:
-
 `npm run sprite:prompt`
 
 - This creates `sprite-prompt.txt`
@@ -321,7 +319,7 @@ Update the category name in the `sprite:prompt` script if needed, e.g. `people_f
 - Generate one single PNG sprite sheet
 - Save it with the category as name, e.g.`media/sprites/people_family.png`
 
-3) Slice the Sprite into Images
+1) Slice the Sprite into Images
 
 Update the image name in the `sprite:slice` script if needed, e.g. `media/sprites/people_family.png`, then run:
 

@@ -1,12 +1,12 @@
 Create EXACTLY ONE PNG sprite sheet image.
 
 CANVAS SIZE (ABSOLUTE, MUST MATCH EXACTLY):
-- The final PNG must be exactly 1424×1144 pixels.
+- The final PNG must be exactly 1144×864 pixels.
 - Do NOT add any extra padding, border, frame, shadow, or whitespace outside this canvas.
 - Do NOT crop smaller than this size. Do NOT export larger than this size.
 
 INVISIBLE GRID LAYOUT (DO NOT DRAW THE GRID):
-- Grid is 5 columns × 4 rows.
+- Grid is 4 columns × 3 rows.
 - Each tile is exactly 256×256px.
 - Horizontal gutter between tiles is exactly 24px, pure #FFFFFF.
 - Vertical gutter between tiles is exactly 24px, pure #FFFFFF.
@@ -63,27 +63,20 @@ COMPOSITION (strict, for EVERY tile):
 - The tile edges must remain pure white with no marks, no outline, no shading.
 - Keep silhouettes compact; avoid thin protrusions that might approach edges.
 
-BATCH LABEL (for humans only, not drawn): animals
+BATCH LABEL (for humans only, not drawn): batch
 
 TILES (exact order, left-to-right then top-to-bottom):
-01. dragon (龙)
-02. mouse (老鼠)
-03. cat (猫)
-04. dog (狗)
-05. pig (猪)
-06. cow (牛)
-07. tiger (老虎)
-08. horse (马)
-09. sheep (羊)
-10. monkey (猴子)
-11. chicken (鸡)
-12. bear (熊)
-13. bee (蜜蜂)
-14. bird (鸟)
-15. duck (鸭子)
-16. panda (熊猫)
-17. frog (青蛙)
-18. rabbit (兔子)
+01. China (中国)
+02. USA (美国)
+03. Germany (德国)
+04. Japan (日本)
+05. Asia (亚洲)
+06. Europe (欧洲)
+07. Africa (非洲)
+08. America (美洲)
+09. continent (州)
+10. Zurich (苏黎世)
+11. Basel (巴塞尔)
 
 ---
 SPRITE_LAYOUT_CONFIG_JSON:
@@ -96,9 +89,9 @@ SPRITE_LAYOUT_CONFIG_JSON:
   "EFFECTIVE_PAD": 68,
   "MAX_FILL": 120,
   "SUBJECT_TARGET_PCT": 55,
-  "cols": 5,
-  "rows": 4,
-  "count": 18,
-  "expected_width": 1424,
-  "expected_height": 1144
+  "cols": 4,
+  "rows": 3,
+  "count": 11,
+  "expected_width": 1144,
+  "expected_height": 864
 }
