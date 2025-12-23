@@ -8,7 +8,7 @@
   "scripts": {
     "preview": "serve -l 5173",
     "sprite:prompt": "node scripts/make_sprite_prompt.mjs image-data.tsv > sprite-prompt.txt",
-    "sprite:slice": "python scripts/slice_sprite.py --sprite media/sprites/geography.png --tsv image-data.tsv --out media/images --tile_out 256 --overwrite --debug_boxes media/sprites/geography.debug.png",
+    "sprite:slice": "python scripts/slice_sprite.py --sprite media/sprites/places.png --tsv image-data.tsv --out media/images --tile_out 256 --overwrite --debug_boxes media/sprites/output.debug.png",
     "sprite:apply-images": "node scripts/apply_images_to_notes.mjs --notes deck/notes.tsv --imageData image-data.tsv --imagesDir media/images",
     "anki:sync-media:mac": "python3 scripts/sync_media_to_anki.py --anki-media \"$HOME/Library/Application Support/Anki2/User 1/collection.media\"",
     "anki:sync-media:windows": "python scripts\\sync_media_to_anki.py --anki-media \"%APPDATA%\\Anki2\\User 1\\collection.media\""

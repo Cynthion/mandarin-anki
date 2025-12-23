@@ -6,6 +6,3 @@
 
 # Dependency directories
 node_modules/
-
-# Image generation
-*.debug.png

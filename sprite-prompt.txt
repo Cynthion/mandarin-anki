@@ -66,17 +66,18 @@ COMPOSITION (strict, for EVERY tile):
 BATCH LABEL (for humans only, not drawn): batch
 
 TILES (exact order, left-to-right then top-to-bottom):
-01. China (中国)
-02. USA (美国)
-03. Germany (德国)
-04. Japan (日本)
-05. Asia (亚洲)
-06. Europe (欧洲)
-07. Africa (非洲)
-08. America (美洲)
-09. continent (州)
-10. Zurich (苏黎世)
-11. Basel (巴塞尔)
+01. home (家)
+02. hotel (旅馆)
+03. restaurant (饭店)
+04. restaurant (饭馆)
+05. teahouse (茶馆)
+06. café (咖啡馆)
+07. shop (店)
+08. establishment (馆)
+09. company (公司)
+10. university (大学)
+11. hospital (医院)
+12. kitchen (厨房)
 
 ---
 SPRITE_LAYOUT_CONFIG_JSON:
@@ -91,7 +92,7 @@ SPRITE_LAYOUT_CONFIG_JSON:
   "SUBJECT_TARGET_PCT": 55,
   "cols": 4,
   "rows": 3,
-  "count": 11,
+  "count": 12,
   "expected_width": 1144,
   "expected_height": 864
 }
