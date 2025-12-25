@@ -1,0 +1,116 @@
+Create EXACTLY ONE PNG sprite sheet image.
+
+CANVAS SIZE (ABSOLUTE, MUST MATCH EXACTLY):
+- The final PNG must be exactly 1704×1424 pixels.
+- Do NOT add any extra padding, border, frame, shadow, or whitespace outside this canvas.
+- Do NOT crop smaller than this size. Do NOT export larger than this size.
+
+INVISIBLE GRID LAYOUT (DO NOT DRAW THE GRID):
+- Grid is 6 columns × 5 rows.
+- Each tile is exactly 256×256px.
+- Horizontal gutter between tiles is exactly 24px, pure #FFFFFF.
+- Vertical gutter between tiles is exactly 24px, pure #FFFFFF.
+- Outer margin around the entire grid is exactly 24px on all 4 sides, pure #FFFFFF.
+- Background everywhere (including gutters and margins) is flat pure white #FFFFFF.
+- IMPORTANT: The grid is only for placement; do NOT draw borders, lines, boxes, frames, or separators.
+
+EXTREME SPACING REQUIREMENT (THIS IS CRITICAL — DO NOT VIOLATE):
+- The gutters (24px) MUST remain completely empty white space (#FFFFFF).
+- NOTHING from a subject may enter the gutters: no outline, no shading, no anti-aliasing, no whiskers, no tails, no “soft edges”.
+- Inside EACH tile there must be a DOUBLE SAFETY ZONE:
+  1) SAFE PAD: Keep at least 56px of pure white padding INSIDE the tile on all 4 sides.
+  2) GUTTER GUARD: Additionally keep a further 12px “no-ink” band INSIDE the tile edges.
+- This means the entire subject must fit inside a centered 120×120px content box (47% of the tile).
+- If uncertain, make subjects smaller. Whitespace is REQUIRED for correct slicing.
+
+VERY IMPORTANT ANTI-OVERLAP RULE:
+- The subject silhouette must not touch or approach the tile edge.
+- Target subject size is only 55% of tile width/height (NOT 85%).
+- Prefer smaller + well-centered over bigger.
+
+GRID-LINE PREVENTION (READ CAREFULLY):
+- Do NOT draw ANY grid lines, even faint.
+- Do NOT draw a table, separators, dividers, guides, frames, borders, crop marks, bleed marks.
+- Do NOT outline tiles.
+- Do NOT add shading/noise in gutters or margins; they must be perfectly flat #FFFFFF.
+
+FORBIDDEN (DO NOT INCLUDE ANY OF THESE):
+- No table/grid lines, no tile borders, no separators, no outlines, no strokes in gutters/margins
+- No outer border/frame around the whole sheet
+- No gradients or shadows in gutters/margins (must be perfectly flat #FFFFFF)
+- No text, no numbers, no labels, no watermark, no logo
+
+ART STYLE (adult comic-based, keep as-is):
+- modern editorial comic illustration for adults (NOT childish, NOT kawaii)
+- clean inked linework: thin-to-medium uniform outlines on the subject only
+- subtle cel shading (2–3 tone blocks), minimal gradients
+- muted, mature palette; avoid neon / toy-like colors
+- consistent lighting direction (top-left), subtle
+- no shadows below or around the subject
+
+TRANSPARENCY-SAFE RULES:
+- absolutely NO drop shadow below or around the subject
+- NO ground shadow, NO contact shadow, NO ambient shadow
+- NO glow, NO halo, NO vignette
+- background is pure white #FFFFFF
+- do NOT use pure white (#FFFFFF) inside the subject (use lightly tinted highlights instead)
+
+COMPOSITION (strict, for EVERY tile):
+- One main subject per tile.
+- Subject must be centered horizontally AND vertically.
+- Subject scale must be consistent across tiles.
+- Subject MUST stay entirely inside the centered 120×120px content box.
+- The tile edges must remain pure white with no marks, no outline, no shading.
+- Keep silhouettes compact; avoid thin protrusions that might approach edges.
+
+BATCH LABEL (for humans only, not drawn): batch
+
+TILES (exact order, left-to-right then top-to-bottom):
+01. beer (啤酒)
+02. tea (茶)
+03. coffee (咖啡)
+04. water (水)
+05. milk (奶)
+06. cheese (奶酪)
+07. rice (饭)
+08. apple (苹果)
+09. banana (香蕉)
+10. strawberry (草莓)
+11. berry (莓)
+12. watermelon (西瓜)
+13. chocolate (巧克力)
+14. wine (葡萄酒)
+15. champagne (香槟酒)
+16. hotpot (火锅)
+17. sushi (寿司)
+18. vegetables (蔬菜)
+19. beef (牛肉)
+20. noodles (面条)
+21. cherry (樱桃)
+22. grapes (葡萄)
+23. peach (桃子)
+24. pear (梨)
+25. candy (糖果)
+26. Coca-Cola (可口可乐)
+27. pizza (披萨)
+28. Chinese food (中国菜)
+29. Japanese food (日本菜)
+30. McDonald’s (麦当劳)
+
+---
+SPRITE_LAYOUT_CONFIG_JSON:
+{
+  "TILE": 256,
+  "GUTTER": 24,
+  "MARGIN": 24,
+  "SAFE_PAD": 56,
+  "GUTTER_GUARD": 12,
+  "EFFECTIVE_PAD": 68,
+  "MAX_FILL": 120,
+  "SUBJECT_TARGET_PCT": 55,
+  "cols": 6,
+  "rows": 5,
+  "count": 30,
+  "expected_width": 1704,
+  "expected_height": 1424
+}
