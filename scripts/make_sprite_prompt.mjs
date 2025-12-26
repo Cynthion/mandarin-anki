@@ -53,21 +53,41 @@ function expectedSize(tile, gutter, margin, cols, rows) {
   return { width, height };
 }
 
-// ✅ NEW: centralized art style block (so you can tweak it in one place)
+/**
+ * ✅ ONLY CHANGE: ART STYLE BLOCK
+ * Target look based on your latest references:
+ * - bold comic/pop-art inking + halftone feel
+ * - anime-influenced character design
+ * - high contrast, sharp outlines, graphic color blocks
+ * - still: ZERO shadows/glow/vignette and pure white background discipline
+ */
 function artStyleBlock() {
   return `
-ART STYLE (modern stylized anime / neo-ukiyo-e / cinematic pop illustration):
-- modern stylized digital illustration with anime-inspired character design (NOT chibi, NOT kawaii)
-- clean, confident linework with slightly bold outer contours and finer interior lines (subject only)
-- smooth painterly shading with subtle cel-shading structure (2–4 tone blocks), minimal gradients
-- high-contrast, poster-like finish; polished “key art” look (not sketchy)
-- bold saturated but harmonized palette (reds/teals/golds/creams/blacks), avoid muddy colors
-- elegant facial features, expressive eyes, fashion-forward styling
-- optional decorative motif feel (neo-ukiyo-e / traditional patterns / pop graphic shapes) but keep backgrounds pure white
-- consistent lighting direction (top-left), subtle highlights; NO cast shadows
-- editorial print illustration (magazine / packaging art), not UI iconography
-- no sticker, emoji, app icon, or game HUD styling
-- color-block shading preferred over line-based definition
+ART STYLE (bold pop-art / comic-book ink + anime influence — high contrast, lots of linework, NO SHADOWS):
+- modern stylized illustration with anime-inspired faces/proportions (NOT chibi, NOT kawaii)
+- heavy graphic BLACK INK linework:
+  - thick outer contour lines for silhouette clarity
+  - medium interior contour lines for folds, hair strands, facial features, accessories
+  - occasional spot blacks (solid black fill areas) for graphic contrast (hair, jackets, shadows INSIDE the subject only)
+  - clean, confident strokes; no sketch pencil texture, no painterly brush edges
+- pop-art / comic rendering:
+  - flat color blocks + limited cel shading (2–4 tones)
+  - optional halftone dots / Ben-Day dots / stipple texture ONLY inside the subject to imply tone
+  - sharp, poster-like readability; bold graphic shapes
+- color palette: saturated primary/secondary pop palette (yellow, red, cyan/teal, magenta accents) balanced with deep blacks
+- crisp edges and print-like finish (screenprint/comic cover look), high resolution
+
+LINEWORK REQUIREMENTS (CRITICAL):
+- outlines must be TRUE BLACK (#000000) or near-black
+- edges must be hard and clean; NO soft airbrush feathering into white
+- use lines to define form (do not rely on paint-edge silhouettes)
+
+ABSOLUTE SHADOW / EFFECT BAN (MUST OBEY):
+- NO drop shadow (below or around the subject)
+- NO cast shadow, NO ground shadow, NO contact shadow, NO ambient shadow/occlusion
+- NO vignette
+- NO glow / halo / rim-light used as separation
+- ALL shading must be inside the subject silhouette only
 `.trim();
 }
 
@@ -98,13 +118,10 @@ CANVAS SIZE (ABSOLUTE, MUST MATCH EXACTLY):
 - Do NOT crop smaller than this size. Do NOT export larger than this size.
 
 RENDERING OVERRIDES (CRITICAL):
-- flat editorial illustration, printed-poster look
-- paint-edge silhouettes ONLY (edges defined by color changes, not lines)
-- absolutely no icon strokes, no sticker outlines, no contour strokes
-- avoid dark edge rims; do NOT trace silhouettes
-- no depth cues of any kind
-- lighting is studio-flat and diffuse, evenly lit
-- subject appears printed on white paper, not floating in space
+- shadow-free sprites on pure white paper background
+- use bold black ink linework (comic/pop linework) to define the subject
+- crisp hard edges; no soft edge drift, no airbrush fade
+- no depth cues or grounding of any kind
 
 INVISIBLE GRID LAYOUT (DO NOT DRAW THE GRID):
 - Grid is ${cols} columns × ${rows} rows.
@@ -117,7 +134,7 @@ INVISIBLE GRID LAYOUT (DO NOT DRAW THE GRID):
 
 EXTREME SPACING REQUIREMENT (THIS IS CRITICAL — DO NOT VIOLATE):
 - The gutters (${gutter}px) MUST remain completely empty white space (#FFFFFF).
-- NOTHING from a subject may enter the gutters: no outline, no shading, no anti-aliasing, no whiskers, no tails, no “soft edges”.
+- NOTHING from a subject may enter the gutters: no outline, no shading, no anti-aliasing, no texture, no dots.
 - Inside EACH tile there must be a DOUBLE SAFETY ZONE:
   1) SAFE PAD: Keep at least ${safePad}px of pure white padding INSIDE the tile on all 4 sides.
   2) GUTTER GUARD: Additionally keep a further ${gutterGuard}px “no-ink” band INSIDE the tile edges.
@@ -133,26 +150,26 @@ GRID-LINE PREVENTION (READ CAREFULLY):
 - Do NOT draw ANY grid lines, even faint.
 - Do NOT draw a table, separators, dividers, guides, frames, borders, crop marks, bleed marks.
 - Do NOT outline tiles.
-- Do NOT add shading/noise in gutters or margins; they must be perfectly flat #FFFFFF.
-- treat the entire canvas as a single white poster
-- tiles are implied only by spacing; do not visually reinforce them
-- do not add any element to improve readability against white
+- Do NOT add shading/noise/halftone dots in gutters or margins; they must be perfectly flat #FFFFFF.
+- treat the entire canvas as a single white poster; tiles are implied only by spacing
 
 FORBIDDEN (DO NOT INCLUDE ANY OF THESE):
-- No table/grid lines, no tile borders, no separators, no outlines, no strokes in gutters/margins
+- No table/grid lines, no tile borders, no separators
+- No marks in gutters/margins (no outlines, no dots, no texture, no gradients)
 - No outer border/frame around the whole sheet
-- No gradients or shadows in gutters/margins (must be perfectly flat #FFFFFF)
 - No text, no numbers, no labels, no watermark, no logo
 
 ${artStyleBlock()}
 
-TRANSPARENCY-SAFE RULES (STRICT INTERPRETATION):
-- ZERO grounding cues: no contact shadow, no cast shadow, no ambient shadow
-- ZERO edge enhancement: no outline, no stroke, no rim light
-- ZERO separation tricks: no halo, no glow, no vignette
-- background is uniform flat #FFFFFF
-- subject edges must end cleanly with color, not darkness
-- highlights must be lightly tinted (cream, pale yellow), never pure white
+ABSOLUTE NO-SHADOW RULES (MOST IMPORTANT — DO NOT VIOLATE):
+- absolutely NO drop shadow below or around the subject
+- NO ground shadow, NO contact shadow, NO cast shadow, NO ambient shadow
+- NO vignette, NO glow, NO halo
+- background must stay perfectly flat #FFFFFF everywhere outside the subject
+- if the model wants depth: use ONLY internal linework + flat/cel shading INSIDE the subject
+
+HIGHLIGHT RULE:
+- do NOT use pure white (#FFFFFF) inside the subject; use slightly tinted highlights instead.
 
 COMPOSITION (strict, for EVERY tile):
 - One main subject per tile.
@@ -161,9 +178,6 @@ COMPOSITION (strict, for EVERY tile):
 - Subject MUST stay entirely inside the centered ${contentBox} content box.
 - The tile edges must remain pure white with no marks, no outline, no shading.
 - Keep silhouettes compact; avoid thin protrusions that might approach edges.
-- silhouettes must remain compact and rounded
-- avoid thin protrusions, spikes, drips, splashes, steam wisps, foam spray
-
 
 BATCH LABEL (for humans only, not drawn): ${label}
 
@@ -202,7 +216,10 @@ async function main() {
   const maxFill = Math.max(64, TILE - 2 * effectivePad);
 
   // Tell the generator explicitly to aim smaller than before (was 85%)
-  const subjectTargetPct = Math.max(55, Math.min(78, Math.round((maxFill / TILE) * 100)));
+  const subjectTargetPct = Math.max(
+    55,
+    Math.min(78, Math.round((maxFill / TILE) * 100))
+  );
 
   // Optional: allow overriding maxCols for layout via env var (nice for big batches)
   const MAX_COLS = Number(process.env.SPRITE_MAX_COLS ?? "6") || 6;
