@@ -6,12 +6,12 @@ Slice a sprite sheet into per-note PNGs.
 
 GOAL (robust / no manual tuning):
 1) Identify subjects on a near-white background (no grid assumptions).
-2) Infer their row/column positions from their centers (top-left → bottom-right).
+2) Order subjects strictly top-left → bottom-right (reading order).
 3) Re-center each subject into a new 256×256 WHITE tile.
 4) Make ONLY the NEW tile’s edge-connected background transparent:
    ✅ removes outer background only (flood fill from tile edge)
    ✅ does NOT remove white/near-white inside the subject
-   ✅ ALSO removes soft edge-connected shadows (like the pear shadow)
+   ✅ ALSO removes soft edge-connected shadows
 
 Dependencies:
 - Pillow
@@ -46,53 +46,22 @@ def parse_tsv(tsv_text: str) -> List[Dict[str, str]]:
         _id = (cols[0] if len(cols) > 0 else "").strip()
         if not _id:
             continue
-        if _id.lower() == "id":  # header
+        if _id.lower() == "id":
             continue
         rows.append({"id": _id})
     return rows
 
 
 # ---------------------------
-# Background estimation + flood fill (edge-connected)
+# Flood fill (edge-connected)
 # ---------------------------
-def _estimate_bg_color_and_border_dist(arr_u8: np.ndarray, frame: int = 12) -> Tuple[np.ndarray, np.ndarray]:
+def _floodfill_edge_connected_bool(bg_like: np.ndarray) -> np.ndarray:
     """
-    Estimate background RGB from the border pixels of the image.
-    Returns (bg_rgb_float32[3], border_distances_float32[N]).
-    """
-    h, w, _ = arr_u8.shape
-    f = max(1, int(frame))
-
-    top = arr_u8[:f, :, :]
-    bot = arr_u8[h - f:h, :, :]
-    lef = arr_u8[:, :f, :]
-    rig = arr_u8[:, w - f:w, :]
-
-    border = np.concatenate(
-        [
-            top.reshape(-1, 3),
-            bot.reshape(-1, 3),
-            lef.reshape(-1, 3),
-            rig.reshape(-1, 3),
-        ],
-        axis=0,
-    ).astype(np.float32)
-
-    bg = np.median(border, axis=0)
-    dist = np.sqrt(np.sum((border - bg[None, :]) ** 2, axis=1)).astype(np.float32)
-    return bg.astype(np.float32), dist
-
-
-def _floodfill_edge_connected_bg(dist_img: np.ndarray, bg_cut: float) -> np.ndarray:
-    """
-    Flood-fill background starting from the image edge:
-    A pixel is "background-like" if dist <= bg_cut.
+    Flood-fill starting from the image edge on a boolean bg_like mask.
     Returns bg_conn mask (H, W) True for background connected to the border.
     """
-    h, w = dist_img.shape
-    bg_like = dist_img <= bg_cut
+    h, w = bg_like.shape
     bg_conn = np.zeros((h, w), dtype=np.bool_)
-
     q = deque()
 
     def push(y: int, x: int):
@@ -100,7 +69,6 @@ def _floodfill_edge_connected_bg(dist_img: np.ndarray, bg_cut: float) -> np.ndar
             bg_conn[y, x] = True
             q.append((y, x))
 
-    # seed with border pixels
     for x in range(w):
         push(0, x)
         push(h - 1, x)
@@ -108,7 +76,6 @@ def _floodfill_edge_connected_bg(dist_img: np.ndarray, bg_cut: float) -> np.ndar
         push(y, 0)
         push(y, w - 1)
 
-    # 4-neighborhood flood fill
     while q:
         y, x = q.popleft()
         push(y - 1, x)
@@ -119,40 +86,94 @@ def _floodfill_edge_connected_bg(dist_img: np.ndarray, bg_cut: float) -> np.ndar
     return bg_conn
 
 
+def _floodfill_edge_connected_bg(dist_img: np.ndarray, bg_cut: float) -> np.ndarray:
+    """
+    Flood-fill background starting from the image edge:
+    A pixel is "background-like" if dist <= bg_cut.
+    Returns bg_conn mask (H, W) True for background connected to the border.
+    """
+    bg_like = dist_img <= bg_cut
+    return _floodfill_edge_connected_bool(bg_like)
+
+
+# ---------------------------
+# Foreground mask (FIXED)
+# ---------------------------
 def build_foreground_mask_autocut(img_rgb: Image.Image, *, frame: int = 12) -> Tuple[np.ndarray, Dict[str, float]]:
     """
     Build a foreground mask for a near-white background WITHOUT user parameters.
 
-    Strategy:
-    - Estimate bg color from border
-    - Compute per-pixel RGB distance to bg
-    - Choose bg_cut automatically from border distance distribution:
-      bg_cut = percentile(border_dist, 99.5) + small cushion
-    - Flood-fill bg-like pixels connected to outer edge
-    - Foreground = NOT(edge-connected background)
+    IMPORTANT FIX:
+    ----------------
+    Your failure case (big bottom-left portrait gets "missed") is caused by
+    background estimation / distance thresholds being polluted when a subject is
+    close to the image border. That makes the flood fill treat parts of the subject
+    as "background-like" and erase it from the foreground mask.
+
+    This version DOES NOT estimate bg color by RGB distance.
+    Instead it detects background by a property that is stable for these sprites:
+      - background is bright AND low-chroma (near-white / near-neutral)
+    and it calibrates thresholds from the border.
+
+    Result: the large portrait cannot be swallowed just because it sits near the border.
     """
     arr = np.array(img_rgb.convert("RGB"), dtype=np.uint8)
-    bg_rgb, border_dist = _estimate_bg_color_and_border_dist(arr, frame=frame)
+    a = arr.astype(np.float32)
+    r, g, b = a[..., 0], a[..., 1], a[..., 2]
 
-    p995 = float(np.percentile(border_dist, 99.5))
-    p99 = float(np.percentile(border_dist, 99.0))
-    cushion = max(2.0, 0.25 * (p995 - p99 + 1.0))
-    bg_cut = p995 + cushion
+    vmax = np.maximum(np.maximum(r, g), b)
+    vmin = np.minimum(np.minimum(r, g), b)
+    chroma = vmax - vmin  # 0 for perfect gray/white
 
-    arr_f = arr.astype(np.float32)
-    dist_img = np.sqrt(np.sum((arr_f - bg_rgb[None, None, :]) ** 2, axis=2)).astype(np.float32)
+    h, w = vmax.shape
+    f = max(1, int(frame))
 
-    bg_conn = _floodfill_edge_connected_bg(dist_img, bg_cut)
+    border_v = np.concatenate(
+        [
+            vmax[:f, :].reshape(-1),
+            vmax[h - f:h, :].reshape(-1),
+            vmax[:, :f].reshape(-1),
+            vmax[:, w - f:w].reshape(-1),
+        ],
+        axis=0,
+    )
+    border_c = np.concatenate(
+        [
+            chroma[:f, :].reshape(-1),
+            chroma[h - f:h, :].reshape(-1),
+            chroma[:, :f].reshape(-1),
+            chroma[:, w - f:w].reshape(-1),
+        ],
+        axis=0,
+    )
+
+    # Brightness threshold: background is very bright.
+    # Use a low percentile to allow subtle anti-aliased edges/shadows.
+    tv = float(np.percentile(border_v, 5.0))
+    tv = max(170.0, tv - 12.0)
+
+    # Chroma threshold: background is near-neutral.
+    # Use high percentile + cushion to tolerate compression / slight tint.
+    tc = float(np.percentile(border_c, 97.0))
+    tc = min(80.0, max(8.0, tc + 6.0))
+
+    # Background-like pixels (core)
+    bg_like = (vmax >= tv) & (chroma <= tc)
+
+    # Allow mild shadows as background too, but ONLY if they are neutral-ish.
+    # This helps flood-fill pass through soft gray shadows without "breaking" bg connectivity.
+    shadow_like = (vmax >= (tv - 45.0)) & (chroma <= (tc * 1.35))
+    bg_like = bg_like | shadow_like
+
+    bg_conn = _floodfill_edge_connected_bool(bg_like)
     fg = ~bg_conn
 
     dbg = {
-        "bg_r": float(bg_rgb[0]),
-        "bg_g": float(bg_rgb[1]),
-        "bg_b": float(bg_rgb[2]),
-        "bg_cut": float(bg_cut),
-        "border_p99": float(p99),
-        "border_p995": float(p995),
         "frame": float(frame),
+        "tv_brightness": float(tv),
+        "tc_chroma": float(tc),
+        "bg_like_pct": float(bg_like.mean() * 100.0),
+        "bg_conn_pct": float(bg_conn.mean() * 100.0),
     }
     return fg, dbg
 
@@ -165,7 +186,7 @@ def _morph_close(mask_bool: np.ndarray, radius: int) -> np.ndarray:
     r = int(radius)
     if r <= 0:
         return mask_bool
-    k = max(3, r * 2 + 1)  # odd
+    k = max(3, r * 2 + 1)
     m = (mask_bool.astype(np.uint8) * 255)
     im = Image.fromarray(m, mode="L")
     im = im.filter(ImageFilter.MaxFilter(size=k))
@@ -186,8 +207,43 @@ def _morph_open(mask_bool: np.ndarray, radius: int) -> np.ndarray:
     return (np.array(im, dtype=np.uint8) >= 128)
 
 
+def _fill_holes(mask_bool: np.ndarray) -> np.ndarray:
+    """
+    Fill holes inside foreground regions without bridging separate subjects.
+    Holes are background (False) regions that are NOT connected to the image border
+    in the inverse mask.
+    """
+    h, w = mask_bool.shape
+    inv = ~mask_bool
+
+    bg_conn = np.zeros((h, w), dtype=np.bool_)
+    q = deque()
+
+    def push(y: int, x: int):
+        if 0 <= y < h and 0 <= x < w and (not bg_conn[y, x]) and inv[y, x]:
+            bg_conn[y, x] = True
+            q.append((y, x))
+
+    for x in range(w):
+        push(0, x)
+        push(h - 1, x)
+    for y in range(h):
+        push(y, 0)
+        push(y, w - 1)
+
+    while q:
+        y, x = q.popleft()
+        push(y - 1, x)
+        push(y + 1, x)
+        push(y, x - 1)
+        push(y, x + 1)
+
+    holes = inv & (~bg_conn)
+    return mask_bool | holes
+
+
 # ---------------------------
-# Connected components (union-find, 8-connected)
+# Connected components (union-find, 4-connected)
 # ---------------------------
 class _UF:
     def __init__(self):
@@ -210,7 +266,7 @@ class _UF:
 
 def connected_components_bbox(mask: np.ndarray) -> List[Dict[str, int]]:
     """
-    Find connected components (8-connected) in a boolean mask.
+    Find connected components (4-connected) in a boolean mask.
     Returns list: {x0,y0,x1,y1,area,cx,cy}
     """
     h, w = mask.shape
@@ -219,7 +275,6 @@ def connected_components_bbox(mask: np.ndarray) -> List[Dict[str, int]]:
     uf = _UF()
     next_label = 1
 
-    # first pass
     for y in range(h):
         for x in range(w):
             if not mask[y, x]:
@@ -228,13 +283,8 @@ def connected_components_bbox(mask: np.ndarray) -> List[Dict[str, int]]:
             neighbors = []
             if x > 0 and labels[y, x - 1] > 0:
                 neighbors.append(labels[y, x - 1])
-            if y > 0:
-                if x > 0 and labels[y - 1, x - 1] > 0:
-                    neighbors.append(labels[y - 1, x - 1])
-                if labels[y - 1, x] > 0:
-                    neighbors.append(labels[y - 1, x])
-                if x + 1 < w and labels[y - 1, x + 1] > 0:
-                    neighbors.append(labels[y - 1, x + 1])
+            if y > 0 and labels[y - 1, x] > 0:
+                neighbors.append(labels[y - 1, x])
 
             if not neighbors:
                 lbl = next_label
@@ -251,7 +301,6 @@ def connected_components_bbox(mask: np.ndarray) -> List[Dict[str, int]]:
     if next_label == 1:
         return []
 
-    # second pass + stats
     stats: Dict[int, List[int]] = {}
     for y in range(h):
         for x in range(w):
@@ -282,28 +331,36 @@ def connected_components_bbox(mask: np.ndarray) -> List[Dict[str, int]]:
 
 
 # ---------------------------
-# Subject detection (no params; tries to hit exactly N)
+# Subject detection
 # ---------------------------
 def detect_subjects(sprite_rgb: Image.Image, want_n: int) -> Tuple[List[Dict[str, int]], Dict[str, float]]:
     """
-    Auto-detect subjects on a near-white sprite. No user parameters needed.
+    Auto-detect subjects on a near-white sprite.
+
+    - Uses the FIXED foreground mask (brightness/chroma) to avoid missing the large portrait.
+    - Avoids aggressive closing that would bridge white gaps.
+    - If more than want_n components exist, selects the first want_n by TL→BR order.
     """
     fg0, dbg0 = build_foreground_mask_autocut(sprite_rgb, frame=14)
 
-    open_radii = [0, 1, 2]
-    close_radii = [0, 2, 4, 6, 8, 10, 12, 14]
+    open_radii = [0, 1, 2, 3]
+    close_radii = [0, 1, 2]
 
     best: Optional[List[Dict[str, int]]] = None
     best_dbg: Optional[Dict[str, float]] = None
     best_score: Optional[float] = None
 
+    def take_top_left_n(comps_list: List[Dict[str, int]]) -> List[Dict[str, int]]:
+        return sorted(comps_list, key=lambda c: (c["cy"], c["cx"]))[:want_n]
+
     for o in open_radii:
-        fg_open = _morph_open(fg0, radius=o)
+        fg = _morph_open(fg0, radius=o)
+        fg = _fill_holes(fg)
 
         for c in close_radii:
-            fg = _morph_close(fg_open, radius=c)
+            fg2 = _morph_close(fg, radius=c) if c > 0 else fg
 
-            comps = connected_components_bbox(fg)
+            comps = connected_components_bbox(fg2)
             if not comps:
                 continue
 
@@ -311,14 +368,16 @@ def detect_subjects(sprite_rgb: Image.Image, want_n: int) -> Tuple[List[Dict[str
 
             top_k = comps[: min(len(comps), max(12, want_n))]
             med_area = float(np.median([t["area"] for t in top_k])) if top_k else 0.0
-            min_area = max(30, int(med_area * 0.08)) if med_area > 0 else 30
+            min_area = max(80, int(med_area * 0.06)) if med_area > 0 else 80
             comps2 = [cc for cc in comps if cc["area"] >= min_area]
 
             count = len(comps2)
             diff = abs(count - want_n)
 
-            miss_penalty = 200.0 if count < want_n else 0.0
-            score = -(diff * 10.0) - miss_penalty - (o * 1.5) - (c * 0.2)
+            miss_penalty = 500.0 if count < want_n else 0.0
+            extra_penalty = 4.0 * max(0, count - want_n)
+
+            score = -(diff * 15.0) - miss_penalty - extra_penalty - (o * 1.2) - (c * 0.6)
 
             if best_score is None or score > best_score:
                 best_score = score
@@ -335,163 +394,98 @@ def detect_subjects(sprite_rgb: Image.Image, want_n: int) -> Tuple[List[Dict[str
                     }
                 )
 
-            if count == want_n:
-                return comps2, best_dbg
+            if count >= want_n:
+                out = take_top_left_n(comps2)
+                if len(out) == want_n:
+                    best_dbg = dict(best_dbg or dbg0)
+                    best_dbg["trimmed_from"] = float(count)
+                    return out, best_dbg
 
     if best is None or best_dbg is None:
         raise SystemExit("No subjects detected. Is the sprite background near-white?")
 
     if len(best) > want_n:
-        best = sorted(best, key=lambda z: z["area"], reverse=True)[:want_n]
+        best_dbg = dict(best_dbg)
+        best_dbg["trimmed_from"] = float(len(best))
+        best = sorted(best, key=lambda c: (c["cy"], c["cx"]))[:want_n]
 
     if len(best) != want_n:
         raise SystemExit(
             f"Subject detection failed: expected {want_n} subjects, got {len(best)}.\n"
             f"Detection debug: {best_dbg}\n"
-            f"Likely causes: subjects overlap/touch, or background not near-white everywhere."
         )
 
     return best, best_dbg
 
 
 # ---------------------------
-# Infer grid size from subject centers (auto)
+# STRICT top-left → bottom-right ordering (row bucketing)
 # ---------------------------
-def infer_grid_from_centers(centers: np.ndarray, want_n: int, img_w: int, img_h: int) -> Tuple[int, int]:
-    """Infer (cols, rows) from subject centers."""
-    aspect = float(img_w) / float(max(1, img_h))
-    est_cols = int(round(math.sqrt(want_n * aspect)))
-    est_cols = max(1, min(want_n, est_cols))
-
-    candidates = []
-    for dc in range(-3, 4):
-        c = max(1, min(want_n, est_cols + dc))
-        r = int(math.ceil(want_n / c))
-        candidates.append((c, r))
-    candidates = sorted(set(candidates))
-
-    xs = centers[:, 0].astype(np.float32)
-    ys = centers[:, 1].astype(np.float32)
-
-    def kmeans_1d(values: np.ndarray, k: int, iters: int = 30) -> Tuple[np.ndarray, np.ndarray, float]:
-        v = values.astype(np.float32)
-        if k <= 1:
-            center = np.array([float(np.mean(v))], dtype=np.float32)
-            labels = np.zeros((len(v),), dtype=np.int32)
-            sse = float(np.sum((v - center[0]) ** 2))
-            return center, labels, sse
-
-        qs = np.linspace(0.0, 1.0, k)
-        centers_ = np.quantile(v, qs).astype(np.float32)
-
-        for _ in range(iters):
-            d = np.abs(v[:, None] - centers_[None, :])
-            labels = np.argmin(d, axis=1).astype(np.int32)
-            new_centers = centers_.copy()
-            for i in range(k):
-                m = v[labels == i]
-                if len(m) > 0:
-                    new_centers[i] = float(np.mean(m))
-            if np.allclose(new_centers, centers_):
-                centers_ = new_centers
-                break
-            centers_ = new_centers
-
-        sse = 0.0
-        for i in range(k):
-            m = v[labels == i]
-            if len(m) > 0:
-                sse += float(np.sum((m - centers_[i]) ** 2))
-        return centers_, labels, float(sse)
-
-    best = None
-    best_score = None
-
-    for cols, rows in candidates:
-        _, lab_y, sse_y = kmeans_1d(ys, rows)
-        _, lab_x, sse_x = kmeans_1d(xs, cols)
-
-        occ_y = np.bincount(lab_y, minlength=rows)
-        occ_x = np.bincount(lab_x, minlength=cols)
-        empty_penalty = float((occ_y == 0).sum() + (occ_x == 0).sum()) * 1e9
-
-        score = (sse_y + sse_x) + empty_penalty
-        if best_score is None or score < best_score:
-            best_score = score
-            best = (cols, rows)
-
-    assert best is not None
-    return best
-
-
-def assign_order_top_left(comps: List[Dict[str, int]], want_n: int, img_w: int, img_h: int) -> Tuple[List[Dict[str, int]], Dict[str, float]]:
-    """Assign each component to (row, col), then sort row-major for TSV order."""
+def assign_order_top_left(
+    comps: List[Dict[str, int]],
+    want_n: int,
+    img_w: int,
+    img_h: int,
+) -> Tuple[List[Dict[str, int]], Dict[str, float]]:
     comps = list(comps)
     if len(comps) != want_n:
         raise SystemExit(f"Internal error: expected {want_n} comps, got {len(comps)}")
 
-    centers = np.array([[c["cx"], c["cy"]] for c in comps], dtype=np.float32)
-    cols, rows = infer_grid_from_centers(centers, want_n, img_w, img_h)
+    comps_y = sorted(comps, key=lambda c: (c["cy"], c["cx"]))
 
-    xs = centers[:, 0].astype(np.float32)
-    ys = centers[:, 1].astype(np.float32)
+    ys = np.array([c["cy"] for c in comps_y], dtype=np.float32)
+    if len(ys) >= 2:
+        dy = np.diff(ys)
+        dy_pos = dy[dy > 0]
+        if dy_pos.size > 0:
+            p25 = float(np.percentile(dy_pos, 25.0))
+            p75 = float(np.percentile(dy_pos, 75.0))
+            thr = max(8.0, (p25 + p75) * 0.5)
+        else:
+            thr = 12.0
+    else:
+        thr = 12.0
 
-    def kmeans_1d(values: np.ndarray, k: int, iters: int = 30) -> Tuple[np.ndarray, np.ndarray]:
-        v = values.astype(np.float32)
-        if k <= 1:
-            centers_ = np.array([float(np.mean(v))], dtype=np.float32)
-            labels = np.zeros((len(v),), dtype=np.int32)
-            return centers_, labels
+    rows: List[List[Dict[str, int]]] = []
+    cur: List[Dict[str, int]] = []
+    cur_mean_y: float = float(comps_y[0]["cy"]) if comps_y else 0.0
 
-        qs = np.linspace(0.0, 1.0, k)
-        centers_ = np.quantile(v, qs).astype(np.float32)
+    for c in comps_y:
+        if not cur:
+            cur = [c]
+            cur_mean_y = float(c["cy"])
+            continue
 
-        for _ in range(iters):
-            d = np.abs(v[:, None] - centers_[None, :])
-            labels = np.argmin(d, axis=1).astype(np.int32)
-            new_centers = centers_.copy()
-            for i in range(k):
-                m = v[labels == i]
-                if len(m) > 0:
-                    new_centers[i] = float(np.mean(m))
-            if np.allclose(new_centers, centers_):
-                centers_ = new_centers
-                break
-            centers_ = new_centers
+        if float(c["cy"]) - cur_mean_y > thr:
+            rows.append(cur)
+            cur = [c]
+            cur_mean_y = float(c["cy"])
+        else:
+            cur.append(c)
+            cur_mean_y = (cur_mean_y * (len(cur) - 1) + float(c["cy"])) / float(len(cur))
 
-        order = np.argsort(centers_)
-        centers_sorted = centers_[order]
-        remap = np.zeros_like(order)
-        remap[order] = np.arange(k, dtype=np.int32)
-        labels_remap = remap[labels]
-        return centers_sorted, labels_remap
+    if cur:
+        rows.append(cur)
 
-    row_centers, row_labels = kmeans_1d(ys, rows)
-    col_centers, col_labels = kmeans_1d(xs, cols)
-
-    for i, c in enumerate(comps):
-        c["row"] = int(row_labels[i])
-        c["col"] = int(col_labels[i])
-
-    ordered = sorted(comps, key=lambda c: (c["row"], c["col"], c["cy"], c["cx"]))
+    ordered: List[Dict[str, int]] = []
+    max_cols = 0
+    for r in rows:
+        r_sorted = sorted(r, key=lambda c: (c["cx"], c["cy"]))
+        max_cols = max(max_cols, len(r_sorted))
+        ordered.extend(r_sorted)
 
     dbg = {
-        "inferred_cols": float(cols),
-        "inferred_rows": float(rows),
-        "row_centers": ",".join([str(int(round(v))) for v in row_centers.tolist()]),
-        "col_centers": ",".join([str(int(round(v))) for v in col_centers.tolist()]),
+        "row_break_threshold": float(thr),
+        "rows_detected": float(len(rows)),
+        "max_cols_in_a_row": float(max_cols),
     }
     return ordered, dbg
 
 
 # ---------------------------
-# Crop → center → edge-connected transparency + dehalo (+ stronger shadow removal)
+# Crop → center → edge-connected transparency + dehalo
 # ---------------------------
 def _estimate_bg_color_and_scale(arr_u8: np.ndarray, frame: int = 10) -> Tuple[np.ndarray, float]:
-    """
-    Estimate background RGB from the border pixels of the image.
-    Returns (bg_rgb_float32[3], mad_float).
-    """
     h, w, _ = arr_u8.shape
     f = max(1, int(frame))
 
@@ -518,11 +512,6 @@ def _estimate_bg_color_and_scale(arr_u8: np.ndarray, frame: int = 10) -> Tuple[n
 
 
 def _grow_region_from_mask(seed_mask: np.ndarray, allow_mask: np.ndarray) -> np.ndarray:
-    """
-    Region-grow (flood fill) starting from an existing True region (seed_mask),
-    but only into pixels where allow_mask is True.
-    4-neighborhood. Returns the expanded mask.
-    """
     h, w = seed_mask.shape
     out = seed_mask.copy()
     q = deque()
@@ -554,17 +543,6 @@ def rgba_with_transparent_bg_edge_connected(
     shrink: int = 1,
     feather: int = 1,
 ) -> Image.Image:
-    """
-    Convert background to transparency WITHOUT punching holes:
-
-    Stage A (strict): edge flood-fill using tight bg threshold (near-white).
-    Stage B (shadow): expand that edge-connected region into "shadow-like" pixels
-                      using an auto-derived relaxed threshold *but only while staying
-                      connected to the edge background region*.
-
-    This reliably removes soft shadows (like under the pear) without deleting
-    white highlights inside the subject.
-    """
     rgb_img = tile_rgb.convert("RGB")
     arr = np.array(rgb_img, dtype=np.uint8)
     h, w, _ = arr.shape
@@ -575,26 +553,17 @@ def rgba_with_transparent_bg_edge_connected(
     arr_f = arr.astype(np.float32)
     dist_img = np.sqrt(np.sum((arr_f - bg_rgb[None, None, :]) ** 2, axis=2)).astype(np.float32)
 
-    # --- Stage A: strict background ---
     bg_cut_strict = max(4.0, 3.2 * float(sigma))
     bg_conn = _floodfill_edge_connected_bg(dist_img, bg_cut_strict)
 
-    # --- Stage B: shadow absorption (auto) ---
-    # Define "shadow-like" = low chroma + not-too-dark.
     r = arr_f[..., 0]
     g = arr_f[..., 1]
     b = arr_f[..., 2]
     vmax = np.maximum(np.maximum(r, g), b)
     vmin = np.minimum(np.minimum(r, g), b)
     chroma = vmax - vmin
-
-    # low chroma = near-neutral; exclude very dark pixels to protect outlines
     neutralish = (chroma <= 28.0) & (vmax >= 85.0)
 
-    # Auto relaxed cutoff:
-    # look at distances among neutral pixels that are already in/near background,
-    # then choose a high percentile as the maximum "shadow distance" to absorb.
-    # If that set is empty, fall back to a conservative multiple.
     neutral_d = dist_img[neutralish & (bg_conn | (dist_img <= (bg_cut_strict * 1.5)))]
     if neutral_d.size >= 32:
         p995 = float(np.percentile(neutral_d, 99.5))
@@ -604,24 +573,17 @@ def rgba_with_transparent_bg_edge_connected(
     else:
         bg_cut_relaxed = max(18.0, bg_cut_strict * 3.0)
 
-    # Allow mask for region-growing shadows:
-    # must be neutral-ish AND within relaxed distance
     allow_shadow = neutralish & (dist_img <= bg_cut_relaxed)
-
-    # Grow background region from bg_conn into allow_shadow pixels.
     bg_final = _grow_region_from_mask(bg_conn, allow_shadow)
 
-    # Alpha: transparent for edge-connected background (incl. absorbed shadows)
     alpha_u8 = np.full((h, w), 255, dtype=np.uint8)
     alpha_u8[bg_final] = 0
 
-    # Feather edges a bit to prevent jaggies
     feather = max(0, int(feather))
     if feather > 0:
         a_img = Image.fromarray(alpha_u8, mode="L").filter(ImageFilter.GaussianBlur(radius=feather))
         alpha_u8 = np.array(a_img, dtype=np.uint8)
 
-    # Shrink alpha to cut remaining fringes
     shrink = max(0, int(shrink))
     if shrink > 0:
         a_img = Image.fromarray(alpha_u8, mode="L")
@@ -629,7 +591,6 @@ def rgba_with_transparent_bg_edge_connected(
             a_img = a_img.filter(ImageFilter.MinFilter(3))
         alpha_u8 = np.array(a_img, dtype=np.uint8)
 
-    # Dehalo: unblend against estimated background color
     if dehalo:
         a = (alpha_u8.astype(np.float32) / 255.0)
         a3 = np.maximum(a, 1e-6)[..., None]
@@ -653,9 +614,6 @@ def crop_and_center_subject(
     *,
     out_size: int,
 ) -> Image.Image:
-    """
-    Crop subject bbox with an AUTO padding, then paste onto a WHITE out_size×out_size canvas centered.
-    """
     x0, y0, x1, y1 = bbox
     w, h = sprite_rgb.size
 
@@ -692,7 +650,7 @@ def crop_and_center_subject(
 # ---------------------------
 def main():
     ap = argparse.ArgumentParser(
-        description="Slice sprite sheet by detecting subjects, mapping top-left→bottom-right, centering into 256×256 tiles, and applying edge-connected transparency (with shadow cleanup)."
+        description="Slice sprite sheet by detecting subjects, ordering top-left→bottom-right, centering into tiles, and applying edge-connected transparency (with shadow cleanup)."
     )
 
     ap.add_argument("--tsv", default="image-data.tsv",
@@ -724,10 +682,7 @@ def main():
     sprite = Image.open(args.sprite).convert("RGB")
     W, H = sprite.size
 
-    # 1) identify subjects (auto)
     comps, detect_dbg = detect_subjects(sprite, want_n=want_n)
-
-    # 2) map subjects to row/col order
     ordered, map_dbg = assign_order_top_left(comps, want_n=want_n, img_w=W, img_h=H)
 
     if args.debug_list:
@@ -778,7 +733,7 @@ def main():
     print(f"Sprite: {args.sprite}")
     print(f"TSV: {args.tsv}")
     print(f"Wanted: {want_n} | Detected: {len(ordered)} | Exported: {limit}")
-    print(f"Inferred grid: {int(map_dbg['inferred_cols'])} cols × {int(map_dbg['inferred_rows'])} rows")
+    print(f"Row grouping: {int(map_dbg['rows_detected'])} rows | max cols in a row: {int(map_dbg['max_cols_in_a_row'])}")
     print(f"Saved: {saved} | Skipped: {skipped} | Out: {out_dir}")
 
 

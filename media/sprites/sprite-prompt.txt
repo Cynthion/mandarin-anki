@@ -1,129 +1,117 @@
 Create EXACTLY ONE PNG sprite sheet image.
 
 CANVAS SIZE (ABSOLUTE, MUST MATCH EXACTLY):
-- The final PNG must be exactly 1704×1424 pixels.
+- The final PNG must be exactly 1424×1144 pixels.
 - Do NOT add any extra padding, border, frame, shadow, or whitespace outside this canvas.
 - Do NOT crop smaller than this size. Do NOT export larger than this size.
 
-RENDERING OVERRIDES (CRITICAL):
-- shadow-free sprites on pure white paper background
-- use bold black ink linework (comic/pop linework) to define the subject
-- crisp hard edges; no soft edge drift, no airbrush fade
-- no depth cues or grounding of any kind
+!!! ABSOLUTELY NO GRID / TABLE / TILE OUTLINES / BOXES ANYWHERE !!!
+- DO NOT draw any rectangles, squares, borders, frames, cards, panels, tiles, containers, or “cell” outlines.
+- DO NOT draw any grid lines or separators (even light gray).
+- DO NOT outline blank areas.
+- The result must look like floating drawings on pure white, with NO visible structure.
 
-INVISIBLE GRID LAYOUT (DO NOT DRAW THE GRID):
-- Grid is 6 columns × 5 rows.
-- Each tile is exactly 256×256px.
-- Horizontal gutter between tiles is exactly 24px, pure #FFFFFF.
-- Vertical gutter between tiles is exactly 24px, pure #FFFFFF.
-- Outer margin around the entire grid is exactly 24px on all 4 sides, pure #FFFFFF.
-- Background everywhere (including gutters and margins) is flat pure white #FFFFFF.
-- IMPORTANT: The grid is only for placement; do NOT draw borders, lines, boxes, frames, or separators.
+BACKGROUND MUST BE PERFECTLY UNIFORM:
+- Any pixel not part of a subject or the tiny X strokes MUST be pure white #FFFFFF.
+- NO gray pixels, NO paper texture, NO noise, NO gradients.
 
-EXTREME SPACING REQUIREMENT (THIS IS CRITICAL — DO NOT VIOLATE):
-- The gutters (24px) MUST remain completely empty white space (#FFFFFF).
-- NOTHING from a subject may enter the gutters: no outline, no shading, no anti-aliasing, no texture, no dots.
-- Inside EACH tile there must be a DOUBLE SAFETY ZONE:
-  1) SAFE PAD: Keep at least 56px of pure white padding INSIDE the tile on all 4 sides.
-  2) GUTTER GUARD: Additionally keep a further 12px “no-ink” band INSIDE the tile edges.
-- This means the entire subject must fit inside a centered 120×120px content box (47% of the tile).
-- If uncertain, make subjects smaller. Whitespace is REQUIRED for correct slicing.
+INVISIBLE GRID LAYOUT (PLACEMENT ONLY — DO NOT DRAW IT):
+- The invisible placement grid is FIXED at 5 columns × 4 rows (20 tiles).
+- DO NOT change the column count. DO NOT add a new column. DO NOT add a new row.
+- Tile size: 256×256px. Gutters: 24px. Margin: 24px.
+- Gutters/margins are pure #FFFFFF.
 
-VERY IMPORTANT ANTI-OVERLAP RULE:
-- The subject silhouette must not touch or approach the tile edge.
-- Target subject size is only 55% of tile width/height (NOT 85%).
-- Prefer smaller + well-centered over bigger.
+GUTTER / GAP ENFORCEMENT (MOST IMPORTANT):
+- Gutters and margins are STRICT NO-INK ZONES: absolutely nothing may enter them.
+- NO outline drift, NO anti-aliasing drift, NO dots, NO stray pixels.
+- Inside each tile: SAFE PAD 72px + GUTTER GUARD 18px.
+- All marks must fit inside centered 76×76px content box (30% of tile).
+- If uncertain: draw SMALLER.
 
-GRID-LINE PREVENTION (READ CAREFULLY):
-- Do NOT draw ANY grid lines, even faint.
-- Do NOT draw a table, separators, dividers, guides, frames, borders, crop marks, bleed marks.
-- Do NOT outline tiles.
-- Do NOT add shading/noise/halftone dots in gutters or margins; they must be perfectly flat #FFFFFF.
-- treat the entire canvas as a single white poster; tiles are implied only by spacing
+STRICT “NO EXTRA THINGS” RULE (THIS FIXES THE 18th SUBJECT PROBLEM):
+- Draw ONLY what is specified per tile below.
+- NO extra symbols/icons anywhere: NO hearts, NO sparkles, NO stars, NO speech bubbles, NO emojis, NO badges.
+- Especially: for couples/spouses, do NOT add hearts or romance icons. Only the people.
 
-FORBIDDEN (DO NOT INCLUDE ANY OF THESE):
-- No table/grid lines, no tile borders, no separators
-- No marks in gutters/margins (no outlines, no dots, no texture, no gradients)
-- No outer border/frame around the whole sheet
-- No text, no numbers, no labels, no watermark, no logo
+COUNT RULE (MUST OBEY):
+- Exactly 17 subject tiles (tiles 1..17) and exactly 3 X tiles (tiles 18..20).
+- Do NOT draw any additional subjects beyond tile 17.
+
+EMPTY TILE “X” SPEC:
+- In X tiles, draw ONLY a tiny "X" made of two diagonal straight lines.
+- X size: 22px tip-to-tip. Stroke: 4px. Color: #000000.
+- No box, no circle, no border, no shadow, no glow. Everything else stays #FFFFFF.
+
+ABSOLUTE NO-SHADOW RULES:
+- NO drop shadows anywhere (subjects OR X).
+- NO ambient shadows, NO contact shadows, NO cast shadows.
 
 ART STYLE (bold pop-art / comic-book ink + anime influence — high contrast, lots of linework, NO SHADOWS):
 - modern stylized illustration with anime-inspired faces/proportions (NOT chibi, NOT kawaii)
 - heavy graphic BLACK INK linework:
   - thick outer contour lines for silhouette clarity
   - medium interior contour lines for folds, hair strands, facial features, accessories
-  - occasional spot blacks (solid black fill areas) for graphic contrast (hair, jackets, shadows INSIDE the subject only)
+  - occasional spot blacks (solid black fill areas) for graphic contrast (hair, jackets, shading INSIDE the subject only)
   - clean, confident strokes; no sketch pencil texture, no painterly brush edges
 - pop-art / comic rendering:
   - flat color blocks + limited cel shading (2–4 tones)
   - optional halftone dots / Ben-Day dots / stipple texture ONLY inside the subject to imply tone
   - sharp, poster-like readability; bold graphic shapes
-- color palette: saturated primary/secondary pop palette (yellow, red, cyan/teal, magenta accents) balanced with deep blacks
+- color palette: saturated primary/secondary pop palette balanced with deep blacks
 - crisp edges and print-like finish (screenprint/comic cover look), high resolution
 
-LINEWORK REQUIREMENTS (CRITICAL):
-- outlines must be TRUE BLACK (#000000) or near-black
-- edges must be hard and clean; NO soft airbrush feathering into white
-- use lines to define form (do not rely on paint-edge silhouettes)
-
 ABSOLUTE SHADOW / EFFECT BAN (MUST OBEY):
-- NO drop shadow (below or around the subject)
+- NO drop shadow (below or around anything)
 - NO cast shadow, NO ground shadow, NO contact shadow, NO ambient shadow/occlusion
 - NO vignette
-- NO glow / halo / rim-light used as separation
+- NO glow / halo / rim-light
 - ALL shading must be inside the subject silhouette only
 
-ABSOLUTE NO-SHADOW RULES (MOST IMPORTANT — DO NOT VIOLATE):
-- absolutely NO drop shadow below or around the subject
-- NO ground shadow, NO contact shadow, NO cast shadow, NO ambient shadow
-- NO vignette, NO glow, NO halo
-- background must stay perfectly flat #FFFFFF everywhere outside the subject
-- if the model wants depth: use ONLY internal linework + flat/cel shading INSIDE the subject
+TILE-BY-TILE PLACEMENT PLAN (MUST FOLLOW EXACTLY):
+- Use the exact row/col and pixel center coordinates given.
+- Place each drawing centered at the given (cx, cy).
+- Draw NOTHING except what each tile line instructs.
+- Tile 01 (row 1, col 1, center 152,152): draw ONLY SUBJECT 01 centered. No extras.
+- Tile 02 (row 1, col 2, center 432,152): draw ONLY SUBJECT 02 centered. No extras.
+- Tile 03 (row 1, col 3, center 712,152): draw ONLY SUBJECT 03 centered. No extras.
+- Tile 04 (row 1, col 4, center 992,152): draw ONLY SUBJECT 04 centered. No extras.
+- Tile 05 (row 1, col 5, center 1272,152): draw ONLY SUBJECT 05 centered. No extras.
+- Tile 06 (row 2, col 1, center 152,432): draw ONLY SUBJECT 06 centered. No extras.
+- Tile 07 (row 2, col 2, center 432,432): draw ONLY SUBJECT 07 centered. No extras.
+- Tile 08 (row 2, col 3, center 712,432): draw ONLY SUBJECT 08 centered. No extras.
+- Tile 09 (row 2, col 4, center 992,432): draw ONLY SUBJECT 09 centered. No extras.
+- Tile 10 (row 2, col 5, center 1272,432): draw ONLY SUBJECT 10 centered. No extras.
+- Tile 11 (row 3, col 1, center 152,712): draw ONLY SUBJECT 11 centered. No extras.
+- Tile 12 (row 3, col 2, center 432,712): draw ONLY SUBJECT 12 centered. No extras.
+- Tile 13 (row 3, col 3, center 712,712): draw ONLY SUBJECT 13 centered. No extras.
+- Tile 14 (row 3, col 4, center 992,712): draw ONLY SUBJECT 14 centered. No extras.
+- Tile 15 (row 3, col 5, center 1272,712): draw ONLY SUBJECT 15 centered. No extras.
+- Tile 16 (row 4, col 1, center 152,992): draw ONLY SUBJECT 16 centered. No extras.
+- Tile 17 (row 4, col 2, center 432,992): draw ONLY SUBJECT 17 centered. No extras.
+- Tile 18 (row 4, col 3, center 712,992): draw ONLY the tiny X centered at (712,992). Nothing else.
+- Tile 19 (row 4, col 4, center 992,992): draw ONLY the tiny X centered at (992,992). Nothing else.
+- Tile 20 (row 4, col 5, center 1272,992): draw ONLY the tiny X centered at (1272,992). Nothing else.
 
-HIGHLIGHT RULE:
-- do NOT use pure white (#FFFFFF) inside the subject; use slightly tinted highlights instead.
+BATCH LABEL (not drawn): batch
 
-COMPOSITION (strict, for EVERY tile):
-- One main subject per tile.
-- Subject must be centered horizontally AND vertically.
-- Subject scale must be consistent across tiles.
-- Subject MUST stay entirely inside the centered 120×120px content box.
-- The tile edges must remain pure white with no marks, no outline, no shading.
-- Keep silhouettes compact; avoid thin protrusions that might approach edges.
-
-BATCH LABEL (for humans only, not drawn): batch
-
-TILES (exact order, left-to-right then top-to-bottom):
-01. beer (啤酒)
-02. tea (茶)
-03. coffee (咖啡)
-04. water (水)
-05. milk (奶)
-06. cheese (奶酪)
-07. rice (饭)
-08. apple (苹果)
-09. banana (香蕉)
-10. strawberry (草莓)
-11. berry (莓)
-12. watermelon (西瓜)
-13. chocolate (巧克力)
-14. wine (葡萄酒)
-15. champagne (香槟酒)
-16. hotpot (火锅)
-17. sushi (寿司)
-18. vegetables (蔬菜)
-19. beef (牛肉)
-20. noodles (面条)
-21. cherry (樱桃)
-22. grapes (葡萄)
-23. peach (桃子)
-24. pear (梨)
-25. candy (糖果)
-26. Coca-Cola (可口可乐)
-27. pizza (披萨)
-28. Chinese food (中国菜)
-29. Japanese food (日本菜)
-30. McDonald’s (麦当劳)
+SUBJECT DEFINITIONS (for tiles 1..17 only, not labels to draw):
+01. person (人)
+02. Chinese person (中国人)
+03. father (爸爸)
+04. mother (妈妈)
+05. grandfather (祖父)
+06. son (儿子)
+07. daughter (女儿)
+08. child (孩子)
+09. friend (朋友)
+10. boyfriend (男朋友)
+11. girlfriend (女朋友)
+12. spouse (爱人)
+13. aunt (阿姨)
+14. older brother (哥哥)
+15. younger brother (弟弟)
+16. older sister (姐姐)
+17. younger sister (妹妹)
 
 ---
 SPRITE_LAYOUT_CONFIG_JSON:
@@ -131,14 +119,24 @@ SPRITE_LAYOUT_CONFIG_JSON:
   "TILE": 256,
   "GUTTER": 24,
   "MARGIN": 24,
-  "SAFE_PAD": 56,
-  "GUTTER_GUARD": 12,
-  "EFFECTIVE_PAD": 68,
-  "MAX_FILL": 120,
-  "SUBJECT_TARGET_PCT": 55,
-  "cols": 6,
-  "rows": 5,
-  "count": 30,
-  "expected_width": 1704,
-  "expected_height": 1424
+  "SAFE_PAD": 72,
+  "GUTTER_GUARD": 18,
+  "SUBJECT_SHRINK": 14,
+  "EFFECTIVE_PAD": 90,
+  "MAX_FILL": 76,
+  "SUBJECT_TARGET_PCT": 30,
+  "EMPTY_X_SIZE": 22,
+  "EMPTY_X_STROKE": 4,
+  "EMPTY_X_COLOR": "#000000",
+  "cols": 5,
+  "rows": 4,
+  "count": 17,
+  "totalTiles": 20,
+  "blankTileNums": [
+    18,
+    19,
+    20
+  ],
+  "expected_width": 1424,
+  "expected_height": 1144
 }
