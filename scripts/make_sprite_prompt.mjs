@@ -53,6 +53,24 @@ function expectedSize(tile, gutter, margin, cols, rows) {
   return { width, height };
 }
 
+// ✅ NEW: centralized art style block (so you can tweak it in one place)
+function artStyleBlock() {
+  return `
+ART STYLE (modern stylized anime / neo-ukiyo-e / cinematic pop illustration):
+- modern stylized digital illustration with anime-inspired character design (NOT chibi, NOT kawaii)
+- clean, confident linework with slightly bold outer contours and finer interior lines (subject only)
+- smooth painterly shading with subtle cel-shading structure (2–4 tone blocks), minimal gradients
+- high-contrast, poster-like finish; polished “key art” look (not sketchy)
+- bold saturated but harmonized palette (reds/teals/golds/creams/blacks), avoid muddy colors
+- elegant facial features, expressive eyes, fashion-forward styling
+- optional decorative motif feel (neo-ukiyo-e / traditional patterns / pop graphic shapes) but keep backgrounds pure white
+- consistent lighting direction (top-left), subtle highlights; NO cast shadows
+- editorial print illustration (magazine / packaging art), not UI iconography
+- no sticker, emoji, app icon, or game HUD styling
+- color-block shading preferred over line-based definition
+`.trim();
+}
+
 function buildPrompt({
   label,
   cols,
@@ -78,6 +96,15 @@ CANVAS SIZE (ABSOLUTE, MUST MATCH EXACTLY):
 - The final PNG must be exactly ${expectedWidth}×${expectedHeight} pixels.
 - Do NOT add any extra padding, border, frame, shadow, or whitespace outside this canvas.
 - Do NOT crop smaller than this size. Do NOT export larger than this size.
+
+RENDERING OVERRIDES (CRITICAL):
+- flat editorial illustration, printed-poster look
+- paint-edge silhouettes ONLY (edges defined by color changes, not lines)
+- absolutely no icon strokes, no sticker outlines, no contour strokes
+- avoid dark edge rims; do NOT trace silhouettes
+- no depth cues of any kind
+- lighting is studio-flat and diffuse, evenly lit
+- subject appears printed on white paper, not floating in space
 
 INVISIBLE GRID LAYOUT (DO NOT DRAW THE GRID):
 - Grid is ${cols} columns × ${rows} rows.
@@ -107,6 +134,9 @@ GRID-LINE PREVENTION (READ CAREFULLY):
 - Do NOT draw a table, separators, dividers, guides, frames, borders, crop marks, bleed marks.
 - Do NOT outline tiles.
 - Do NOT add shading/noise in gutters or margins; they must be perfectly flat #FFFFFF.
+- treat the entire canvas as a single white poster
+- tiles are implied only by spacing; do not visually reinforce them
+- do not add any element to improve readability against white
 
 FORBIDDEN (DO NOT INCLUDE ANY OF THESE):
 - No table/grid lines, no tile borders, no separators, no outlines, no strokes in gutters/margins
@@ -114,20 +144,15 @@ FORBIDDEN (DO NOT INCLUDE ANY OF THESE):
 - No gradients or shadows in gutters/margins (must be perfectly flat #FFFFFF)
 - No text, no numbers, no labels, no watermark, no logo
 
-ART STYLE (adult comic-based, keep as-is):
-- modern editorial comic illustration for adults (NOT childish, NOT kawaii)
-- clean inked linework: thin-to-medium uniform outlines on the subject only
-- subtle cel shading (2–3 tone blocks), minimal gradients
-- muted, mature palette; avoid neon / toy-like colors
-- consistent lighting direction (top-left), subtle
-- no shadows below or around the subject
+${artStyleBlock()}
 
-TRANSPARENCY-SAFE RULES:
-- absolutely NO drop shadow below or around the subject
-- NO ground shadow, NO contact shadow, NO ambient shadow
-- NO glow, NO halo, NO vignette
-- background is pure white #FFFFFF
-- do NOT use pure white (#FFFFFF) inside the subject (use lightly tinted highlights instead)
+TRANSPARENCY-SAFE RULES (STRICT INTERPRETATION):
+- ZERO grounding cues: no contact shadow, no cast shadow, no ambient shadow
+- ZERO edge enhancement: no outline, no stroke, no rim light
+- ZERO separation tricks: no halo, no glow, no vignette
+- background is uniform flat #FFFFFF
+- subject edges must end cleanly with color, not darkness
+- highlights must be lightly tinted (cream, pale yellow), never pure white
 
 COMPOSITION (strict, for EVERY tile):
 - One main subject per tile.
@@ -136,6 +161,9 @@ COMPOSITION (strict, for EVERY tile):
 - Subject MUST stay entirely inside the centered ${contentBox} content box.
 - The tile edges must remain pure white with no marks, no outline, no shading.
 - Keep silhouettes compact; avoid thin protrusions that might approach edges.
+- silhouettes must remain compact and rounded
+- avoid thin protrusions, spikes, drips, splashes, steam wisps, foam spray
+
 
 BATCH LABEL (for humans only, not drawn): ${label}
 
