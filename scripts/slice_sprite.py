@@ -85,7 +85,6 @@ def _floodfill_edge_connected_bool(bg_like: np.ndarray) -> np.ndarray:
 
     return bg_conn
 
-
 def _floodfill_edge_connected_bg(dist_img: np.ndarray, bg_cut: float) -> np.ndarray:
     """
     Flood-fill background starting from the image edge:
@@ -94,6 +93,58 @@ def _floodfill_edge_connected_bg(dist_img: np.ndarray, bg_cut: float) -> np.ndar
     """
     bg_like = dist_img <= bg_cut
     return _floodfill_edge_connected_bool(bg_like)
+
+def _floodfill_from_seed(mask: np.ndarray, sy: int, sx: int) -> np.ndarray:
+    """
+    Flood-fill (4-connected) on a boolean mask starting at (sy, sx).
+    Returns a boolean mask for the connected component.
+    """
+    h, w = mask.shape
+    out = np.zeros((h, w), dtype=np.bool_)
+
+    if not (0 <= sy < h and 0 <= sx < w):
+        return out
+    if not mask[sy, sx]:
+        return out
+
+    q = deque()
+    out[sy, sx] = True
+    q.append((sy, sx))
+
+    while q:
+        y, x = q.popleft()
+        for ny, nx in ((y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)):
+            if 0 <= ny < h and 0 <= nx < w and (not out[ny, nx]) and mask[ny, nx]:
+                out[ny, nx] = True
+                q.append((ny, nx))
+    return out
+
+def _find_nearest_true(mask: np.ndarray, sy: int, sx: int, max_r: int = 24) -> Optional[Tuple[int, int]]:
+    """
+    If seed isn't inside foreground, search a small radius for the nearest True pixel.
+    Returns (y, x) or None.
+    """
+    h, w = mask.shape
+    if 0 <= sy < h and 0 <= sx < w and mask[sy, sx]:
+        return (sy, sx)
+
+    for r in range(1, max_r + 1):
+        y0, y1 = max(0, sy - r), min(h - 1, sy + r)
+        x0, x1 = max(0, sx - r), min(w - 1, sx + r)
+
+        # scan perimeter of the square ring (cheap-ish)
+        for x in range(x0, x1 + 1):
+            if mask[y0, x]:
+                return (y0, x)
+            if mask[y1, x]:
+                return (y1, x)
+        for y in range(y0, y1 + 1):
+            if mask[y, x0]:
+                return (y, x0)
+            if mask[y, x1]:
+                return (y, x1)
+
+    return None
 
 
 # ---------------------------
@@ -681,42 +732,95 @@ def rgba_with_transparent_bg_edge_connected(
     return out
 
 
-def crop_and_center_subject(
+def crop_and_center_subject_masked(
     sprite_rgb: Image.Image,
     bbox: Tuple[int, int, int, int],
+    seed_xy: Tuple[int, int],
     *,
     out_size: int,
 ) -> Image.Image:
+    """
+    Crop a region around bbox, then isolate ONLY the connected component that contains seed_xy
+    (in sprite coordinates). This prevents neighbor-subject pixels from leaking into the crop.
+
+    Returns an RGB tile on WHITE background (so your existing edge-connected background remover works).
+    """
     x0, y0, x1, y1 = bbox
-    w, h = sprite_rgb.size
+    W, H = sprite_rgb.size
+    cx, cy = seed_xy
 
     bw = max(1, x1 - x0)
     bh = max(1, y1 - y0)
 
+    # Keep your padding, but it’s safe now because we’ll mask by component
     pad = int(round(max(bw, bh) * 0.06))
     pad = int(max(6, min(24, pad)))
 
     x0p = max(0, x0 - pad)
     y0p = max(0, y0 - pad)
-    x1p = min(w, x1 + pad)
-    y1p = min(h, y1 + pad)
+    x1p = min(W, x1 + pad)
+    y1p = min(H, y1 + pad)
 
     cut = sprite_rgb.crop((x0p, y0p, x1p, y1p)).convert("RGB")
-    cw, ch = cut.size
 
+    # Build foreground mask on the cut
+    fg_cut, _ = build_foreground_mask_autocut(cut, frame=10)
+
+    # Seed in cut coordinates
+    sx = int(cx - x0p)
+    sy = int(cy - y0p)
+
+    # If seed isn't on fg (can happen due to thresholds), find nearest fg pixel
+    nearest = _find_nearest_true(fg_cut, sy, sx, max_r=32)
+    if nearest is None:
+        # Fallback: no fg found near seed — just use bbox crop without masking (rare)
+        # (still centered below)
+        masked_rgb = cut
+        comp_mask = None
+    else:
+        sy2, sx2 = nearest
+        comp_mask = _floodfill_from_seed(fg_cut, sy2, sx2)
+
+        # Tight-bbox the component inside the cut (so we remove surrounding neighbor areas entirely)
+        ys, xs = np.nonzero(comp_mask)
+        if ys.size == 0:
+            masked_rgb = cut
+            comp_mask = None
+        else:
+            yy0, yy1 = int(ys.min()), int(ys.max()) + 1
+            xx0, xx1 = int(xs.min()), int(xs.max()) + 1
+
+            # small safety pad in the cut frame (NOT large enough to hit neighbors usually)
+            tight_pad = 2
+            yy0 = max(0, yy0 - tight_pad)
+            xx0 = max(0, xx0 - tight_pad)
+            yy1 = min(comp_mask.shape[0], yy1 + tight_pad)
+            xx1 = min(comp_mask.shape[1], xx1 + tight_pad)
+
+            cut = cut.crop((xx0, yy0, xx1, yy1))
+            comp_mask = comp_mask[yy0:yy1, xx0:xx1]
+
+            # Paint everything outside the component white (so later bg removal works)
+            arr = np.array(cut, dtype=np.uint8)
+            inv = ~comp_mask
+            arr[inv] = np.array([255, 255, 255], dtype=np.uint8)
+            masked_rgb = Image.fromarray(arr, mode="RGB")
+
+    # Scale down to fit out_size (same behavior as your old function)
+    cw, ch = masked_rgb.size
     scale = min(1.0, float(out_size) / float(max(cw, ch)))
     if scale < 1.0:
         nw = max(1, int(round(cw * scale)))
         nh = max(1, int(round(ch * scale)))
-        cut = cut.resize((nw, nh), Image.LANCZOS)
-        cw, ch = cut.size
+        masked_rgb = masked_rgb.resize((nw, nh), Image.LANCZOS)
+        cw, ch = masked_rgb.size
 
+    # Center on WHITE (your transparency step expects this)
     canvas = Image.new("RGB", (out_size, out_size), (255, 255, 255))
     ox = (out_size - cw) // 2
     oy = (out_size - ch) // 2
-    canvas.paste(cut, (ox, oy))
+    canvas.paste(masked_rgb, (ox, oy))
     return canvas
-
 
 # ---------------------------
 # Main
@@ -800,7 +904,13 @@ def main():
         c = ordered[i]
         bbox = (c["x0"], c["y0"], c["x1"], c["y1"])
 
-        centered = crop_and_center_subject(sprite, bbox, out_size=args.tile_out)
+        centered = crop_and_center_subject_masked(
+            sprite,
+            bbox,
+            seed_xy=(c["cx"], c["cy"]),
+            out_size=args.tile_out,
+        )
+
         rgba = rgba_with_transparent_bg_edge_connected(
             centered,
             frame=10,
