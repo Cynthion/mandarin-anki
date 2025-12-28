@@ -335,23 +335,21 @@ def connected_components_bbox(mask: np.ndarray) -> List[Dict[str, int]]:
 # ---------------------------
 def detect_subjects(sprite_rgb: Image.Image, want_n: int) -> Tuple[List[Dict[str, int]], Dict[str, float]]:
     """
-    Auto-detect subjects on a near-white sprite.
+    Auto-detect ALL subjects on a near-white sprite.
 
-    - Uses the FIXED foreground mask (brightness/chroma) to avoid missing the large portrait.
-    - Avoids aggressive closing that would bridge white gaps.
-    - If more than want_n components exist, selects the first want_n by TL→BR order.
+    - Uses the FIXED foreground mask (brightness/chroma).
+    - Avoids trimming to want_n; returns all plausible components.
+    - Still uses want_n only as a hint to avoid over-cleaning / under-detecting.
     """
     fg0, dbg0 = build_foreground_mask_autocut(sprite_rgb, frame=14)
 
+    # Keep morphology conservative (avoid bridging gaps)
     open_radii = [0, 1, 2, 3]
     close_radii = [0, 1, 2]
 
     best: Optional[List[Dict[str, int]]] = None
     best_dbg: Optional[Dict[str, float]] = None
     best_score: Optional[float] = None
-
-    def take_top_left_n(comps_list: List[Dict[str, int]]) -> List[Dict[str, int]]:
-        return sorted(comps_list, key=lambda c: (c["cy"], c["cx"]))[:want_n]
 
     for o in open_radii:
         fg = _morph_open(fg0, radius=o)
@@ -364,20 +362,28 @@ def detect_subjects(sprite_rgb: Image.Image, want_n: int) -> Tuple[List[Dict[str
             if not comps:
                 continue
 
+            # Sort by area desc for robust stats
             comps = sorted(comps, key=lambda z: z["area"], reverse=True)
 
-            top_k = comps[: min(len(comps), max(12, want_n))]
+            # Robust min-area based on top candidates (avoid tiny specks)
+            top_k = comps[: min(len(comps), max(30, want_n * 2, 12))]
             med_area = float(np.median([t["area"] for t in top_k])) if top_k else 0.0
-            min_area = max(80, int(med_area * 0.06)) if med_area > 0 else 80
+            # Slightly more permissive than before: we want ALL subjects
+            min_area = max(60, int(med_area * 0.04)) if med_area > 0 else 60
+
             comps2 = [cc for cc in comps if cc["area"] >= min_area]
-
             count = len(comps2)
-            diff = abs(count - want_n)
 
-            miss_penalty = 500.0 if count < want_n else 0.0
-            extra_penalty = 4.0 * max(0, count - want_n)
+            # Score: prefer higher count but punish obvious noise explosions
+            # (we don't know the true count; we only have want_n as a weak hint)
+            # - Encourage >= want_n
+            # - Penalize huge overshoots (often due to noise)
+            miss_penalty = 600.0 if count < want_n else 0.0
+            overshoot = max(0, count - max(want_n, 1))
+            overshoot_penalty = 1.2 * float(overshoot)
 
-            score = -(diff * 15.0) - miss_penalty - extra_penalty - (o * 1.2) - (c * 0.6)
+            # Morphology complexity penalty (prefer simpler)
+            score = (count * 2.0) - miss_penalty - overshoot_penalty - (o * 1.1) - (c * 0.7)
 
             if best_score is None or score > best_score:
                 best_score = score
@@ -389,97 +395,164 @@ def detect_subjects(sprite_rgb: Image.Image, want_n: int) -> Tuple[List[Dict[str
                         "close_radius": float(c),
                         "min_area": float(min_area),
                         "found_components": float(count),
-                        "want_n": float(want_n),
+                        "want_n_hint": float(want_n),
                         "score": float(score),
                     }
                 )
 
-            if count >= want_n:
-                out = take_top_left_n(comps2)
-                if len(out) == want_n:
-                    best_dbg = dict(best_dbg or dbg0)
-                    best_dbg["trimmed_from"] = float(count)
-                    return out, best_dbg
-
-    if best is None or best_dbg is None:
+    if best is None or best_dbg is None or len(best) == 0:
         raise SystemExit("No subjects detected. Is the sprite background near-white?")
-
-    if len(best) > want_n:
-        best_dbg = dict(best_dbg)
-        best_dbg["trimmed_from"] = float(len(best))
-        best = sorted(best, key=lambda c: (c["cy"], c["cx"]))[:want_n]
-
-    if len(best) != want_n:
-        raise SystemExit(
-            f"Subject detection failed: expected {want_n} subjects, got {len(best)}.\n"
-            f"Detection debug: {best_dbg}\n"
-        )
 
     return best, best_dbg
 
+def _cluster_1d(values: np.ndarray, eps: float) -> List[Tuple[float, float, int]]:
+    """
+    Cluster sorted 1D values into groups where consecutive points differ by <= eps.
+    Returns list of clusters as (center, spread, count).
+    """
+    if values.size == 0:
+        return []
+    v = np.sort(values.astype(np.float32))
+    clusters = []
+    start = 0
+    for i in range(1, len(v)):
+        if float(v[i] - v[i - 1]) > float(eps):
+            chunk = v[start:i]
+            center = float(np.median(chunk))
+            spread = float(np.percentile(chunk, 90) - np.percentile(chunk, 10)) if chunk.size > 1 else 0.0
+            clusters.append((center, spread, int(chunk.size)))
+            start = i
+    chunk = v[start:]
+    center = float(np.median(chunk))
+    spread = float(np.percentile(chunk, 90) - np.percentile(chunk, 10)) if chunk.size > 1 else 0.0
+    clusters.append((center, spread, int(chunk.size)))
+    return clusters
 
-# ---------------------------
-# STRICT top-left → bottom-right ordering (row bucketing)
-# ---------------------------
-def assign_order_top_left(
+
+def assign_order_virtual_grid(
     comps: List[Dict[str, int]],
     want_n: int,
     img_w: int,
     img_h: int,
 ) -> Tuple[List[Dict[str, int]], Dict[str, float]]:
-    comps = list(comps)
-    if len(comps) != want_n:
-        raise SystemExit(f"Internal error: expected {want_n} comps, got {len(comps)}")
+    """
+    Assign ALL detected subjects into a "virtual grid" inferred from stats,
+    then output subjects in strict top-left → bottom-right grid order.
+    If there are too many subjects, bottom-right ones get dropped.
 
-    comps_y = sorted(comps, key=lambda c: (c["cy"], c["cx"]))
+    Strategy:
+    1) Infer row clusters from cy, using eps ~ median component height * 0.65
+    2) Infer col clusters from cx, using eps ~ median component width  * 0.65
+    3) Assign each component to nearest (row, col) cell
+    4) Resolve cell collisions by choosing best (largest area + closest to cell center)
+    5) Read cells row-major and take first want_n
+    """
+    if not comps:
+        return [], {"rows": 0.0, "cols": 0.0}
 
-    ys = np.array([c["cy"] for c in comps_y], dtype=np.float32)
-    if len(ys) >= 2:
-        dy = np.diff(ys)
-        dy_pos = dy[dy > 0]
-        if dy_pos.size > 0:
-            p25 = float(np.percentile(dy_pos, 25.0))
-            p75 = float(np.percentile(dy_pos, 75.0))
-            thr = max(8.0, (p25 + p75) * 0.5)
+    # Basic size stats for adaptive clustering tolerances
+    hs = np.array([max(1, c["y1"] - c["y0"]) for c in comps], dtype=np.float32)
+    ws = np.array([max(1, c["x1"] - c["x0"]) for c in comps], dtype=np.float32)
+    med_h = float(np.median(hs))
+    med_w = float(np.median(ws))
+
+    eps_row = max(10.0, med_h * 0.65)
+    eps_col = max(10.0, med_w * 0.65)
+
+    cys = np.array([c["cy"] for c in comps], dtype=np.float32)
+    cxs = np.array([c["cx"] for c in comps], dtype=np.float32)
+
+    row_clusters = _cluster_1d(cys, eps=eps_row)
+    col_clusters = _cluster_1d(cxs, eps=eps_col)
+
+    # Sort clusters top->bottom / left->right
+    row_centers = np.array(sorted([rc[0] for rc in row_clusters]), dtype=np.float32)
+    col_centers = np.array(sorted([cc[0] for cc in col_clusters]), dtype=np.float32)
+
+    # Fallback if clustering degenerates
+    if row_centers.size == 0:
+        row_centers = np.array([float(np.median(cys))], dtype=np.float32)
+    if col_centers.size == 0:
+        col_centers = np.array([float(np.median(cxs))], dtype=np.float32)
+
+    def nearest_index(arr: np.ndarray, v: float) -> int:
+        return int(np.argmin(np.abs(arr - float(v))))
+
+    # Build cell map
+    # cell[(r,c)] = chosen_component
+    # extras = components that collided and lost
+    cell: Dict[Tuple[int, int], Dict[str, int]] = {}
+    extras: List[Dict[str, int]] = []
+
+    collisions = 0
+    for comp in comps:
+        r = nearest_index(row_centers, comp["cy"])
+        c = nearest_index(col_centers, comp["cx"])
+        key = (r, c)
+
+        # "Fit" score: prefer larger, more central in its cell band
+        dy = abs(float(comp["cy"]) - float(row_centers[r]))
+        dx = abs(float(comp["cx"]) - float(col_centers[c]))
+        # normalize by eps to make comparable
+        center_penalty = (dy / max(1.0, eps_row)) + (dx / max(1.0, eps_col))
+        fit = float(comp["area"]) - (center_penalty * (0.15 * float(comp["area"]) + 50.0))
+
+        if key not in cell:
+            comp2 = dict(comp)
+            comp2["_grid_r"] = r
+            comp2["_grid_c"] = c
+            comp2["_fit"] = fit
+            cell[key] = comp2
         else:
-            thr = 12.0
-    else:
-        thr = 12.0
+            collisions += 1
+            cur = cell[key]
+            if fit > float(cur.get("_fit", cur["area"])):
+                extras.append(cur)
+                comp2 = dict(comp)
+                comp2["_grid_r"] = r
+                comp2["_grid_c"] = c
+                comp2["_fit"] = fit
+                cell[key] = comp2
+            else:
+                extras.append(comp)
 
-    rows: List[List[Dict[str, int]]] = []
-    cur: List[Dict[str, int]] = []
-    cur_mean_y: float = float(comps_y[0]["cy"]) if comps_y else 0.0
-
-    for c in comps_y:
-        if not cur:
-            cur = [c]
-            cur_mean_y = float(c["cy"])
-            continue
-
-        if float(c["cy"]) - cur_mean_y > thr:
-            rows.append(cur)
-            cur = [c]
-            cur_mean_y = float(c["cy"])
-        else:
-            cur.append(c)
-            cur_mean_y = (cur_mean_y * (len(cur) - 1) + float(c["cy"])) / float(len(cur))
-
-    if cur:
-        rows.append(cur)
-
+    # Emit in row-major cell order
     ordered: List[Dict[str, int]] = []
-    max_cols = 0
-    for r in rows:
-        r_sorted = sorted(r, key=lambda c: (c["cx"], c["cy"]))
-        max_cols = max(max_cols, len(r_sorted))
-        ordered.extend(r_sorted)
+    rows_n = int(row_centers.size)
+    cols_n = int(col_centers.size)
+    for r in range(rows_n):
+        for c in range(cols_n):
+            key = (r, c)
+            if key in cell:
+                ordered.append(cell[key])
+
+    # If grid produced too few (e.g., odd layouts), fill remaining by pure reading order of unused
+    used_ids = set(id(x) for x in ordered)
+    unused = [c for c in comps if id(c) not in used_ids]
+    unused_sorted = sorted(unused, key=lambda z: (z["cy"], z["cx"]))
+    for u in unused_sorted:
+        ordered.append(u)
+
+    # Now apply the strict "if too many, drop bottom-right"
+    # We already built row-major; just take the first want_n.
+    ordered_final = ordered[:want_n]
 
     dbg = {
-        "row_break_threshold": float(thr),
-        "rows_detected": float(len(rows)),
-        "max_cols_in_a_row": float(max_cols),
+        "median_h": float(med_h),
+        "median_w": float(med_w),
+        "eps_row": float(eps_row),
+        "eps_col": float(eps_col),
+        "rows_detected": float(rows_n),
+        "cols_detected": float(cols_n),
+        "grid_capacity": float(rows_n * cols_n),
+        "components_in": float(len(comps)),
+        "collisions": float(collisions),
+        "extras_count": float(len(extras)),
+        "ordered_before_trim": float(len(ordered)),
+        "ordered_final": float(len(ordered_final)),
+        "want_n": float(want_n),
     }
-    return ordered, dbg
+    return ordered_final, dbg
 
 
 # ---------------------------
@@ -682,8 +755,9 @@ def main():
     sprite = Image.open(args.sprite).convert("RGB")
     W, H = sprite.size
 
-    comps, detect_dbg = detect_subjects(sprite, want_n=want_n)
-    ordered, map_dbg = assign_order_top_left(comps, want_n=want_n, img_w=W, img_h=H)
+    comps_all, detect_dbg = detect_subjects(sprite, want_n=want_n)
+    ordered, map_dbg = assign_order_virtual_grid(comps_all, want_n=want_n, img_w=W, img_h=H)
+
 
     if args.debug_list:
         for i, c in enumerate(ordered, start=1):
@@ -693,15 +767,22 @@ def main():
         dbg_img = sprite.copy()
         from PIL import ImageDraw
         d = ImageDraw.Draw(dbg_img)
+
+        # draw all comps faint
+        for c in comps_all:
+            d.rectangle([c["x0"], c["y0"], c["x1"], c["y1"]], outline=(0, 120, 255), width=2)
+
+        # draw chosen ordered strong + index
         for i, c in enumerate(ordered, start=1):
-            d.rectangle([c["x0"], c["y0"], c["x1"], c["y1"]], outline=(255, 0, 0), width=3)
+            d.rectangle([c["x0"], c["y0"], c["x1"], c["y1"]], outline=(255, 0, 0), width=4)
             d.text((c["x0"] + 4, c["y0"] + 4), str(i), fill=(255, 0, 0))
+
         p = Path(args.debug_detect)
         p.parent.mkdir(parents=True, exist_ok=True)
         dbg_img.save(p)
         print(f"Debug detection image written: {p}")
         print(f"Detection debug: {detect_dbg}")
-        print(f"Mapping debug: {map_dbg}")
+        print(f"Grid mapping debug: {map_dbg}")
 
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -732,10 +813,12 @@ def main():
 
     print(f"Sprite: {args.sprite}")
     print(f"TSV: {args.tsv}")
-    print(f"Wanted: {want_n} | Detected: {len(ordered)} | Exported: {limit}")
-    print(f"Row grouping: {int(map_dbg['rows_detected'])} rows | max cols in a row: {int(map_dbg['max_cols_in_a_row'])}")
+    print(f"Wanted: {want_n} | Detected(all): {len(comps_all)} | Ordered: {len(ordered)} | Exported: {limit}")
+    print(
+        f"Grid: {int(map_dbg['rows_detected'])} rows × {int(map_dbg['cols_detected'])} cols "
+        f"(cap {int(map_dbg['grid_capacity'])}) | collisions: {int(map_dbg['collisions'])}"
+    )
     print(f"Saved: {saved} | Skipped: {skipped} | Out: {out_dir}")
-
 
 if __name__ == "__main__":
     main()
