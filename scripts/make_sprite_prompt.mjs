@@ -64,7 +64,12 @@ function expectedSize(tile, gutter, margin, cols, rows) {
 function artStyleBlock() {
   return `
 ART STYLE (bold pop-art / comic-book ink + anime influence — high contrast, lots of linework, NO SHADOWS):
+- TARGET AUDIENCE: ADULTS (young adults to adults), NOT children
+- visual tone must feel mature, professional, and graphic — suitable for adult learning materials
+- NO childish, cute, playful, toy-like, or storybook aesthetics
+- NO kids-app, children’s book, sticker-for-kids, emoji, mascot, or nursery style
 - modern stylized illustration with anime-inspired faces/proportions (NOT chibi, NOT kawaii)
+- realistic adult proportions and facial structure (no oversized heads, no baby faces, no exaggerated cuteness)
 - heavy graphic BLACK INK linework:
   - thick outer contour lines for silhouette clarity
   - medium interior contour lines for folds, hair strands, facial features, accessories
@@ -92,7 +97,6 @@ ABSOLUTE SHADOW / EFFECT BAN (MUST OBEY):
 }
 
 function buildPrompt({
-  label,
   cols,
   rows,
   tile,
@@ -122,6 +126,12 @@ RENDERING OVERRIDES (CRITICAL):
 - use bold black ink linework (comic/pop linework) to define the subject
 - crisp hard edges; no soft edge drift, no airbrush fade
 - no depth cues or grounding of any kind
+
+ AUDIENCE & TONE (CRITICAL):
+- These illustrations are for ADULT learners and adult users.
+- The style must feel mature, neutral, and instructional — NOT playful or child-oriented.
+- Do NOT use children’s illustration conventions (storybook look, toy-like shapes, cute exaggeration, playful faces).
+- Avoid baby-like proportions, oversized heads, simplified “cute” eyes, or cartoon-for-kids aesthetics.
 
 INVISIBLE GRID LAYOUT (DO NOT DRAW THE GRID):
 - Grid is ${cols} columns × ${rows} rows.
@@ -179,8 +189,6 @@ COMPOSITION (strict, for EVERY tile):
 - The tile edges must remain pure white with no marks, no outline, no shading.
 - Keep silhouettes compact; avoid thin protrusions that might approach edges.
 
-BATCH LABEL (for humans only, not drawn): ${label}
-
 TILES (exact order, left-to-right then top-to-bottom):
 ${subjects.join("\n")}
 `.trim();
@@ -188,7 +196,6 @@ ${subjects.join("\n")}
 
 async function main() {
   const tsvPath = process.argv[2] ?? "image-data.tsv";
-  const label = process.argv[3] ?? "batch";
 
   // Stable layout lock
   const TILE = 256;
@@ -245,7 +252,6 @@ async function main() {
   );
 
   const prompt = buildPrompt({
-    label,
     cols,
     rows: gridRows,
     tile: TILE,
