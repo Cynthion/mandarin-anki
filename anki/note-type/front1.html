@@ -1,8 +1,13 @@
 <div class="card {{Tags}}">
-  <div class="hanzi">{{hanzi}}</div>
+  <div class="top">
+    <div class="top-text empty">empty</div>
+    <div class="top-text empty">empty</div>
+  </div>
   
-  <div class="pinyin center">
-    {{pinyin}}
+  <div class="center">
+    <div class="center-text-1 hanzi">{{hanzi}}</div>
+    <div class="center-text-2">{{pinyin}}</div>
+
     <div class="posdots">
       <span class="dot dot-noun"></span>
       <span class="dot dot-verb"></span>
@@ -13,19 +18,41 @@
       <span class="dot dot-clf"></span>
       <span class="dot dot-prep"></span>
     </div>
+
+    {{#audio}}
+      <div class="audio">{{audio}}</div>
+    {{/audio}}
+
+    {{^audio}}
+      <div class="audio">
+        {{tts zh_CN:hanzi}}
+      </div>
+    {{/audio}}
   </div>
 
-  {{#audio}}
-    <div class="audio">{{audio}}</div>
-  {{/audio}}
+  <div class="bottom">
+    <div class="example">
+      <div class="label">EXAMPLE</div>
 
-  {{^audio}}
-    <div class="audio">
-      {{tts zh_CN:hanzi}}
+      {{#example-hanzi}}
+        <div class="example-text text-1 hanzi">{{example-hanzi}}</div>
+      {{/example-hanzi}}
+
+      {{#example-pinyin}}
+        <div class="example-text text-2">{{example-pinyin}}</div>
+      {{/example-pinyin}}
+
+      <div class="example-text text-3 empty">empty</div>
+
+      {{#audio-example}}
+        <div class="audio">{{audio-example}}</div>
+      {{/audio-example}}
+
+      {{^audio-example}}
+        <div class="audio">
+          {{tts zh_CN:example-hanzi}}
+        </div>
+      {{/audio-example}}
     </div>
-  {{/audio}}
-
-  {{#image}}
-    <div class="image">{{image}}</div>
-  {{/image}}
+  </div>
 </div>

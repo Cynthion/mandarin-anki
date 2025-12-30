@@ -1,8 +1,13 @@
-<div class="card {{Tags}}">
-  <div class="hanzi">{{hanzi}}</div>
-  
-  <div class="pinyin center">
-    {{pinyin}}
+<div class="card {{Tags}}">  
+  <div class="top">
+    <div class="top-text empty">empty</div>
+    <div class="top-text empty">empty</div>
+  </div>
+
+  <div class="center">
+    <div class="center-text-1">{{meaning}}</div>
+    <div class="center-text-2 empty">empty</div>
+
     <div class="posdots">
       <span class="dot dot-noun"></span>
       <span class="dot dot-verb"></span>
@@ -15,17 +20,17 @@
     </div>
   </div>
 
-  {{#audio}}
-    <div class="audio">{{audio}}</div>
-  {{/audio}}
+  <div class="bottom">
+    <div class="example">
+      <div class="label">EXAMPLE</div>
 
-  {{^audio}}
-    <div class="audio">
-      {{tts zh_CN:hanzi}}
+      {{#example-meaning}}
+        <div class="example-text text-1">{{example-meaning}}</div>
+      {{/example-meaning}}
+
+      <div class="example-text text-2 empty">empty</div>
+
+      <div class="example-text text-3 empty">empty</div>
     </div>
-  {{/audio}}
-
-  {{#image}}
-    <div class="image">{{image}}</div>
-  {{/image}}
+  </div>
 </div>
