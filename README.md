@@ -20,32 +20,6 @@ This repository contains the **source of truth** for a custom Mandarin Anki deck
 
 ---
 
-## What the Cards Show
-
-### Front
-
-1. Hanzi
-2. Pinyin
-3. Audio:
-   - Plays an audio file if the `audio` field contains `[sound:...]`
-   - Otherwise uses **system TTS fallback** via `{{tts zh_CN:hanzi}}`
-4. Image (optional, only shown if `image` field contains an `<img ...>`)
-
-### Back
-
-1. Meaning
-2. Example (optional)
-3. Audio again (same logic)
-4. Image (optional)
-
-### Auto-play audio
-
-Enable:
-
-- `Tools → Preferences → Playback → Automatically play audio`
-
----
-
 ## Workflow
 
 1. Edit `deck/notes.tsv` in VS Code
@@ -94,9 +68,12 @@ With your note type selected:
    2. `hanzi`
    3. `pinyin`
    4. `meaning`
-   5. `example`
-   6. `audio`
-   7. `image`
+   5. `example-hanzi`
+   6. `example-pinyin`
+   7. `example-meaning`
+   8. `audio`
+   9. `audio-example`
+   10. `image`
 
 ✅ Important:
 

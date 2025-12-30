@@ -129,6 +129,8 @@
 .card.adv  .posdots .dot-adv  { display: inline-block; }
 .card.pron .posdots .dot-pron { display: inline-block; }
 .card.part .posdots .dot-part { display: inline-block; }
+.card.clf  .posdots .dot-clf  { display: inline-block; }
+.card.prep .posdots .dot-prep { display: inline-block; }
 
 .card.noun  .posdots { color: #0057B8; }
 .card.verb  .posdots { color: #D60000; }
