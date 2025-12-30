@@ -1,0 +1,31 @@
+<div class="card {{Tags}}">
+  <div class="hanzi">{{hanzi}}</div>
+  
+  <div class="pinyin center">
+    {{pinyin}}
+    <div class="posdots">
+      <span class="dot dot-noun"></span>
+      <span class="dot dot-verb"></span>
+      <span class="dot dot-adj"></span>
+      <span class="dot dot-adv"></span>
+      <span class="dot dot-pron"></span>
+      <span class="dot dot-part"></span>
+      <span class="dot dot-clf"></span>
+      <span class="dot dot-prep"></span>
+    </div>
+  </div>
+
+  {{#audio}}
+    <div class="audio">{{audio}}</div>
+  {{/audio}}
+
+  {{^audio}}
+    <div class="audio">
+      {{tts zh_CN:hanzi}}
+    </div>
+  {{/audio}}
+
+  {{#image}}
+    <div class="image">{{image}}</div>
+  {{/image}}
+</div>

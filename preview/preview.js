@@ -1,6 +1,8 @@
-const PATH_FRONT = "../anki/note-type/front.html";
-const PATH_BACK  = "../anki/note-type/back.html";
-const PATH_STYLE = "../anki/note-type/styling.css";
+const PATH_FRONT_1 = "../anki/note-type/front1.html";
+const PATH_BACK_1  = "../anki/note-type/back1.html";
+const PATH_FRONT_2 = "../anki/note-type/front2.html";
+const PATH_BACK_2  = "../anki/note-type/back2.html";
+const PATH_STYLE   = "../anki/note-type/styling.css";
 
 const AUDIO_BASE = "../media/audio/";
 const IMAGE_BASE = "../media/images/";
@@ -111,7 +113,6 @@ function normalizeNoteForPreview(note) {
   n.Tags = tags;
   n.tags = tags;
 
-  // Make sure optional fields exist as strings (avoid "undefined" showing up)
   const ensureString = (key) => {
     if (n[key] == null) n[key] = "";
     else n[key] = n[key].toString();
@@ -133,6 +134,7 @@ function normalizeNoteForPreview(note) {
 
 async function main() {
   const noteSelect = document.getElementById("noteSelect");
+  const cardSelect = document.getElementById("cardSelect");
   const frontHost = document.getElementById("frontHost");
   const backHost = document.getElementById("backHost");
   const reloadBtn = document.getElementById("reloadBtn");
@@ -143,55 +145,68 @@ async function main() {
     throw new Error("preview/mock.json must be a non-empty array of note objects.");
   }
 
-  // Fill dropdown
+  // Fill note dropdown
   noteSelect.innerHTML = "";
   notes.forEach((raw, idx) => {
     const n = normalizeNoteForPreview(raw);
-    const label = `${n.id || `note-${idx+1}`} — ${n.hanzi || ""} ${n.pinyin || ""}`.trim();
+    const label = `${n.id || `note-${idx + 1}`} — ${n.hanzi || ""} ${n.pinyin || ""}`.trim();
     const opt = document.createElement("option");
     opt.value = String(idx);
     opt.textContent = label;
     noteSelect.appendChild(opt);
   });
 
-  let frontTpl = await loadText(PATH_FRONT);
-  let backTpl = await loadText(PATH_BACK);
+  // Load all templates
+  let templates = {
+    front1: await loadText(PATH_FRONT_1),
+    back1:  await loadText(PATH_BACK_1),
+    front2: await loadText(PATH_FRONT_2),
+    back2:  await loadText(PATH_BACK_2),
+  };
 
   function reloadStylesheet(linkId = "ankiStyle") {
     const link = document.getElementById(linkId);
     if (!link) return;
 
     const baseHref = link.getAttribute("href") || PATH_STYLE;
-
-    // Remove any previous cache-buster query
     const clean = baseHref.split("?")[0];
-
-    // Add a fresh cache-buster
     link.href = `${clean}?v=${Date.now()}`;
   }
 
   function renderSelected() {
     setError("");
-    const idx = Number(noteSelect.value || "0");
-    const raw = notes[idx] ?? notes[0];
 
+    const noteIdx = Number(noteSelect.value || "0");
+    const raw = notes[noteIdx] ?? notes[0];
     const data = normalizeNoteForPreview(raw);
+
+    const card = (cardSelect?.value || "1").trim();
+    const frontTpl = templates[`front${card}`];
+    const backTpl  = templates[`back${card}`];
+
+    if (!frontTpl || !backTpl) {
+      throw new Error(`Missing template for card=${card}. Expected keys front${card}/back${card}.`);
+    }
 
     frontHost.innerHTML = renderTemplate(frontTpl, data);
     backHost.innerHTML = renderTemplate(backTpl, data);
   }
 
   noteSelect.addEventListener("change", renderSelected);
+  cardSelect?.addEventListener("change", renderSelected);
 
   reloadBtn.addEventListener("click", async () => {
     try {
       setError("");
-      frontTpl = await loadText(PATH_FRONT);
-      backTpl = await loadText(PATH_BACK);
 
-      // refresh CSS too
+      templates = {
+        front1: await loadText(PATH_FRONT_1),
+        back1:  await loadText(PATH_BACK_1),
+        front2: await loadText(PATH_FRONT_2),
+        back2:  await loadText(PATH_BACK_2),
+      };
+
       reloadStylesheet();
-
       renderSelected();
     } catch (e) {
       setError(e?.stack || String(e));
@@ -202,7 +217,6 @@ async function main() {
     setNightMode(nightMode.checked);
   });
 
-  // Initial render
   renderSelected();
 }
 

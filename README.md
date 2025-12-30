@@ -89,11 +89,19 @@ Click **Save**.
 
 1. Select your note type
 2. Click **Cards…**
-3. Paste templates from this repo:
+3. Rename the `Card 1` to `Mandarin -> English`
+4. Add a new card and name it `English -> Mandarin`
+5. Paste templates from this repo:
 
-- Front Template: `anki/note-type/front.html`
-- Back Template: `anki/note-type/back.html`
+`Mandarin -> English` card:
+- Front Template: `anki/note-type/front1.html`
+- Back Template: `anki/note-type/back1.html`
 - Styling: `anki/note-type/style.css`
+
+`English -> Mandarin` card:
+- Front Template: `anki/note-type/front2.html`
+- Back Template: `anki/note-type/back2.html`
+- Styling:  `anki/note-type/style.css`
 
 Click **Save**.
 
