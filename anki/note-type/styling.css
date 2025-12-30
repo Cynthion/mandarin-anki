@@ -121,22 +121,23 @@
   border-radius: 999px;
   background: currentColor;
   display: none;
+  opacity: 0.85;
 }
 
 .card.noun .posdots .dot-noun { display: inline-block; }
 .card.verb .posdots .dot-verb { display: inline-block; }
 .card.adj  .posdots .dot-adj  { display: inline-block; }
-.card.adv  .posdots .dot-adv  { display: inline-block; }
 .card.pron .posdots .dot-pron { display: inline-block; }
+.card.adv  .posdots .dot-adv  { display: inline-block; }
 .card.part .posdots .dot-part { display: inline-block; }
 .card.clf  .posdots .dot-clf  { display: inline-block; }
 .card.prep .posdots .dot-prep { display: inline-block; }
 
-.card.noun  .posdots { color: #0057B8; }
-.card.verb  .posdots { color: #D60000; }
-.card.adj   .posdots { color: #6A1B9A; }
-.card.adv   .posdots { color: #2E7D32; }
-.card.pron  .posdots { color: #F57C00; }
-.card.part  .posdots { color: #00838F; }
-.card.clf   .posdots { color: #6D4C41; }
-.card.prep  .posdots { color: #455A64; }
+.card.noun  .posdots { color: #8D6E63; } /* brownish */
+.card.verb  .posdots { color: #1565C0; } /* blueish */
+.card.adj   .posdots { color: #C9A227; } /* yellowish */
+.card.pron  .posdots { color: #EF6C00; } /* orangeish */
+.card.adv   .posdots { color: #2E7D32; } /* greenish (fresh) */
+.card.part  .posdots { color: #00897B; } /* greenish (teal) */
+.card.clf   .posdots { color: #7A8F3A; } /* greenish (olive) */
+.card.prep  .posdots { color: #546E7A; } /* greenish (slate) */

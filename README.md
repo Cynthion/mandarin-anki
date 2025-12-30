@@ -89,8 +89,8 @@ Click **Save**.
 
 1. Select your note type
 2. Click **Cards…**
-3. Rename the `Card 1` to `Mandarin -> English`
-4. Add a new card and name it `English -> Mandarin`
+3. Rename the `Card 1` to `Mandarin -> English` (production)
+4. Add a new card and name it `English -> Mandarin` (recognition)
 5. Paste templates from this repo:
 
 `Mandarin -> English` card:
