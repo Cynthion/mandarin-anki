@@ -1,7 +1,7 @@
 Create EXACTLY ONE PNG sprite sheet image.
 
 CANVAS SIZE (ABSOLUTE, MUST MATCH EXACTLY):
-- The final PNG must be exactly 1424×1144 pixels.
+- The final PNG must be exactly 1704×1424 pixels.
 - Do NOT add any extra padding, border, frame, shadow, or whitespace outside this canvas.
 - Do NOT crop smaller than this size. Do NOT export larger than this size.
 
@@ -11,14 +11,14 @@ RENDERING OVERRIDES (CRITICAL):
 - crisp hard edges; no soft edge drift, no airbrush fade
 - no depth cues or grounding of any kind
 
-AUDIENCE & TONE (CRITICAL):
+ AUDIENCE & TONE (CRITICAL):
 - These illustrations are for ADULT learners and adult users.
 - The style must feel mature, neutral, and instructional — NOT playful or child-oriented.
 - Do NOT use children’s illustration conventions (storybook look, toy-like shapes, cute exaggeration, playful faces).
 - Avoid baby-like proportions, oversized heads, simplified “cute” eyes, or cartoon-for-kids aesthetics.
 
 INVISIBLE GRID LAYOUT (DO NOT DRAW THE GRID):
-- Grid is 5 columns × 4 rows.
+- Grid is 6 columns × 5 rows.
 - Each tile is exactly 256×256px.
 - Horizontal gutter between tiles is exactly 24px, pure #FFFFFF.
 - Vertical gutter between tiles is exactly 24px, pure #FFFFFF.
@@ -60,18 +60,15 @@ ART STYLE (bold pop-art / comic-book ink + anime influence — high contrast, lo
 - NO kids-app, children’s book, sticker-for-kids, emoji, mascot, or nursery style
 - modern stylized illustration with anime-inspired faces/proportions (NOT chibi, NOT kawaii)
 - realistic adult proportions and facial structure (no oversized heads, no baby faces, no exaggerated cuteness)
-
 - heavy graphic BLACK INK linework:
   - thick outer contour lines for silhouette clarity
   - medium interior contour lines for folds, hair strands, facial features, accessories
   - occasional spot blacks (solid black fill areas) for graphic contrast (hair, jackets, shadows INSIDE the subject only)
   - clean, confident strokes; no sketch pencil texture, no painterly brush edges
-
 - pop-art / comic rendering:
   - flat color blocks + limited cel shading (2–4 tones)
   - optional halftone dots / Ben-Day dots / stipple texture ONLY inside the subject to imply tone
   - sharp, poster-like readability; bold graphic shapes
-
 - color palette: saturated primary/secondary pop palette (yellow, red, cyan/teal, magenta accents) balanced with deep blacks
 - crisp edges and print-like finish (screenprint/comic cover look), high resolution
 
@@ -79,27 +76,6 @@ LINEWORK REQUIREMENTS (CRITICAL):
 - outlines must be TRUE BLACK (#000000) or near-black
 - edges must be hard and clean; NO soft airbrush feathering into white
 - use lines to define form (do not rely on paint-edge silhouettes)
-- At the subject boundary, there must be a single clean black outline adjacent to flat color—never a white fringe or gap.
-
-CLOSED CONTOUR / NO OPEN BASE (CRITICAL — MUST OBEY):
-- The outer contour MUST be a CLOSED LOOP around the entire silhouette (360°), including the BOTTOM edge.
-- Do NOT leave the bottom un-outlined or “open” to the background.
-- Do NOT let the silhouette be defined by a white fill that blends into the white background.
-- If the subject has a flat cutoff at the bottom, it STILL needs a black contour line at that cutoff.
-
-WHITE SUBJECTS / LIGHT FUR SPECIAL CASE (CRITICAL):
-- If the subject contains white fur/feathers/skin (sheep, cow patches, duck body, panda, rabbit, etc.):
-  - NEVER use pure white (#FFFFFF) for any area that touches the silhouette boundary.
-  - Use off-white / slightly tinted light gray/cream instead for boundary-adjacent light areas.
-  - The silhouette boundary must still be inked in black; white regions must be enclosed by black ink.
-
-SILHOUETTE EDGE / OUTERMOST PIXEL RULE (CRITICAL — MUST OBEY):
-- The OUTERMOST boundary pixels of the subject silhouette MUST be inked in TRUE BLACK (#000000) or near-black.
-- Do NOT allow the silhouette to be defined by colored pixels without an outline.
-- Do NOT allow semi-transparent edge pixels; no “soft” alpha edges.
-- VISUAL TEST: If zoomed to 800%, the first non-white pixel when moving inward from the background must be black/near-black ink, not color and not light gray.
-- EXTRA VISUAL TEST (BOTTOM EDGE): Along the lowest edge of the silhouette, the first boundary pixels must be black ink, never white fill.
-- The black outline must be continuous around the entire silhouette (no breaks, no missing segments).
 
 ABSOLUTE SHADOW / EFFECT BAN (MUST OBEY):
 - NO drop shadow (below or around the subject)
@@ -118,22 +94,6 @@ ABSOLUTE NO-SHADOW RULES (MOST IMPORTANT — DO NOT VIOLATE):
 HIGHLIGHT RULE:
 - do NOT use pure white (#FFFFFF) inside the subject; use slightly tinted highlights instead.
 
-NO WHITE / NEAR-WHITE EDGE OPENINGS (CRITICAL — FIXES “WHITE EDGES” FAILURES):
-- Subjects must NOT have white or near-white “openings”, gaps, wedges, or cutouts along their outer edges.
-- The silhouette must be CLOSED and SOLID: no background-white leaking into the subject at the boundary.
-- Do NOT leave thin uncolored rims at the contour; do NOT create white inner borders.
-- Avoid highlights that touch the outline if they could look like an opening; keep edge-adjacent highlights tinted and fully enclosed.
-- At the subject boundary, there must be a single clean black outline adjacent to flat color—never a white fringe or gap.
-- VISUAL TEST: If zoomed to 400%, there must be NO white/near-white pixels between the black outline and the subject fill anywhere along the boundary.
-- EXTRA: This includes the BOTTOM of the subject — no white body area may “touch” the background without a black outline.
-
-OUTERMOST EDGE INK ENFORCEMENT (CRITICAL — MUST OBEY):
-- The outermost silhouette edge MUST be black/near-black ink, not colored pixels.
-- There must be a continuous black contour around the silhouette (no missing outline segments), including the BOTTOM edge.
-- VISUAL TEST: If you trace the silhouette border, every border pixel is black/near-black before any color fill appears.
-- NO soft transparency/alpha at edges; edges must be crisp, poster-like, print-like.
-- SPECIAL CASE (WHITE BODIES): Any light/white body area must be slightly tinted and fully enclosed by the black contour; never merge with the background.
-
 COMPOSITION (strict, for EVERY tile):
 - One main subject per tile.
 - Subject must be centered horizontally AND vertically.
@@ -143,24 +103,36 @@ COMPOSITION (strict, for EVERY tile):
 - Keep silhouettes compact; avoid thin protrusions that might approach edges.
 
 TILES (exact order, left-to-right then top-to-bottom):
-01. dragon (龙)
-02. mouse (老鼠)
-03. cat (猫)
-04. dog (狗)
-05. pig (猪)
-06. cow (牛)
-07. tiger (老虎)
-08. horse (马)
-09. sheep (羊)
-10. monkey (猴子)
-11. chicken (鸡)
-12. bear (熊)
-13. bee (蜜蜂)
-14. bird (鸟)
-15. duck (鸭子)
-16. panda (熊猫)
-17. frog (青蛙)
-18. rabbit (兔子)
+01. China (中国)
+02. USA (美国)
+03. Germany (德国)
+04. Japan (日本)
+05. Asia (亚洲)
+06. Europe (欧洲)
+07. Africa (非洲)
+08. America (美洲)
+09. continent (州)
+10. Zurich (苏黎世)
+11. Italy (意大利)
+12. France (法国)
+13. Switzerland (瑞士)
+14. Spain (西班牙)
+15. Austria (奥地利)
+16. Netherlands (荷兰)
+17. United Kingdom (英国)
+18. Russia (俄罗斯)
+19. Greece (希腊)
+20. Canada (加拿大)
+21. Australia (澳大利亚)
+22. South Korea (韩国)
+23. North Korea (朝鲜)
+24. India (印度)
+25. Portugal (葡萄牙)
+26. Sweden (瑞典)
+27. Norway (挪威)
+28. Finland (芬兰)
+29. Denmark (丹麦)
+30. Czech Republic (捷克)
 
 ---
 SPRITE_LAYOUT_CONFIG_JSON:
@@ -173,9 +145,9 @@ SPRITE_LAYOUT_CONFIG_JSON:
   "EFFECTIVE_PAD": 68,
   "MAX_FILL": 120,
   "SUBJECT_TARGET_PCT": 55,
-  "cols": 5,
-  "rows": 4,
-  "count": 18,
-  "expected_width": 1424,
-  "expected_height": 1144
+  "cols": 6,
+  "rows": 5,
+  "count": 30,
+  "expected_width": 1704,
+  "expected_height": 1424
 }

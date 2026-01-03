@@ -52,12 +52,12 @@
 }
 
 .center-text-1 {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 400;
 }
 
 .center-text-2 {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 400;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .bottom {
-  max-width: 90%;
+  max-width: 98%;
 }
 
 .example {
@@ -107,7 +107,7 @@
 
 .image img {
   max-width: 90%;
-  max-height: 200px;
+  max-height: 150px;
   border-radius: 8px;
 }
 
