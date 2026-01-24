@@ -1,7 +1,7 @@
 Create EXACTLY ONE PNG sprite sheet image.
 
 CANVAS SIZE (ABSOLUTE, MUST MATCH EXACTLY):
-- The final PNG must be exactly 1704×1424 pixels.
+- The final PNG must be exactly 1424×1144 pixels.
 - Do NOT add any extra padding, border, frame, shadow, or whitespace outside this canvas.
 - Do NOT crop smaller than this size. Do NOT export larger than this size.
 
@@ -18,7 +18,7 @@ RENDERING OVERRIDES (CRITICAL):
 - Avoid baby-like proportions, oversized heads, simplified “cute” eyes, or cartoon-for-kids aesthetics.
 
 INVISIBLE GRID LAYOUT (DO NOT DRAW THE GRID):
-- Grid is 6 columns × 5 rows.
+- Grid is 5 columns × 4 rows.
 - Each tile is exactly 256×256px.
 - Horizontal gutter between tiles is exactly 24px, pure #FFFFFF.
 - Vertical gutter between tiles is exactly 24px, pure #FFFFFF.
@@ -103,36 +103,26 @@ COMPOSITION (strict, for EVERY tile):
 - Keep silhouettes compact; avoid thin protrusions that might approach edges.
 
 TILES (exact order, left-to-right then top-to-bottom):
-01. China (中国)
-02. USA (美国)
-03. Germany (德国)
-04. Japan (日本)
-05. Asia (亚洲)
-06. Europe (欧洲)
-07. Africa (非洲)
-08. America (美洲)
-09. continent (州)
-10. Zurich (苏黎世)
-11. Italy (意大利)
-12. France (法国)
-13. Switzerland (瑞士)
-14. Spain (西班牙)
-15. Austria (奥地利)
-16. Netherlands (荷兰)
-17. United Kingdom (英国)
-18. Russia (俄罗斯)
-19. Greece (希腊)
-20. Canada (加拿大)
-21. Australia (澳大利亚)
-22. South Korea (韩国)
-23. North Korea (朝鲜)
-24. India (印度)
-25. Portugal (葡萄牙)
-26. Sweden (瑞典)
-27. Norway (挪威)
-28. Finland (芬兰)
-29. Denmark (丹麦)
-30. Czech Republic (捷克)
+01. Italy (意大利)
+02. France (法国)
+03. Switzerland (瑞士)
+04. Spain (西班牙)
+05. Austria (奥地利)
+06. Netherlands (荷兰)
+07. United Kingdom (英国)
+08. Russia (俄罗斯)
+09. Greece (希腊)
+10. Canada (加拿大)
+11. Australia (澳大利亚)
+12. South Korea (韩国)
+13. North Korea (朝鲜)
+14. India (印度)
+15. Portugal (葡萄牙)
+16. Sweden (瑞典)
+17. Norway (挪威)
+18. Finland (芬兰)
+19. Denmark (丹麦)
+20. Czech Republic (捷克)
 
 ---
 SPRITE_LAYOUT_CONFIG_JSON:
@@ -145,9 +135,9 @@ SPRITE_LAYOUT_CONFIG_JSON:
   "EFFECTIVE_PAD": 68,
   "MAX_FILL": 120,
   "SUBJECT_TARGET_PCT": 55,
-  "cols": 6,
-  "rows": 5,
-  "count": 30,
-  "expected_width": 1704,
-  "expected_height": 1424
+  "cols": 5,
+  "rows": 4,
+  "count": 20,
+  "expected_width": 1424,
+  "expected_height": 1144
 }
