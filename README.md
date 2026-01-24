@@ -257,17 +257,20 @@ python scripts\sync_media_to_anki.py --anki-media "$env:APPDATA\Anki2\User 1\col
 
 ## Optional: Generate Audio with AwesomeTTS
 
-If you want iOS-compatible audio, generate mp3 files and write them into the `audio` field.
+1. Configure `AwesomeTTS` (`Tools → AwesomeTTS → MP3 → Filename Template`) to name generated files:
+    - `hanzi` to `audio`: `{{id}}.mp3`
+    - `example-hanzi` to `audio-example`: `{{id}}-ex.mp3`
 
-Recommended:
+    <img src="./assets/awesometts-settings.png" width="500">
 
-- Configure `AwesomeTTS` to name files using the `id` field, resulting in:
-  - `collection.media/<id>.mp3` (`Tools → AwesomeTTS → MP3 → Filename Template → {{id}}.mp3`)
-  - `notes.tsv`: `audio` field like `[sound:ATTS <id>.mp3]`
+2. In the `Browse` section, use `Tools → AwesomeTTS → Generate Audio for Selected Notes…` to batch-generate audio files.
+   - `Speed`: `0.90`
+   - `hanzi` to `audio`
+   - `example-hanzi` to `audio-example`
+    <img src="./assets/awesometts-config.png" width="500">
 
-<img src="./assets/awesometts-settings.png" width="300">
-<img src="./assets/awesometts-add-audio.png" width="300">
-
+4. After generation, add the newly generated audio files to this repository.
+5. Ensure the audio tags in `deck/notes.tsv` point to the correct filenames, e.g. `[sound:NOUN-20251221-0001.mp3]`.
 ---
 
 ## Optional: Generate Images with Generative AI
