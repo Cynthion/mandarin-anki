@@ -1,20 +1,14 @@
-NOUN-20260101-0001	意大利	Yìdàlì	Italy	我想明年去意大利旅行。	Wǒ xiǎng míngnián qù Yìdàlì lǚxíng.	I want to travel to Italy next year.				geography noun
-NOUN-20260101-0002	法国	Fǎguó	France	法国的文化很有名。	Fǎguó de wénhuà hěn yǒumíng.	French culture is very famous.				geography noun
-NOUN-20260101-0003	瑞士	Ruìshì	Switzerland	瑞士的生活质量很高。	Ruìshì de shēnghuó zhìliàng hěn gāo.	The quality of life in Switzerland is very high.				geography noun
-NOUN-20260101-0004	西班牙	Xībānyá	Spain	西班牙的天气很好。	Xībānyá de tiānqì hěn hǎo.	The weather in Spain is very good.				geography noun
-NOUN-20260101-0005	奥地利	Àodìlì	Austria	他在奥地利学音乐。	Tā zài Àodìlì xué yīnyuè.	He studies music in Austria.				geography noun
-NOUN-20260101-0006	荷兰	Hélán	Netherlands	荷兰有很多自行车。	Hélán yǒu hěn duō zìxíngchē.	There are many bicycles in the Netherlands.				geography noun
-NOUN-20260101-0007	英国	Yīngguó	United Kingdom	英国的天气常常下雨。	Yīngguó de tiānqì chángcháng xiàyǔ.	The weather in the UK often rains.				geography noun
-NOUN-20260101-0008	俄罗斯	Éluósī	Russia	俄罗斯是一个很大的国家。	Éluósī shì yí gè hěn dà de guójiā.	Russia is a very large country.				geography noun
-NOUN-20260101-0009	希腊	Xīlà	Greece	希腊有悠久的历史。	Xīlà yǒu yōujiǔ de lìshǐ.	Greece has a long history.				geography noun
-NOUN-20260101-0010	加拿大	Jiānádà	Canada	加拿大有很多森林。	Jiānádà yǒu hěn duō sēnlín.	Canada has many forests.				geography noun
-NOUN-20260101-0011	澳大利亚	Àodàlìyà	Australia	澳大利亚在南半球。	Àodàlìyà zài nán bànqiú.	Australia is in the Southern Hemisphere.				geography noun
-NOUN-20260101-0012	韩国	Hánguó	South Korea	韩国的电影很有名。	Hánguó de diànyǐng hěn yǒumíng.	Korean movies are very famous.				geography noun
-NOUN-20260101-0013	朝鲜	Cháoxiǎn	North Korea	朝鲜在亚洲东北部。	Cháoxiǎn zài Yàzhōu dōngběi bù.	North Korea is in Northeast Asia.				geography noun
-NOUN-20260101-0014	印度	Yìndù	India	印度的人口很多。	Yìndù de rénkǒu hěn duō.	India has a large population.				geography noun
-NOUN-20260101-0015	葡萄牙	Pútáoyá	Portugal	葡萄牙在欧洲西部。	Pútáoyá zài Ōuzhōu xībù.	Portugal is in Western Europe.				geography noun
-NOUN-20260101-0016	瑞典	Ruìdiǎn	Sweden	瑞典的冬天很冷。	Ruìdiǎn de dōngtiān hěn lěng.	Winters in Sweden are very cold.				geography noun
-NOUN-20260101-0017	挪威	Nuówēi	Norway	挪威有很多峡湾。	Nuówēi yǒu hěn duō xiáwān.	Norway has many fjords.				geography noun
-NOUN-20260101-0018	芬兰	Fēnlán	Finland	芬兰的教育很好。	Fēnlán de jiàoyù hěn hǎo.	Education in Finland is very good.				geography noun
-NOUN-20260101-0019	丹麦	Dānmài	Denmark	丹麦是一个北欧国家。	Dānmài shì yí gè Běi’ōu guójiā.	Denmark is a Nordic country.				geography noun
-NOUN-20260101-0020	捷克	Jiékè	Czech Republic	捷克的首都是布拉格。	Jiékè de shǒudū shì Bùlágé.	The capital of the Czech Republic is Prague.				geography noun
+NOUN-20251221-0089	书	shū	book	这本书不贵，我想买。	Zhè běn shū bù guì, wǒ xiǎng mǎi.	This book isn’t expensive; I want to buy it.	[sound:ATTS NOUN-20251221-0089.mp3]	[sound:ATTS NOUN-20251221-0089-ex.mp3]		object noun
+NOUN-20251221-0090	杯子	bēizi	cup	给我一个杯子，我想喝水。	Gěi wǒ yí gè bēizi, wǒ xiǎng hē shuǐ.	Give me a cup; I want to drink water.	[sound:ATTS NOUN-20251221-0090.mp3]	[sound:ATTS NOUN-20251221-0090-ex.mp3]		object noun
+NOUN-20251221-0091	瓶子	píngzi	bottle	水在瓶子里，你看见了吗？	Shuǐ zài píngzi lǐ, nǐ kànjiàn le ma?	The water is in the bottle—did you see it?	[sound:ATTS NOUN-20251221-0091.mp3]	[sound:ATTS NOUN-20251221-0091-ex.mp3]		object noun
+NOUN-20251221-0092	包	bāo	bag	我的包有点重，你能帮我吗？	Wǒ de bāo yǒudiǎn zhòng, nǐ néng bāng wǒ ma?	My bag is a bit heavy—can you help me?	[sound:ATTS NOUN-20251221-0092.mp3]	[sound:ATTS NOUN-20251221-0092-ex.mp3]		object noun
+NOUN-20251221-0093	书包	shūbāo	schoolbag	书包里有书，还有笔。	Shūbāo lǐ yǒu shū, hái yǒu bǐ.	In the schoolbag there are books and also pens.	[sound:ATTS NOUN-20251221-0093.mp3]	[sound:ATTS NOUN-20251221-0093-ex.mp3]		object noun
+NOUN-20251221-0094	笔	bǐ	pen	这支笔不好写，我们换一支吧。	Zhè zhī bǐ bù hǎo xiě, wǒmen huàn yì zhī ba.	This pen doesn’t write well; let’s switch to another one.	[sound:ATTS NOUN-20251221-0094.mp3]	[sound:ATTS NOUN-20251221-0094-ex.mp3]		object noun
+NOUN-20251221-0095	名片	míngpiàn	business card	这是我的名片，请收下。	Zhè shì wǒ de míngpiàn, qǐng shōuxià.	Here’s my business card; please take it.	[sound:ATTS NOUN-20251221-0095.mp3]	[sound:ATTS NOUN-20251221-0095-ex.mp3]		object noun
+NOUN-20251221-0096	照片	zhàopiàn	photo	我给你看一张照片，是我家人。	Wǒ gěi nǐ kàn yì zhāng zhàopiàn, shì wǒ jiārén.	I’ll show you a photo; it’s my family.	[sound:ATTS NOUN-20251221-0096.mp3]	[sound:ATTS NOUN-20251221-0096-ex.mp3]		object noun
+NOUN-20251221-0097	电话	diànhuà	telephone	我给你打电话，可是你没接。	Wǒ gěi nǐ dǎ diànhuà, kěshì nǐ méi jiē.	I called you, but you didn’t answer.	[sound:ATTS NOUN-20251221-0097.mp3]	[sound:ATTS NOUN-20251221-0097-ex.mp3]		object noun
+NOUN-20251221-0098	手机	shǒujī	mobile phone	我手机没电了，能用一下你的吗？	Wǒ shǒujī méi diàn le, néng yòng yíxià nǐ de ma?	My phone is out of battery—can I use yours for a moment?	[sound:ATTS NOUN-20251221-0098.mp3]	[sound:ATTS NOUN-20251221-0098-ex.mp3]		object noun
+NOUN-20251221-0099	页	yè	page	请看第五页，然后回答问题。	Qǐng kàn dì wǔ yè, ránhòu huídá wèntí.	Please look at page five, then answer the question.	[sound:ATTS NOUN-20251221-0099.mp3]	[sound:ATTS NOUN-20251221-0099-ex.mp3]		object noun
+NOUN-20251221-0100	碗	wǎn	bowl	我想吃面条，要一个大碗。	Wǒ xiǎng chī miàntiáo, yào yí gè dà wǎn.	I want noodles; I want a big bowl.	[sound:ATTS NOUN-20251221-0100.mp3]	[sound:ATTS NOUN-20251221-0100-ex.mp3]		object noun
+NOUN-20251221-0101	里	lǐ	inside	我的钥匙在包里，不在桌子上。	Wǒ de yàoshi zài bāo lǐ, bù zài zhuōzi shàng.	My keys are in the bag, not on the table.	[sound:ATTS NOUN-20251221-0101.mp3]	[sound:ATTS NOUN-20251221-0101-ex.mp3]		object noun
+NOUN-20251221-0102	东西	dōngxi	thing	我去商店买东西，很快就回来。	Wǒ qù shāngdiàn mǎi dōngxi, hěn kuài jiù huí lai.	I’m going to the shop to buy things; I’ll be back soon.	[sound:ATTS NOUN-20251221-0102.mp3]	[sound:ATTS NOUN-20251221-0102-ex.mp3]		object noun

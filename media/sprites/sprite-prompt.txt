@@ -1,7 +1,7 @@
 Create EXACTLY ONE PNG sprite sheet image.
 
 CANVAS SIZE (ABSOLUTE, MUST MATCH EXACTLY):
-- The final PNG must be exactly 1424×1144 pixels.
+- The final PNG must be exactly 1144×1144 pixels.
 - Do NOT add any extra padding, border, frame, shadow, or whitespace outside this canvas.
 - Do NOT crop smaller than this size. Do NOT export larger than this size.
 
@@ -18,7 +18,7 @@ RENDERING OVERRIDES (CRITICAL):
 - Avoid baby-like proportions, oversized heads, simplified “cute” eyes, or cartoon-for-kids aesthetics.
 
 INVISIBLE GRID LAYOUT (DO NOT DRAW THE GRID):
-- Grid is 5 columns × 4 rows.
+- Grid is 4 columns × 4 rows.
 - Each tile is exactly 256×256px.
 - Horizontal gutter between tiles is exactly 24px, pure #FFFFFF.
 - Vertical gutter between tiles is exactly 24px, pure #FFFFFF.
@@ -103,26 +103,20 @@ COMPOSITION (strict, for EVERY tile):
 - Keep silhouettes compact; avoid thin protrusions that might approach edges.
 
 TILES (exact order, left-to-right then top-to-bottom):
-01. Italy (意大利)
-02. France (法国)
-03. Switzerland (瑞士)
-04. Spain (西班牙)
-05. Austria (奥地利)
-06. Netherlands (荷兰)
-07. United Kingdom (英国)
-08. Russia (俄罗斯)
-09. Greece (希腊)
-10. Canada (加拿大)
-11. Australia (澳大利亚)
-12. South Korea (韩国)
-13. North Korea (朝鲜)
-14. India (印度)
-15. Portugal (葡萄牙)
-16. Sweden (瑞典)
-17. Norway (挪威)
-18. Finland (芬兰)
-19. Denmark (丹麦)
-20. Czech Republic (捷克)
+01. book (书)
+02. cup (杯子)
+03. bottle (瓶子)
+04. bag (包)
+05. schoolbag (书包)
+06. pen (笔)
+07. business card (名片)
+08. photo (照片)
+09. telephone (电话)
+10. mobile phone (手机)
+11. page (页)
+12. bowl (碗)
+13. inside (里)
+14. thing (东西)
 
 ---
 SPRITE_LAYOUT_CONFIG_JSON:
@@ -135,9 +129,9 @@ SPRITE_LAYOUT_CONFIG_JSON:
   "EFFECTIVE_PAD": 68,
   "MAX_FILL": 120,
   "SUBJECT_TARGET_PCT": 55,
-  "cols": 5,
+  "cols": 4,
   "rows": 4,
-  "count": 20,
-  "expected_width": 1424,
+  "count": 14,
+  "expected_width": 1144,
   "expected_height": 1144
 }
