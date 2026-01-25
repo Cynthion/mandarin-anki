@@ -1,7 +1,7 @@
 Create EXACTLY ONE PNG sprite sheet image.
 
 CANVAS SIZE (ABSOLUTE, MUST MATCH EXACTLY):
-- The final PNG must be exactly 1144×1144 pixels.
+- The final PNG must be exactly 1424×1424 pixels.
 - Do NOT add any extra padding, border, frame, shadow, or whitespace outside this canvas.
 - Do NOT crop smaller than this size. Do NOT export larger than this size.
 
@@ -18,7 +18,7 @@ RENDERING OVERRIDES (CRITICAL):
 - Avoid baby-like proportions, oversized heads, simplified “cute” eyes, or cartoon-for-kids aesthetics.
 
 INVISIBLE GRID LAYOUT (DO NOT DRAW THE GRID):
-- Grid is 4 columns × 4 rows.
+- Grid is 5 columns × 5 rows.
 - Each tile is exactly 256×256px.
 - Horizontal gutter between tiles is exactly 24px, pure #FFFFFF.
 - Vertical gutter between tiles is exactly 24px, pure #FFFFFF.
@@ -103,20 +103,31 @@ COMPOSITION (strict, for EVERY tile):
 - Keep silhouettes compact; avoid thin protrusions that might approach edges.
 
 TILES (exact order, left-to-right then top-to-bottom):
-01. book (书)
-02. cup (杯子)
-03. bottle (瓶子)
-04. bag (包)
-05. schoolbag (书包)
-06. pen (笔)
-07. business card (名片)
-08. photo (照片)
-09. telephone (电话)
-10. mobile phone (手机)
-11. page (页)
-12. bowl (碗)
-13. inside (里)
-14. thing (东西)
+01. teacher (老师)
+02. doctor (医生)
+03. veterinarian (兽医)
+04. engineer (工程师)
+05. waiter (服务员)
+06. boss (老板)
+07. work (工作)
+08. project (工程)
+09. master (师傅)
+10. nurse (护士)
+11. lawyer (律师)
+12. consultant (咨询师)
+13. writer (作家)
+14. painter (画家)
+15. musician (音乐家)
+16. scientist (科学家)
+17. employee (职员)
+18. shop assistant (售货员)
+19. pilot (飞行员)
+20. flight attendant (空姐)
+21. manager (经理)
+22. secretary (秘书)
+23. police officer (警察)
+24. thief (小偷)
+25. hacker (黑客)
 
 ---
 SPRITE_LAYOUT_CONFIG_JSON:
@@ -129,9 +140,9 @@ SPRITE_LAYOUT_CONFIG_JSON:
   "EFFECTIVE_PAD": 68,
   "MAX_FILL": 120,
   "SUBJECT_TARGET_PCT": 55,
-  "cols": 4,
-  "rows": 4,
-  "count": 14,
-  "expected_width": 1144,
-  "expected_height": 1144
+  "cols": 5,
+  "rows": 5,
+  "count": 25,
+  "expected_width": 1424,
+  "expected_height": 1424
 }
