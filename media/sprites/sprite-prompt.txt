@@ -1,7 +1,7 @@
 Create EXACTLY ONE PNG sprite sheet image.
 
 CANVAS SIZE (ABSOLUTE, MUST MATCH EXACTLY):
-- The final PNG must be exactly 1144×864 pixels.
+- The final PNG must be exactly 1424×1424 pixels.
 - Do NOT add any extra padding, border, frame, shadow, or whitespace outside this canvas.
 - Do NOT crop smaller than this size. Do NOT export larger than this size.
 
@@ -18,7 +18,7 @@ RENDERING OVERRIDES (CRITICAL):
 - Avoid baby-like proportions, oversized heads, simplified “cute” eyes, or cartoon-for-kids aesthetics.
 
 INVISIBLE GRID LAYOUT (DO NOT DRAW THE GRID):
-- Grid is 4 columns × 3 rows.
+- Grid is 5 columns × 5 rows.
 - Each tile is exactly 256×256px.
 - Horizontal gutter between tiles is exactly 24px, pure #FFFFFF.
 - Vertical gutter between tiles is exactly 24px, pure #FFFFFF.
@@ -103,18 +103,31 @@ COMPOSITION (strict, for EVERY tile):
 - Keep silhouettes compact; avoid thin protrusions that might approach edges.
 
 TILES (exact order, left-to-right then top-to-bottom):
-01. home (家)
-02. hotel (旅馆)
-03. restaurant (饭店)
-04. restaurant (饭馆)
-05. teahouse (茶馆)
-06. café (咖啡馆)
-07. shop (店)
-08. establishment (馆)
-09. company (公司)
-10. university (大学)
-11. hospital (医院)
-12. kitchen (厨房)
+01. happy (高兴)
+02. sad (伤心)
+03. cool (酷)
+04. expensive (贵)
+05. cheap (便宜)
+06. tired (累)
+07. busy (忙)
+08. good (好)
+09. bad (不好)
+10. cold (冷)
+11. hot (热)
+12. tasty (好吃)
+13. tasty (drink) (好喝)
+14. beautiful (漂亮)
+15. handsome (帅)
+16. cute (可爱)
+17. big (大)
+18. small (小)
+19. new (新)
+20. old (object) (旧)
+21. clever (聪明)
+22. male (男)
+23. female (女)
+24. many / much (多)
+25. few / little (少)
 
 ---
 SPRITE_LAYOUT_CONFIG_JSON:
@@ -127,9 +140,9 @@ SPRITE_LAYOUT_CONFIG_JSON:
   "EFFECTIVE_PAD": 68,
   "MAX_FILL": 120,
   "SUBJECT_TARGET_PCT": 55,
-  "cols": 4,
-  "rows": 3,
-  "count": 12,
-  "expected_width": 1144,
-  "expected_height": 864
+  "cols": 5,
+  "rows": 5,
+  "count": 25,
+  "expected_width": 1424,
+  "expected_height": 1424
 }
