@@ -1,0 +1,94 @@
+{
+  /* VS CODE */
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll.stylelint": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // Prettier as default formatter
+  "editor.formatOnSave": true,
+  "editor.trimAutoWhitespace": true,
+  "editor.glyphMargin": true, // disable breakpoint line, not used in this project
+
+  "files.trimTrailingWhitespace": true,
+
+  /* LANGUAGES */
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.wordWrap": "off"
+  },
+  // "[html]": {
+  //   // format HTML with Prettier first, then with the built-in formatter
+  //   "editor.defaultFormatter": "Jota0222.multi-formatter",
+  //   "multiFormatter.formatterList": ["esbenp.prettier-vscode", "vscode.html-language-features"],
+  // },
+  // "html.format.wrapAttributes": "force-aligned",
+  // "html.format.preserveNewLines": true,
+  // "html.format.wrapLineLength": 160 /* also change in .editorconfig */,
+  // "html.autoClosingTags": true,
+  // "html.format.contentUnformatted": "pre,code,textarea",
+
+  "js/ts.preferences.quoteStyle": "single",
+  "js/ts.preferences.importModuleSpecifier": "relative",
+  "js/ts.preferences.autoImportFileExcludePatterns": [
+    "@ionic/angular/common",
+    "@ionic/angular"
+  ], // https://ionicframework.com/docs/angular/build-options#standalone-based-applications
+
+  /* EXTENSIONS */
+  "eslint.enable": true,
+  "eslint.useFlatConfig": true,
+  "eslint.debug": false,
+  "eslint.validate": ["javascript", "typescript", "html"],
+
+  /*
+  Configure the Stylelint plugin to parse SCSS files.
+  - customSyntax points to the PostCSS syntax module. (https://github.com/postcss/postcss#syntaxes)
+  - validate sets the languages that the plugin will lint
+  */
+  "stylelint.customSyntax": "postcss-scss",
+  "stylelint.validate": ["scss"],
+
+  /*
+  Prevent reporting of same errors by both the editor built-in linter [scss] and the
+  extension [stylelint]
+  */
+  "css.validate": true,
+  "less.validate": true,
+  "scss.validate": false,
+
+  /* Markdown Validation */
+  "markdown.validate.enabled": true,
+  "markdown.validate.fileLinks.enabled": "error",
+  "markdown.validate.fragmentLinks.enabled": "error",
+  "markdown.validate.referenceLinks.enabled": "error",
+
+  /* Markdown Lint */
+  /* Rules in .markdownlint.json, exclusions in .markdownlint-cli2.jsonc */
+  "markdownlint.lintWorkspaceGlobs": ["**/*.md", "!**/node_modules/**"],
+
+  // Draw.io
+  "hediet.vscode-drawio.theme": "min",
+
+  // Peacock
+  "peacock.color": "##ff8559",
+  "peacock.affectActivityBar": false,
+  "peacock.affectStatusBar": false,
+  "peacock.affectDebuggingStatusBar": true,
+  "peacock.affectTitleBar": true,
+  "peacock.affectEditorGroupBorder": false,
+  "peacock.affectPanelBorder": false,
+  "peacock.affectSideBarBorder": false,
+  "peacock.affectSashHover": false,
+  "peacock.affectStatusAndTitleBorders": false,
+  "peacock.affectTabActiveBorder": false,
+  "workbench.colorCustomizations": {
+    "commandCenter.border": "#15202b99",
+    "titleBar.activeBackground": "#ff8559",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#ff855999",
+    "titleBar.inactiveForeground": "#15202b99",
+    "commandCenter.foreground": "#15202b"
+  }
+}
