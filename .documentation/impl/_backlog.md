@@ -8,6 +8,10 @@
 
 ## Vision: Portal to Learn Flashcards English -> Chinese (Simplified)
 
+- How to implement this portal:
+  - configure Headroom globally, see <https://www.headroomlabs.ai/>
+  - setup Docker Sandbox for safe, unattended AI execution, see <https://www.docker.com/products/docker-sandboxes/>
+  - to interact with the repository in the sandbox, use VS Code SSH or similar
 - Angular SPA application, using ngx-formidable
 - self-learning portal with flashcards, Anki-like
   - user is presented the card and must recall the answer before flipping it
@@ -23,6 +27,7 @@
   - audio settings
 - Sourcing:
   - after physical class, Chris takes a picture of the physical learning material and uses AI to bring it in shape
+  - optional, only if needed: photographed/scanned documents (with mobile phone) could go to paperless ngx (<https://docs.paperless-ngx.com/>) first or after, maybe its AI is already doing a lot of OCR done right, so it's a question of API
   - use a script to use Azure Subscription to translate the words/sentences into audio
   - AI will order, cleanup, place and categorize everything
   - this repository is the truth and source of all learning materials
