@@ -35,8 +35,11 @@
 - Currently, this repository is Anki-compatible and describes, how to use it. The project and portal must still allow for that and might even advertise/support it.
 - There is i18n on the page that allows switching between English and Chinese (Simplified)
 - The UX is super clean and easy to use. All controls define/describe clearly what they are and/or do.
+- The portal must be usable on desktop, tablet and mobile. A responsive design is thus a must.
 - The user documentation is easily accessible.
-- There is technical documentation available in this repository. Especially stating how the learning material is sourced.
+- There is technical documentation available in this repository. Especially stating how the learning material is sour
+- At some point in the future, I might want to create a mobile app hosting the portal, using Capacitor.
+- At some point in the future, I might want to let user's use the portal for a monthly fee. This will then have to be implemented, probably with an authentication and/or API key. This will then need to be done with Stripe.
 - Open Questions:
   - persistence accross sessions
   - synchronization between devices -> web page

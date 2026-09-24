@@ -75,9 +75,9 @@
   "peacock.affectTabActiveBorder": false,
   "workbench.colorCustomizations": {
     "commandCenter.border": "#15202b99",
-    "titleBar.activeBackground": "#F9AD26",
+    "titleBar.activeBackground": "#f9ad26",
     "titleBar.activeForeground": "#15202b",
-    "titleBar.inactiveBackground": "#F9AD2699",
+    "titleBar.inactiveBackground": "#f9ad2699",
     "titleBar.inactiveForeground": "#15202b99",
     "commandCenter.foreground": "#15202b"
   }
