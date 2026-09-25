@@ -22,14 +22,15 @@
 - options (for configuring portal settings), e.g. on page or in sidebar, depending on what makes most sense
   - learning category (e.g. word types, expressions, )
   - pinyin vs hanzi
-  - hsk
+  - hsk level
   - Anki-like settings for learning algorithm
-  - audio settings
+  - audio settings (autoplay, etc.)
 - Goal: The portal supports me perfectly and intuitively when learning Chinese/Mandarin
 - Sourcing:
   - after physical class, Chris takes a picture of the physical learning material and uses AI to bring it in shape
+  - I want to have an as simple as possible solution for me to provide the new material I learned every class and that is automatically processed and fed into the portal; is a backend required?
   - optional, only if needed: photographed/scanned documents (with mobile phone) could go to paperless ngx (<https://docs.paperless-ngx.com/>) first or after, maybe its AI is already doing a lot of OCR done right, so it's a question of API
-  - use a script to use Azure Subscription to translate the words/sentences into audio
+  - use a script to use Azure Subscription to translate the words/sentences into audio; ask me about what Azure model I actually have access to and propose possibilities for me how to set it up
   - AI will order, cleanup, place and categorize everything
   - this repository is the truth and source of all learning materials
   - a GitHub Action will build and deploy the portal (on GitHub pages)
