@@ -25,6 +25,7 @@
   - hsk
   - Anki-like settings for learning algorithm
   - audio settings
+- Goal: The portal supports me perfectly and intuitively when learning Chinese/Mandarin
 - Sourcing:
   - after physical class, Chris takes a picture of the physical learning material and uses AI to bring it in shape
   - optional, only if needed: photographed/scanned documents (with mobile phone) could go to paperless ngx (<https://docs.paperless-ngx.com/>) first or after, maybe its AI is already doing a lot of OCR done right, so it's a question of API
@@ -35,6 +36,7 @@
 - Currently, this repository is Anki-compatible and describes, how to use it. The project and portal must still allow for that and might even advertise/support it.
 - There is i18n on the page that allows switching between English and Chinese (Simplified)
 - The UX is super clean and easy to use. All controls define/describe clearly what they are and/or do.
+- The UX and page structure must first be researched before any implementation starts.
 - The portal must be usable on desktop, tablet and mobile. A responsive design is thus a must.
 - The user documentation is easily accessible.
 - There is technical documentation available in this repository. Especially stating how the learning material is sour
