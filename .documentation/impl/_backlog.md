@@ -12,7 +12,7 @@
   - configure Headroom globally, see <https://www.headroomlabs.ai/>
   - setup Docker Sandbox for safe, unattended AI execution, see <https://www.docker.com/products/docker-sandboxes/>
   - to interact with the repository in the sandbox, use VS Code SSH or similar
-- Angular SPA application, using ngx-formidable
+- Angular SPA application, using the @cynthion/ngx-formidable library (developed in the sibling repository)
 - self-learning portal with flashcards, Anki-like
   - user is presented the card and must recall the answer before flipping it
   - user can mark the card as known, unknown, etc. after flipping it; depending how well it went, it will come for repetition sooner
