@@ -32,6 +32,7 @@
   - optional, only if needed: photographed/scanned documents (with mobile phone) could go to paperless ngx (<https://docs.paperless-ngx.com/>) first or after, maybe its AI is already doing a lot of OCR done right, so it's a question of API
   - use a script to use Azure Subscription to translate the words/sentences into audio; ask me about what Azure model I actually have access to and propose possibilities for me how to set it up
   - AI will order, cleanup, place and categorize everything
+  - AI will create the sample sentences (1-2 per word) in both pinyin and hanzi, according to the HSK-level
   - this repository is the truth and source of all learning materials
   - a GitHub Action will build and deploy the portal (on GitHub pages)
 - Currently, this repository is Anki-compatible and describes, how to use it. The project and portal must still allow for that and might even advertise/support it.
